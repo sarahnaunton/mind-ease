@@ -1,0 +1,70 @@
+@use "./variables" as *;
+@use "./typography" as *;
+
+@mixin tablet-and-desktop {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin flex($direction, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin logo {
+  color: $color-text-tertiary;
+  font-family: "Lora", "Times New Roman", Times, serif;
+  font-weight: 600;
+  font-size: 4rem;
+
+  @include tablet-and-desktop {
+    font-size: 4.5rem;
+  }
+
+  @include desktop {
+    font-size: 5.5rem;
+  }
+}
+
+@mixin heading($color) {
+  color: $color;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.1rem;
+
+  @include tablet-and-desktop {
+    font-size: 2.5rem;
+  }
+}
+
+@mixin subheading($color) {
+  color: $color;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.1rem;
+
+  @include tablet-and-desktop {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin body-text($color) {
+  color: $color;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: -0.1rem;
+
+  @include tablet-and-desktop {
+    font-size: 1.25rem;
+  }
+}
+

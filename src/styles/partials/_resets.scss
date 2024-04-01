@@ -1,0 +1,14 @@
+@use "./typography" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+}
