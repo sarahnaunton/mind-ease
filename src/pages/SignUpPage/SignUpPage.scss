@@ -1,0 +1,95 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.form {
+  background-color: $color-background-primary;
+  @include flex(row, center, center);
+
+  &__container {
+    max-width: $max-width;
+    background-color: $color-background-secondary;
+    width: 95%;
+    border-radius: 20px;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 1rem 0;
+    @include flex(column, start, center);
+
+    @include tablet-and-desktop {
+      width: 50%;
+    }
+  }
+
+  &__logo {
+    @include logo;
+    margin: 0;
+  }
+
+  &__heading {
+    @include heading($color-text-quaternary);
+    margin: 0;
+  }
+
+  &__greeting {
+    @include flex(row, center, center);
+    margin-top: 0.5rem;
+    gap: 1rem;
+  }
+
+  &__subheading {
+    @include subheading($color-text-primary);
+    margin: 0;
+  }
+
+  &__icon {
+    width: 2rem;
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    margin: 0;
+    padding-top: 0.5rem;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    @include flex(column, center, start);
+  }
+
+  &__label {
+    @include subheading($color-text-primary);
+    margin-top: 1rem;
+  }
+
+  &__input {
+    @include body-text($color-text-primary);
+    border-radius: 5px;
+    border: 1px solid $color-border-primary;
+    padding: 0.25rem;
+
+    &:active,
+    &:focus {
+      border: none;
+      outline: 1px solid $color-border-secondary;
+    }
+
+    &--error {
+      border: none;
+      outline: 2px solid $color-border-error;
+    }
+  }
+
+  &__button {
+    margin: 1rem 0;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-button-primary;
+
+    &:hover {
+        color: $color-button-secondary;
+    }
+  }
+}

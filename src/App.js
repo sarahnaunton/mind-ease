@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import "./App.scss";
 
 function App() {
@@ -7,8 +8,8 @@ function App() {
     <BrowserRouter>
     <Routes>
         <Route path="/" element={<WelcomePage />} /> 
-        {/* <Route path="sign-up" element={<SignUpPage />} /> 
-        <Route path="log-in" element={<LogInPage />} /> 
+        <Route path="sign-up" element={<SignUpPage />} /> 
+        {/* <Route path="log-in" element={<LogInPage />} /> 
         <Route path="home" element={<HomePage />} /> 
         <Route path="mood-form" element={<MoodFormPage />} /> 
         <Route path="mood-graph" element={<MoodGaphPage />} /> 
