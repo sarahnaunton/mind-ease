@@ -1,0 +1,40 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.button {
+  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  background-color: $color-button-primary;
+  color: $color-text-primary;
+  letter-spacing: -0.1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 6rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-button-secondary;
+    color: $color-text-secondary;
+  }
+
+  @include tablet-and-desktop {
+    width: 8.5rem;
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+
+  &--dark {
+    background-color: $color-dark-button-secondary;
+    color: $color-dark-text-secondary;
+
+    &:hover {
+      color: $color-dark-text-primary;
+    }
+  }
+}

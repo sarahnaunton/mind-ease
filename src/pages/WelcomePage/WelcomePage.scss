@@ -1,0 +1,66 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+@keyframes float {
+  0% {
+    transform: translatey(-0px);
+  }
+  50% {
+    transform: translatey(-30px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome {
+  background-color: $color-background-primary;
+  height: 100vh;
+  @include flex(row, center, center);
+
+  &__container {
+    width: 100%;
+    max-width: $max-width;
+  }
+
+  &__logo {
+    animation: float 4s ease-in-out 2;
+    @include logo;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__text {
+    animation: fade 10s ease-in-out;
+    background-color: $color-background-secondary;
+    @include body-text($color-text-primary);
+    border-radius: 20px;
+    padding: 1rem;
+    max-width: 45rem;
+    margin: 1rem;
+    text-align: center;
+
+    @include tablet-and-desktop {
+        margin: 1rem auto;
+        padding: 2rem;
+    }
+  }
+
+  &__buttons {
+    animation: fade 10s ease-in-out;
+    @include flex(column, center, center);
+
+    @include tablet-and-desktop {
+      @include flex(row, center, center);
+    }
+  }
+}

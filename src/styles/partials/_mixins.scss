@@ -23,7 +23,7 @@
 @mixin logo {
   color: $color-text-tertiary;
   font-family: "Lora", "Times New Roman", Times, serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 4rem;
 
   @include tablet-and-desktop {
@@ -61,7 +61,7 @@
   color: $color;
   font-weight: 400;
   font-size: 1rem;
-  letter-spacing: -0.1rem;
+  letter-spacing: -0.05rem;
 
   @include tablet-and-desktop {
     font-size: 1.25rem;

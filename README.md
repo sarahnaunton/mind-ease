@@ -442,7 +442,7 @@ One has to have an account and be signed into the app to be able to use it. Only
 - Create client folder and file structure: React project with routes and boilerplate pages, style and partials, assets
 
   
-- Feature server folder and file structure: Set up sever.js page, route folder and files, controller folder and files
+- Feature server folder and file structure: Set up index.js page, route folder and files, controller folder and files
 
  
 
