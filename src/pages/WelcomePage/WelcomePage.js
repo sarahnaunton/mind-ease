@@ -13,10 +13,10 @@ export default function WelcomePage() {
           well-being.
         </p>
         <div className="welcome__buttons">
-          <Link to="sign-up">
+          <Link to="/sign-up">
             <Button>Sign Up</Button>
           </Link>
-          <Link to="log-in">
+          <Link to="/home">
             <Button>Log In</Button>
           </Link>
         </div>

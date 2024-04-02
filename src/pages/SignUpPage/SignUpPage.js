@@ -23,7 +23,7 @@ export default function SignUpPage() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleForm = async (event) => {
+  const handleForm = async(event) => {
     event.preventDefault();
     setFormSubmitted(false);
 
