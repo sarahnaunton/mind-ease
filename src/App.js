@@ -9,8 +9,7 @@ function App() {
     <Routes>
         <Route path="/" element={<WelcomePage />} /> 
         <Route path="sign-up" element={<SignUpPage />} /> 
-        {/* <Route path="log-in" element={<LogInPage />} /> 
-        <Route path="home" element={<HomePage />} /> 
+        {/* <Route path="home" element={<HomePage />} /> 
         <Route path="mood-form" element={<MoodFormPage />} /> 
         <Route path="mood-graph" element={<MoodGaphPage />} /> 
         <Route path="journal" element={<JournalPage />} /> 

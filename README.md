@@ -143,7 +143,7 @@ No third party API shall be used
 
   
 
-**POST /user**
+**POST /user/register**
 
 Create an account for the app
 
@@ -179,7 +179,7 @@ Response:
 
   
 
-**POST/ user**
+**POST/ user/login**
 
 Log into the app
 
@@ -354,8 +354,6 @@ Response:
   
 
 **PATCH / journal/:id/entry**
-
-**PATCH / journal/:id/gratitude**
 
 Edit previous journal entry
 

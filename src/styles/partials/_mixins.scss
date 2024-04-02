@@ -68,3 +68,13 @@
   }
 }
 
+@mixin error-text {
+  color: $color-text-error;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: -0.05rem;
+
+  @include tablet-and-desktop {
+    font-size: 1rem;
+  }
+}
