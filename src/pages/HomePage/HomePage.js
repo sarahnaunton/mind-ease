@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Button from "../../components/Button/Button";
+import Navigation from "../../components/Navigation/Navigation";
+import "./HomePage.scss";
 
 export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   const [userData, setUserData] = useState(null);
@@ -37,20 +38,22 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   };
 
   return (
-    <section>
+    <>
       {!isLoggedIn && (
         <p>
-          To view this page, you must log in. <span> <Link to="/log-in">Click here to log in</Link></span>
+          To view this page, you must log in.{" "}
+          <span>
+            {" "}
+            <Link to="/log-in">Click here to log in</Link>
+          </span>
         </p>
       )}
       {userData && (
-        <>
+        <section className="home">
+        <Navigation handleLogout={handleLogout}/>
           <h1>This is the home page of {userData.first_name}</h1>
-          <div onClick={handleLogout}>
-          <Button>Log Out</Button>
-          </div>
-        </>
+        </section>
       )}
-    </section>
+    </>
   );
 }

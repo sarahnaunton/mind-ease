@@ -1,0 +1,7 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.home {
+    background-color: $color-background-secondary;
+    height: 100vh;
+}
