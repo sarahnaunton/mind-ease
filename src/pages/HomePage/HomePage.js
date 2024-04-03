@@ -2,6 +2,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navigation from "../../components/Navigation/Navigation";
+import smile from "../../assets/icons/smile-50.png";
+import graph from "../../assets/icons/graph-50.png";
+import journal from "../../assets/icons/journal-50.png";
 import "./HomePage.scss";
 
 export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
@@ -103,6 +106,62 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                   </span>
                 </h1>
               </div>
+              <section>
+                <h2
+                  className={`home__heading ${
+                    darkTheme ? "home__heading--dark" : ""
+                  }`}
+                >
+                  Tools
+                </h2>
+                <div className="home__articles">
+                  <Link to="/mood-form" className="home__link">
+                    {" "}
+                    <article
+                      className={`home__article home__article--blue ${
+                        darkTheme ? "home__article--blue--dark" : ""
+                      }`}
+                    >
+                      <p className="home__subheading">Mood Check In</p>
+                      <img
+                        className="home__icon"
+                        src={smile}
+                        alt="Smile Icon"
+                      />
+                    </article>
+                  </Link>
+                  <Link to="/mood-graph" className="home__link">
+                    {" "}
+                    <article
+                      className={`home__article home__article--orange ${
+                        darkTheme ? "home__article--orange--dark" : ""
+                      }`}
+                    >
+                      <p className="home__subheading">Mood Scores</p>
+                      <img
+                        className="home__icon"
+                        src={graph}
+                        alt="Graph Icon"
+                      />
+                    </article>
+                  </Link>
+                  <Link to="/journal" className="home__link">
+                    {" "}
+                    <article
+                      className={`home__article home__article--green ${
+                        darkTheme ? "home__article--green--dark" : ""
+                      }`}
+                    >
+                      <p className="home__subheading">Mood Journal</p>
+                      <img
+                        className="home__icon"
+                        src={journal}
+                        alt="Journal Icon"
+                      />
+                    </article>
+                  </Link>
+                </div>
+              </section>
             </div>
           </main>
         </>
