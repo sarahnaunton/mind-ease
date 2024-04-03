@@ -58,12 +58,12 @@ export default function SignUpPage() {
     if (
       formData.password.length < 8 ||
       !formData.password.includes(
-        "!" || "£" || "$" || "%" || "&" || "*" || "#" || "?"
+        "!" || "£" || "%" || "&" || "*" || "#" || "?"
       )
     ) {
       formValid = false;
       error.password =
-        "Please enter a password that is at least 8 characters and contains at least one of the following characters ! £ $ % & * # ?";
+        "Please enter a password that is at least 8 characters and contains at least one of the following characters ! £ % & * # ?";
     }
 
     if (formData.password !== formData.confirmPassword) {
@@ -91,7 +91,7 @@ export default function SignUpPage() {
         password: "",
         confirmPassword: "",
       });
-      navigate("/home");
+      navigate("/log-in");
     } catch (error) {
       setErrorMessage(true);
       console.error(error)
@@ -218,7 +218,7 @@ export default function SignUpPage() {
           {successMessage && <p className="form__text form__text--success"> Successful! Directing you to the log in page.</p>}
           <p className="form__text">
             Already have an account?{" "}
-            <Link className="form__link" to="/home">
+            <Link className="form__link" to="/log-in">
               Log In
             </Link>
           </p>

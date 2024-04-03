@@ -16,7 +16,7 @@ export default function WelcomePage() {
           <Link to="/sign-up">
             <Button>Sign Up</Button>
           </Link>
-          <Link to="/home">
+          <Link to="/log-in">
             <Button>Log In</Button>
           </Link>
         </div>

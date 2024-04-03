@@ -1,16 +1,28 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import "./App.scss";
+import LogInPage from "./pages/LogInPage";
 import HomePage from "./pages/HomePage/HomePage";
+import "./App.scss";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const authToken = localStorage.getItem("authToken");
+    if (authToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="home" element={<HomePage />} />
+        <Route path="log-in" element={<LogInPage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="home" element={<HomePage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} />
         {/* <Route path="mood-form" element={<MoodFormPage />} /> 
         <Route path="mood-graph" element={<MoodGaphPage />} /> 
         <Route path="journal" element={<JournalPage />} /> 

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Button from "./Button/Button";
+import Button from "../components/Button/Button";
 import wave from "../assets/icons/wave.png";
 
-export default function LogInForm() {
+export default function LogInPage({setIsLoggedIn}) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +18,7 @@ export default function LogInForm() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleForm = async(event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
 
@@ -40,19 +41,21 @@ export default function LogInForm() {
     }
 
     try {
-      const {data} = await axios.post(
+      const { data } = await axios.post(
         `${process.env.REACT_APP_API_BASE_URL}/users/login`,
         formData
       );
-      localStorage.setItem("authToken", data.authToken)
+      localStorage.setItem("authToken", data.authToken);
+      setFormSubmitted(true);
+      setIsLoggedIn(true)
       setFormData({
         email: "",
         password: "",
       });
-      setFormSubmitted(true);
+      navigate("/home");
     } catch (error) {
-        setErrorMessage(true);
-        console.error(error)
+      setErrorMessage(true);
+      console.error(error);
     }
   };
 
@@ -104,15 +107,18 @@ export default function LogInForm() {
           </fieldset>
           {formError.password && (
             <fieldset className="form__fieldset">
-              <p className="form__error">
-                {formError.password}
-              </p>
+              <p className="form__error">{formError.password}</p>
             </fieldset>
           )}
           <div className="form__button">
             <Button>Log In</Button>
           </div>
-          {errorMessage && <p className="form__error"> Something went wrong, please try again later.</p>}
+          {errorMessage && (
+            <p className="form__error">
+              {" "}
+              Something went wrong, please try again later.
+            </p>
+          )}
           <p className="form__text">
             Don't have an account?{" "}
             <Link className="form__link" to="/sign-up">

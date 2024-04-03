@@ -89,6 +89,11 @@ The user profile for the mental health app focused on burnout can encompass a di
 
 	- cors
 
+    - bycrypt
+
+    - jsonwebtoken
+    
+
   
 
 ### APIs
@@ -143,7 +148,7 @@ No third party API shall be used
 
   
 
-**POST /user/register**
+**POST /users/register**
 
 Create an account for the app
 
@@ -171,7 +176,15 @@ Response:
 
 {
 
-"token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
+- id: id
+
+- first_name: first name
+
+- last_name: last name
+
+- email: email
+
+- password: user's bcrypt password 
 
 }
 
@@ -179,11 +192,10 @@ Response:
 
   
 
-**POST/ user/login**
-
+**POST/ users/login**
 Log into the app
 
-Route --> userRoute, 404 if user is not found, 201 if sucessful, 500 if server error
+Route --> userRoute, 404 if user is not found, 200 if sucessful, 500 if server error
 
   
 
@@ -205,6 +217,31 @@ Response:
 
 ```
 
+
+**GET/ users**
+Get user information in the app
+
+Route --> userRoute, 404 if user is not found, 200 if sucessful, 500 if server error
+  
+
+
+Response:
+
+```
+
+{
+
+- id: id
+
+- first_name: first name
+
+- last_name: last name
+
+- email: email
+
+}
+
+```
   
 
 **POST /score**
@@ -444,17 +481,25 @@ One has to have an account and be signed into the app to be able to use it. Only
 
  
 
-- Feature client side: Welcome page including global component of the logo and the button
+- Feature client side: Welcome page including global component of the  button
 
   
 
 - Feature client side: Create an account page with form validation
 
+
+
+- Feature server side: Register user POST 
+
   
 
 - Feature client side: Log in page with form validation
 
+
+
+- Feature server side: Log in user authentication
   
+
 
 - Feature client side: Home Page including global component of the navigation bar
 
@@ -498,9 +543,6 @@ One has to have an account and be signed into the app to be able to use it. Only
 
 - Feature client side: Not found page
 
-  
-
-- User Authentication
 
 - Deployment
 
