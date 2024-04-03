@@ -15,6 +15,10 @@
     bottom: 85%;
   }
 
+  &--dark {
+    background-color: $color-dark-background-secondary;
+  }
+
   &__container {
     max-width: $max-width;
     width: 100%;
@@ -37,6 +41,7 @@
 
   &__item {
     list-style: none;
+    @include flex (column, center, center);
 
     @include tablet-and-desktop {
       margin-top: 2rem;
@@ -56,6 +61,14 @@
 
       &:hover {
         color: $color-text-quaternary;
+      }
+    }
+
+    &--dark {
+      color: $color-dark-text-primary;
+
+      &:hover {
+        color: $color-dark-text-tertiary;
       }
     }
   }

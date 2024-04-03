@@ -6,6 +6,7 @@ import "./HomePage.scss";
 
 export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   const [userData, setUserData] = useState(null);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -37,6 +38,18 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
     setUserData(null);
   };
 
+  const handleTheme = () => {
+    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
+    localStorage.setItem("theme", JSON.stringify(!darkTheme));
+  };
+  useEffect(() => {
+    const themeJSON = localStorage.getItem("theme");
+    if (themeJSON) {
+      setDarkTheme(JSON.parse(themeJSON));
+    }
+  }, []);
+
+
   return (
     <>
       {!isLoggedIn && (
@@ -50,7 +63,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
       )}
       {userData && (
         <section className="home">
-        <Navigation handleLogout={handleLogout}/>
+        <Navigation handleLogout={handleLogout} darkTheme={darkTheme} handleTheme={handleTheme}/>
           <h1>This is the home page of {userData.first_name}</h1>
         </section>
       )}
