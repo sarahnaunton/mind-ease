@@ -49,23 +49,63 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
     }
   }, []);
 
+  const time = new Date().getHours();
+  let greeting;
+  if (time < 12) {
+    greeting = "Good Morning";
+  } else if (time >= 12 && time < 18) {
+    greeting = "Good Afternoon";
+  } else if (time >= 18 && time < 24) {
+    greeting = "Good Evening";
+  } else {
+    greeting = "Hello";
+  }
 
   return (
     <>
       {!isLoggedIn && (
-        <p>
-          To view this page, you must log in.{" "}
-          <span>
-            {" "}
-            <Link to="/log-in">Click here to log in</Link>
-          </span>
-        </p>
+        <section className="login-message">
+          <div className="login-message__container">
+            <p className="login-message__text">
+              To view this page, you must be logged in.{" "}
+              <span>
+                {" "}
+                <Link to="/log-in" class="login-message__link">
+                  Click here to log in
+                </Link>
+              </span>
+            </p>
+          </div>
+        </section>
       )}
       {userData && (
-        <section className="home">
-        <Navigation handleLogout={handleLogout} darkTheme={darkTheme} handleTheme={handleTheme}/>
-          <h1>This is the home page of {userData.first_name}</h1>
-        </section>
+        <>
+          <Navigation
+            handleLogout={handleLogout}
+            darkTheme={darkTheme}
+            handleTheme={handleTheme}
+          />
+          <main className={`home ${darkTheme ? "home--dark" : ""}`}>
+            <div className="home__container">
+              <div>
+                <h1
+                  className={`home__greeting ${
+                    darkTheme ? "home__greeting--dark" : ""
+                  }`}
+                >
+                  {greeting},{" "}
+                  <span
+                    className={`home__name ${
+                      darkTheme ? "home__name--dark" : ""
+                    }`}
+                  >
+                    {userData.first_name}
+                  </span>
+                </h1>
+              </div>
+            </div>
+          </main>
+        </>
       )}
     </>
   );

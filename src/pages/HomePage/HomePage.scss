@@ -1,7 +1,64 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.home {
-    background-color: $color-background-secondary;
+.login-message {
+  @include flex(row, center, start);
+  background-color: $color-background-primary;
+
+  &__container {
+    width: 100%;
     height: 100vh;
+    padding: 2rem;
+    max-width: $max-width;
+    @include flex(row, center, center);
+  }
+
+  &__text {
+    @include subheading($color-text-primary);
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-button-primary;
+
+    &:hover {
+      color: $color-button-secondary;
+    }
+  }
+}
+
+.home {
+  @include flex(row, center, start);
+  background-color: $color-background-secondary;
+  height: 100vh;
+
+  @include tablet-and-desktop {
+    padding-top: 10rem;
+  }
+
+  &--dark {
+    background-color: $color-dark-background-primary;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 2rem;
+  }
+
+  &__greeting {
+    @include heading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__name {
+    color: $color-text-tertiary;
+
+    &--dark {
+      color: $color-dark-text-tertiary;
+    }
+  }
 }
