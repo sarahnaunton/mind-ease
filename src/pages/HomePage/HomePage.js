@@ -1,9 +1,9 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
 
-export default function HomePage({ setIsLoggedIn, isLoggedIn }) {
+export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
