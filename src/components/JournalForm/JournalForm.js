@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./JournalForm.scss";
 
-export default function JournalForm({ closeAddModal }) {
+export default function JournalForm({ closeAddModal, darkTheme }) {
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
@@ -61,7 +61,7 @@ export default function JournalForm({ closeAddModal }) {
 
   return (
     <div className="overlay">
-      <form className="journal-form" onSubmit={formHandler}>
+      <form className={`journal-form ${darkTheme ? "journal-form--dark" : ""}`} onSubmit={formHandler}>
         <img
           src={close}
           alt="Close Icon"
@@ -69,11 +69,11 @@ export default function JournalForm({ closeAddModal }) {
           className="journal-form__icon"
         />
         <fieldset className="journal-form__fieldset">
-          <label className="journal-form__label" htmlFor="entry">
+          <label className={`journal-form__label ${darkTheme ? "journal-form__label--dark" : ""}`} htmlFor="entry">
             Take a moment to describe your thoughts, feelings and experiences.
           </label>
           <textarea
-            className="journal-form__input"
+           className={`journal-form__input ${darkTheme ? "journal-form__input--dark" : ""}`}
             name="entry"
             id="entry"
             value={formData.entry}
@@ -83,11 +83,11 @@ export default function JournalForm({ closeAddModal }) {
         </fieldset>
         {formError.entry && <p className="form__error">{formError.entry}</p>}
         <fieldset className="journal-form__fieldset">
-          <label className="journal-form__label" htmlFor="gratitude">
+          <label className={`journal-form__label ${darkTheme ? "journal-form__label--dark" : ""}`} htmlFor="gratitude">
             Reflect on something you're grateful for today.
           </label>
           <textarea
-            className="journal-form__input journal-form__input--height"
+            className={`journal-form__input journal-form__input--height ${darkTheme ? "journal-form__input--dark" : ""}`}
             name="gratitude"
             id="gratitude"
             value={formData.gratitude}
@@ -99,7 +99,7 @@ export default function JournalForm({ closeAddModal }) {
           <p className="journal-form__error">{formError.gratitude}</p>
         )}
         <div className="journal-form__button">
-          <Button>Submit</Button>
+          <Button darkTheme={darkTheme}>Submit</Button>
         </div>
         {errorMessage && (
           <p className="journal-form__error">
@@ -108,7 +108,7 @@ export default function JournalForm({ closeAddModal }) {
           </p>
         )}
         {successMessage && (
-          <p className="journal-form__success"> Successful!</p>
+          <p className={`journal-form__success ${darkTheme ? "journal-form__sucess--dark" : ""}`}> Successful!</p>
         )}
       </form>
     </div>

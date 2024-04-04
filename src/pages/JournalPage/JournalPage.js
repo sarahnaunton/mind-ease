@@ -89,7 +89,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
               </h2>
               <img src={add} alt="Add Icon" className="journal__icon"/>
             </div>
-            <section>{isAddModalOpen && <JournalForm closeAddModal={closeAddModal}/>}</section>
+            <section>{isAddModalOpen && <JournalForm closeAddModal={closeAddModal}  darkTheme={darkTheme}/>}</section>
           </div>
         </main>
       </>

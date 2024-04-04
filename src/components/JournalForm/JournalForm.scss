@@ -37,6 +37,11 @@
     left: 20%;
   }
 
+  &--dark {
+    background-color: $color-dark-background-primary;
+    border-color: $color-dark-border-quaternary;
+  }
+
   &__icon {
     float: right;
   }
@@ -48,6 +53,10 @@
 
   &__label {
     @include subheading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
   }
 
   &__input {
@@ -65,6 +74,12 @@
       height: 6rem;
     }
 
+    &--dark {
+      background-color: $color-dark-background-secondary;
+      color: $color-dark-text-primary;
+      border-color: $color-dark-border-primary;
+    }
+
     &:active,
     &:focus {
       border: none;
@@ -80,6 +95,10 @@
   &__success {
     @include body-text($color-text-quinary);
     text-align: center;
+
+    &--dark {
+        color: $color-dark-text-quaternary;
+    }
   }
 
   &__button {
