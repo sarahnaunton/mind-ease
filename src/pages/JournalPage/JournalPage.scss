@@ -9,6 +9,10 @@
     padding-top: 10rem;
   }
 
+  &--dark {
+    background-color: $color-dark-background-primary;
+  }
+
   &__container {
     width: 100%;
     max-width: $max-width;
@@ -17,14 +21,10 @@
 
   &__heading {
     @include heading($color-text-primary);
-  }
 
-  &__subheading {
-    @include subheading($color-text-secondary);
-  }
-
-  &__item {
-    @include body-small-text($color-text-primary);
+    &--dark {
+      color: $color-dark-text-primary;
+    }
   }
 
   &__add {
@@ -34,9 +34,22 @@
     background-color: $color-background-quaternary;
     padding: 0.5rem;
     width: 100%;
+    margin-top: 1rem;
 
     @include tablet-and-desktop {
-        width: 25rem;
+      width: 25rem;
+    }
+
+    &--dark {
+      background-color: $color-dark-background-quaternary;
+    }
+  }
+
+  &__subheading {
+    @include subheading($color-text-secondary);
+
+    &--dark {
+      color: $color-dark-text-primary;
     }
   }
 }

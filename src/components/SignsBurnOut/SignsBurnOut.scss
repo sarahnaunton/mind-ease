@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.burnout {
+  border: 3px solid $color-border-tertiary;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  &--dark {
+    border-color: $color-dark-border-tertiary;
+  }
+
+  &__subheading {
+    @include subheading($color-text-tertiary);
+  }
+
+  &__item {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__link {
+    @include body-text($color-text-tertiary);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

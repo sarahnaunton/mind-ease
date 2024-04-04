@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
@@ -66,21 +67,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
 
   return (
     <>
-      {!isLoggedIn && (
-        <section className="login-message">
-          <div className="login-message__container">
-            <p className="login-message__text">
-              To view this page, you must be logged in.{" "}
-              <span>
-                {" "}
-                <Link to="/log-in" className="login-message__link">
-                  Click here to log in
-                </Link>
-              </span>
-            </p>
-          </div>
-        </section>
-      )}
+      {!isLoggedIn && <LogInMessage />}
       {userData && (
         <>
           <Navigation
