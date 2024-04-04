@@ -16,7 +16,7 @@ export default function Navigation({ handleLogout, darkTheme, handleTheme }) {
               <p className={`nav__text ${darkTheme ? "nav__text--dark" : ""}`}>Home</p>
             </li>
           </NavLink>
-          <NavLink to="/home" className="nav__link">
+          <NavLink className="nav__link">
             {!darkTheme && <li className="nav__item"  onClick={handleTheme}>
               <img src={moon} alt="Moon Icon" />
               <p className="nav__text">Dark Mode</p>

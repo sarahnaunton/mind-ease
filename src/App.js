@@ -5,6 +5,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import HomePage from "./pages/HomePage/HomePage";
 import "./App.scss";
+import JournalPage from "./pages/JournalPage/JournalPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,9 +24,9 @@ function App() {
         <Route path="sign-up" element={<SignUpPage />} />
         <Route path="log-in" element={<LogInPage setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="home" element={<HomePage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} />
+        <Route path="journal" element={<JournalPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
         {/* <Route path="mood-form" element={<MoodFormPage />} /> 
         <Route path="mood-graph" element={<MoodGaphPage />} /> 
-        <Route path="journal" element={<JournalPage />} /> 
         <Route path="*" element={<NotFoundPage />} />  */}
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.journal {
+  @include flex(row, center, center);
+  background-color: $color-background-primary;
+
+  @include tablet-and-desktop {
+    padding-top: 10rem;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 2rem;
+  }
+
+  &__heading {
+    @include heading($color-text-primary);
+  }
+
+  &__subheading {
+    @include subheading($color-text-secondary);
+  }
+
+  &__item {
+    @include body-small-text($color-text-primary);
+  }
+
+  &__add {
+    @include flex(row, center, center);
+    gap: 0.5rem;
+    border-radius: 20px;
+    background-color: $color-background-quaternary;
+    padding: 0.5rem;
+    width: 100%;
+
+    @include tablet-and-desktop {
+        width: 25rem;
+    }
+  }
+}

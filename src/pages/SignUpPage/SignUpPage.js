@@ -23,7 +23,7 @@ export default function SignUpPage() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleForm = async(event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
 
@@ -57,9 +57,7 @@ export default function SignUpPage() {
 
     if (
       formData.password.length < 8 ||
-      !formData.password.includes(
-        "!" || "£" || "%" || "&" || "*" || "#" || "?"
-      )
+      !formData.password.includes("!" || "£" || "%" || "&" || "*" || "#" || "?")
     ) {
       formValid = false;
       error.password =
@@ -94,7 +92,7 @@ export default function SignUpPage() {
       navigate("/log-in");
     } catch (error) {
       setErrorMessage(true);
-      console.error(error)
+      console.error(error);
     }
   };
 
@@ -214,8 +212,18 @@ export default function SignUpPage() {
           <div className="form__button">
             <Button>Sign Up</Button>
           </div>
-          {errorMessage && <p className="form__error"> Something went wrong, please try again later.</p>}
-          {successMessage && <p className="form__text form__text--success"> Successful! Directing you to the log in page.</p>}
+          {errorMessage && (
+            <p className="form__error">
+              {" "}
+              Something went wrong, please try again later.
+            </p>
+          )}
+          {successMessage && (
+            <p className="form__text form__text--success">
+              {" "}
+              Successful! Directing you to the log in page.
+            </p>
+          )}
           <p className="form__text">
             Already have an account?{" "}
             <Link className="form__link" to="/log-in">

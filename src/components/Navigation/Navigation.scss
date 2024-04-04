@@ -8,11 +8,15 @@
   position: fixed;
   bottom: 0;
   top: 85%;
+  border-top: 1px solid $color-border-primary;
+  box-shadow: 0px -1px 3px $color-border-primary;
 
   @include tablet-and-desktop {
     height: 9rem;
     top: 0;
     bottom: 85%;
+    border-bottom: 1px solid $color-border-primary;
+    box-shadow: 0px 1px 5px $color-border-primary;
   }
 
   &--dark {

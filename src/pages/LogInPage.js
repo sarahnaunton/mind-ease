@@ -4,13 +4,14 @@ import axios from "axios";
 import Button from "../components/Button/Button";
 import wave from "../assets/icons/wave.png";
 
-export default function LogInPage({setIsLoggedIn}) {
+export default function LogInPage({ setIsLoggedIn }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const [formError, setFormError] = useState({});
+  const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -46,8 +47,10 @@ export default function LogInPage({setIsLoggedIn}) {
         formData
       );
       localStorage.setItem("authToken", data.authToken);
+      setErrorMessage(false);
+      setSuccessMessage(true);
       setFormSubmitted(true);
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
       setFormData({
         email: "",
         password: "",
@@ -117,6 +120,12 @@ export default function LogInPage({setIsLoggedIn}) {
             <p className="form__error">
               {" "}
               Something went wrong, please try again later.
+            </p>
+          )}
+          {successMessage && (
+            <p className="form__text form__text--success">
+              {" "}
+              Successful! Directing you to the log in page.
             </p>
           )}
           <p className="form__text">

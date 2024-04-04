@@ -73,7 +73,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
               To view this page, you must be logged in.{" "}
               <span>
                 {" "}
-                <Link to="/log-in" class="login-message__link">
+                <Link to="/log-in" className="login-message__link">
                   Click here to log in
                 </Link>
               </span>
@@ -122,7 +122,13 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                         darkTheme ? "home__article--blue--dark" : ""
                       }`}
                     >
-                      <p className="home__subheading">Mood Check In</p>
+                      <p
+                        className={`home__subheading ${
+                          darkTheme ? "home__subheading--dark" : ""
+                        }`}
+                      >
+                        Mood Check In
+                      </p>
                       <img
                         className="home__icon"
                         src={smile}
@@ -137,7 +143,13 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                         darkTheme ? "home__article--orange--dark" : ""
                       }`}
                     >
-                      <p className="home__subheading">Mood Scores</p>
+                      <p
+                        className={`home__subheading ${
+                          darkTheme ? "home__subheading--dark" : ""
+                        }`}
+                      >
+                        Mood Scores
+                      </p>
                       <img
                         className="home__icon"
                         src={graph}
@@ -152,7 +164,13 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                         darkTheme ? "home__article--green--dark" : ""
                       }`}
                     >
-                      <p className="home__subheading">Mood Journal</p>
+                      <p
+                        className={`home__subheading ${
+                          darkTheme ? "home__subheading--dark" : ""
+                        }`}
+                      >
+                        Mood Journal
+                      </p>
                       <img
                         className="home__icon"
                         src={journal}
