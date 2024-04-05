@@ -2,11 +2,7 @@ import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./DeleteModal.scss";
 
-export default function DeleteModal({closeDeleteModal, darkTheme}) {
-
-    const handleDelete = () => {
-
-    }
+export default function DeleteModal({id, closeDeleteModal, handleDeleteJournal, darkTheme}) {
 
   return (
     <div className="overlay">
@@ -17,8 +13,8 @@ export default function DeleteModal({closeDeleteModal, darkTheme}) {
           Please confirm you would like to delete this entry from your journal.
           You won't be able to undo this action.
         </p>
-        <div className="delete__button">
-        <Button onClick={handleDelete} darkTheme={darkTheme}>Delete</Button>
+        <div onClick={() => {handleDeleteJournal(id);}} className="delete__button">
+        <Button darkTheme={darkTheme}>Delete</Button>
         </div>
       </section>
     </div>

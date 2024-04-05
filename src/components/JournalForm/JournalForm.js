@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./JournalForm.scss";
 
-export default function JournalForm({ closeAddModal, darkTheme }) {
+export default function JournalForm({ getJournalEntries, closeAddModal, darkTheme }) {
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
@@ -19,6 +19,8 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
   };
 
   const formHandler = async (event) => {
+    const authToken = localStorage.getItem("authToken");
+
     event.preventDefault();
     setFormSubmitted(false);
 
@@ -41,10 +43,16 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
     }
 
     try {
-        // await axios.post(
-        //   `${process.env.REACT_APP_API_BASE_URL}/journal`,
-        //   formData
-        // );
+      await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/journals`,
+        formData,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      getJournalEntries();
       setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
@@ -61,7 +69,10 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
 
   return (
     <div className="overlay">
-      <form className={`journal-form ${darkTheme ? "journal-form--dark" : ""}`} onSubmit={formHandler}>
+      <form
+        className={`journal-form ${darkTheme ? "journal-form--dark" : ""}`}
+        onSubmit={formHandler}
+      >
         <img
           src={close}
           alt="Close Icon"
@@ -69,11 +80,18 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
           className="journal-form__icon"
         />
         <fieldset className="journal-form__fieldset">
-          <label className={`journal-form__label ${darkTheme ? "journal-form__label--dark" : ""}`} htmlFor="entry">
+          <label
+            className={`journal-form__label ${
+              darkTheme ? "journal-form__label--dark" : ""
+            }`}
+            htmlFor="entry"
+          >
             Take a moment to describe your thoughts, feelings and experiences.
           </label>
           <textarea
-           className={`journal-form__input ${darkTheme ? "journal-form__input--dark" : ""}`}
+            className={`journal-form__input ${
+              darkTheme ? "journal-form__input--dark" : ""
+            }`}
             name="entry"
             id="entry"
             value={formData.entry}
@@ -81,13 +99,22 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
             placeholder="Write your journal entry here..."
           ></textarea>
         </fieldset>
-        {formError.entry && <p className="journal-form__error">{formError.entry}</p>}
+        {formError.entry && (
+          <p className="journal-form__error">{formError.entry}</p>
+        )}
         <fieldset className="journal-form__fieldset">
-          <label className={`journal-form__label ${darkTheme ? "journal-form__label--dark" : ""}`} htmlFor="gratitude">
+          <label
+            className={`journal-form__label ${
+              darkTheme ? "journal-form__label--dark" : ""
+            }`}
+            htmlFor="gratitude"
+          >
             Reflect on something you're grateful for today.
           </label>
           <textarea
-            className={`journal-form__input journal-form__input--height ${darkTheme ? "journal-form__input--dark" : ""}`}
+            className={`journal-form__input journal-form__input--height ${
+              darkTheme ? "journal-form__input--dark" : ""
+            }`}
             name="gratitude"
             id="gratitude"
             value={formData.gratitude}
@@ -108,7 +135,14 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
           </p>
         )}
         {successMessage && (
-          <p className={`journal-form__success ${darkTheme ? "journal-form__sucess--dark" : ""}`}> Successful!</p>
+          <p
+            className={`journal-form__success ${
+              darkTheme ? "journal-form__sucess--dark" : ""
+            }`}
+          >
+            {" "}
+            Successful!
+          </p>
         )}
       </form>
     </div>

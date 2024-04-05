@@ -1,0 +1,33 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.entry {
+    background-color: $color-background-secondary;
+    border: 3px solid $color-border-quaternary;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  
+    @include tablet-and-desktop {
+      width: 48%;
+      padding: 1rem 1.5rem;
+    }
+  
+    &__subheading {
+      @include body-text($color-text-primary);
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  
+    &__text {
+      @include body-small-text($color-text-primary);
+      margin-top: 0.5rem;
+    }
+  
+    &__icons {
+      @include flex(row, space-between, start);
+      padding: 0 2rem;
+      cursor: pointer;
+    }
+  }
+  

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import SignsBurnOut from "../../components/SignsBurnOut/SignsBurnOut";
@@ -11,6 +11,7 @@ import "./JournalPage.scss";
 
 export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
   const [darkTheme, setDarkTheme] = useState(false);
+  const [journalEntries, setJournalEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const handleLogout = () => {
@@ -18,17 +19,36 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
     setIsLoggedIn(false);
   };
 
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
-
   useEffect(() => {
+    getJournalEntries();
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));
     }
   }, []);
+
+
+  const getJournalEntries = async () => {
+    const authToken = localStorage.getItem("authToken");
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/journals`,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setJournalEntries(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleTheme = () => {
+    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
+    localStorage.setItem("theme", JSON.stringify(!darkTheme));
+  };
 
   const handleAddModal = () => {
     setIsAddModalOpen(true);
@@ -76,9 +96,10 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
                 <JournalForm
                   closeAddModal={closeAddModal}
                   darkTheme={darkTheme}
+                  getJournalEntries={getJournalEntries}
                 />
               )}
-            <JournalEntries  darkTheme={darkTheme}/>
+            <JournalEntries getJournalEntries={getJournalEntries} journalEntries={journalEntries} darkTheme={darkTheme}/>
           </div>
         </main>
       </>
