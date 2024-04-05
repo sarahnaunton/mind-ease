@@ -5,6 +5,7 @@ import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import SignsBurnOut from "../../components/SignsBurnOut/SignsBurnOut";
 import JournalForm from "../../components/JournalForm/JournalForm";
+import JournalEntries from "../../components/JournalEntries/JournalEntries";
 import add from "../../assets/icons/add-50.png";
 import "./JournalPage.scss";
 
@@ -29,7 +30,6 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
     }
   }, []);
 
-  
   const handleAddModal = () => {
     setIsAddModalOpen(true);
   };
@@ -40,9 +40,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
 
   return (
     <>
-      {!isLoggedIn && (
-        <LogInMessage/>
-      )}
+      {!isLoggedIn && <LogInMessage />}
       <>
         <Navigation
           handleLogout={handleLogout}
@@ -51,22 +49,36 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
         />
         <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
           <div className="journal__container">
-            <h1 className={`journal__heading ${darkTheme ? "journal__heading--dark" : ""}`}>How are you feeling today?</h1>
-            <SignsBurnOut darkTheme={darkTheme}/>
-            <div className={`journal__add ${darkTheme ? "journal__add--dark" : ""}`} onClick={handleAddModal}>
-              <h2 className={`journal__subheading ${darkTheme ? "journal__subheading--dark" : ""}`}>
+            <h1
+              className={`journal__heading ${
+                darkTheme ? "journal__heading--dark" : ""
+              }`}
+            >
+              How are you feeling today?
+            </h1>
+            <SignsBurnOut darkTheme={darkTheme} />
+            <div
+              className={`journal__add ${
+                darkTheme ? "journal__add--dark" : ""
+              }`}
+              onClick={handleAddModal}
+            >
+              <h2
+                className={`journal__subheading ${
+                  darkTheme ? "journal__subheading--dark" : ""
+                }`}
+              >
                 Add your daily journal entry
               </h2>
               <img src={add} alt="Add Icon" className="journal__icon" />
             </div>
-            <section>
               {isAddModalOpen && (
                 <JournalForm
                   closeAddModal={closeAddModal}
                   darkTheme={darkTheme}
                 />
               )}
-            </section>
+            <JournalEntries  darkTheme={darkTheme}/>
           </div>
         </main>
       </>

@@ -6,7 +6,7 @@
   background-color: $color-background-primary;
 
   @include tablet-and-desktop {
-    padding-top: 10rem;
+    padding-top: 6rem;
   }
 
   &--dark {
@@ -34,7 +34,12 @@
     background-color: $color-background-quaternary;
     padding: 0.5rem;
     width: 100%;
-    margin-top: 1rem;
+    margin: 1rem auto;   
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-dark-background-quaternary;
+    }
 
     @include tablet-and-desktop {
       width: 25rem;

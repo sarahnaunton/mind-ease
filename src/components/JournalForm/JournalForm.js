@@ -81,7 +81,7 @@ export default function JournalForm({ closeAddModal, darkTheme }) {
             placeholder="Write your journal entry here..."
           ></textarea>
         </fieldset>
-        {formError.entry && <p className="form__error">{formError.entry}</p>}
+        {formError.entry && <p className="journal-form__error">{formError.entry}</p>}
         <fieldset className="journal-form__fieldset">
           <label className={`journal-form__label ${darkTheme ? "journal-form__label--dark" : ""}`} htmlFor="gratitude">
             Reflect on something you're grateful for today.
