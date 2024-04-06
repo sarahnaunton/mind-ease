@@ -1,0 +1,38 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.mood-page {
+  @include flex(row, center, center);
+  background-color: $color-background-primary;
+  padding-bottom: 5rem;
+
+  @include tablet-and-desktop {
+    padding-top: 6rem;
+  }
+
+  &--dark {
+    background-color: $color-dark-background-primary;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 2rem;
+  }
+
+  &__heading {
+    @include heading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+}

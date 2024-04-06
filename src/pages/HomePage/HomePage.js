@@ -135,7 +135,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                           darkTheme ? "home__subheading--dark" : ""
                         }`}
                       >
-                        Mood Scores
+                        Mood Tracker
                       </p>
                       <img
                         className="home__icon"

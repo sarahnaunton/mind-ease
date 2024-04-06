@@ -28,22 +28,22 @@
   }
 
   &__subheading {
-    @include body-text($color-text-quinary);
+    @include body-text($color-text-quaternary);
     font-weight: 600;
     margin-bottom: 0;
     margin-top: 0;
 
     &--dark {
-      color: $color-dark-text-quaternary;
+      color: $color-dark-text-tertiary;
     }
   }
 
   &__date {
-    @include body-small-text($color-text-quinary);
+    @include body-small-text($color-text-quaternary);
     margin-top: 0;
     
     &--dark {
-      color: $color-dark-text-quaternary;
+      color: $color-dark-text-tertiary;
     }
   }
 

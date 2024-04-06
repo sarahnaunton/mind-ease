@@ -1,0 +1,96 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.mood-form {
+  background-color: $color-background-secondary;
+  border: 3px solid $color-border-quaternary;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+
+  @include tablet-and-desktop {
+    width: 60%;
+    margin: auto;
+  }
+
+  &--dark {
+    background-color: $color-dark-background-secondary;
+    border-color: $color-dark-border-quaternary;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    @include flex(column, center, start);
+  }
+
+  &__label {
+    @include subheading($color-text-primary);
+    margin-bottom: 1rem;
+    height: 6rem;
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__input {
+    @include body-text($color-text-primary);
+    border-radius: 5px;
+    border: 1px solid $color-border-primary;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+
+    &:active,
+    &:focus {
+      border: none;
+      outline: 1px solid $color-border-quaternary;
+    }
+
+    &--dark {
+      color: $color-dark-text-primary;
+      background-color: $color-dark-background-primary;
+      border-color: $color-dark-border-primary;
+
+      &:active,
+      &:focus {
+        border-color: $color-dark-border-quaternary;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    @include flex(row, space-between, center);
+  }
+
+  &__button {
+    @include flex(row, center, center);
+    margin: 1rem 0 0 0;
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    margin: 0;
+    padding: 0.5rem 0;
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__error {
+    @include error-text;
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__success {
+    @include body-text($color-text-quinary);
+    text-align: center;
+
+    &--dark {
+      color: $color-dark-text-quaternary;
+    }
+  }
+}

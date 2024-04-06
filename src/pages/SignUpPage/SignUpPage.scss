@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.form {
+.account {
   background-color: $color-background-primary;
   @include flex(row, center, center);
 
@@ -47,58 +47,6 @@
     @include body-text($color-text-primary);
     margin: 0;
     padding: 0.5rem 0;
-
-    &--success {
-        color: $color-text-tertiary;
-    }
-  }
-
-  &__error {
-    @include error-text;
-    text-align: center;
-    
-    &--spacing {
-        padding-left: 1rem;
-        padding-right: 1rem;
-  
-        @include tablet-and-desktop {
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-      }
-  }
-
-  &__fieldset {
-    border: none;
-    padding: 0;
-    @include flex(column, center, start);
-  }
-
-  &__label {
-    @include subheading($color-text-primary);
-    margin-top: 0.5rem;
-  }
-
-  &__input {
-    @include body-text($color-text-primary);
-    border-radius: 5px;
-    border: 1px solid $color-border-primary;
-    padding: 0.25rem;
-
-    &:active,
-    &:focus {
-      border: none;
-      outline: 1px solid $color-border-secondary;
-    }
-
-    &--error {
-      border: none;
-      outline: 2px solid $color-border-error;
-    }
-  }
-
-  &__button {
-    margin: 1rem 0 0 0;
   }
 
   &__link {
