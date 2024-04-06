@@ -5,6 +5,10 @@
   &__heading {
     @include subheading($color-text-quaternary);
     padding-top: 1rem;
+
+    &--dark {
+        color: $color-dark-text-tertiary;
+    }
   }
 
   &__entry {

@@ -1,10 +1,15 @@
-import { useState } from "react";
 import axios from "axios";
-import Button from "../Button/Button";
-import close from "../../assets/icons/close-25.png";
-import "./JournalForm.scss";
+import { useEffect, useState } from "react";
+import Button from "./Button/Button";
+import close from "../assets/icons/close-25.png";
+import "./JournalForm/JournalForm.scss";
 
-export default function JournalForm({ getJournalEntries, closeAddModal, darkTheme }) {
+export default function EditModal({
+  id,
+  closeEditModal,
+  darkTheme,
+  getJournalEntries,
+}) {
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
@@ -13,6 +18,27 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const getJournalEntry = async () => {
+    const authToken = localStorage.getItem("authToken");
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/journals/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setFormData({entry: data.entry, gratitude: data.gratitude })
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getJournalEntry();
+  },[id])
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -27,14 +53,10 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
     let formValid = true;
     const error = {};
 
-    if (!formData.entry) {
+    if (!formData.entry && !formData.gratitude) {
       formValid = false;
-      error.entry = "Please enter your journal entry";
-    }
-
-    if (!formData.gratitude) {
-      formValid = false;
-      error.gratitude = "Please enter your daily gratitude";
+      error.form =
+        "Please edit either your journal entry or gratitude, or both";
     }
 
     if (!formValid) {
@@ -43,8 +65,8 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
     }
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/journals`,
+      await axios.patch(
+        `${process.env.REACT_APP_API_BASE_URL}/journals/${id}`,
         formData,
         {
           headers: {
@@ -56,13 +78,8 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
       setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
-      setFormData({
-        entry: "",
-        gratitude: "",
-      });
-      closeAddModal();
+      closeEditModal();
     } catch (error) {
-      setErrorMessage(true);
       console.error(error);
     }
   };
@@ -71,12 +88,14 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
     <div className="overlay">
       <form
         className={`journal-form ${darkTheme ? "journal-form--dark" : ""}`}
-        onSubmit={handleForm}
+        onSubmit={(event) => {
+          handleForm(event, id);
+        }}
       >
         <img
           src={close}
           alt="Close Icon"
-          onClick={closeAddModal}
+          onClick={closeEditModal}
           className="journal-form__icon"
         />
         <fieldset className="journal-form__fieldset">
@@ -96,11 +115,10 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
             id="entry"
             value={formData.entry}
             onChange={handleChange}
-            placeholder="Write your journal entry here..."
           ></textarea>
         </fieldset>
-        {formError.entry && (
-          <p className="journal-form__error">{formError.entry}</p>
+        {formError.form && (
+          <p className="journal-form__error">{formError.form}</p>
         )}
         <fieldset className="journal-form__fieldset">
           <label
@@ -119,11 +137,10 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
             id="gratitude"
             value={formData.gratitude}
             onChange={handleChange}
-            placeholder="Write your daily gratitude here..."
           ></textarea>
         </fieldset>
-        {formError.gratitude && (
-          <p className="journal-form__error">{formError.gratitude}</p>
+        {formError.form && (
+          <p className="journal-form__error">{formError.form}</p>
         )}
         <div className="journal-form__button">
           <Button darkTheme={darkTheme}>Submit</Button>

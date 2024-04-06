@@ -27,7 +27,6 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
     }
   }, []);
 
-
   const getJournalEntries = async () => {
     const authToken = localStorage.getItem("authToken");
     try {
@@ -61,37 +60,38 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      <>
-        <Navigation
-          handleLogout={handleLogout}
-          darkTheme={darkTheme}
-          handleTheme={handleTheme}
-        />
-        <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
-          <div className="journal__container">
-            <h1
-              className={`journal__heading ${
-                darkTheme ? "journal__heading--dark" : ""
-              }`}
-            >
-              How are you feeling today?
-            </h1>
-            <SignsBurnOut darkTheme={darkTheme} />
-            <div
-              className={`journal__add ${
-                darkTheme ? "journal__add--dark" : ""
-              }`}
-              onClick={handleAddModal}
-            >
-              <h2
-                className={`journal__subheading ${
-                  darkTheme ? "journal__subheading--dark" : ""
+      {isLoggedIn && (
+        <>
+          <Navigation
+            handleLogout={handleLogout}
+            darkTheme={darkTheme}
+            handleTheme={handleTheme}
+          />
+          <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
+            <div className="journal__container">
+              <h1
+                className={`journal__heading ${
+                  darkTheme ? "journal__heading--dark" : ""
                 }`}
               >
-                Add your daily journal entry
-              </h2>
-              <img src={add} alt="Add Icon" className="journal__icon" />
-            </div>
+                How are you feeling today?
+              </h1>
+              <SignsBurnOut darkTheme={darkTheme} />
+              <div
+                className={`journal__add ${
+                  darkTheme ? "journal__add--dark" : ""
+                }`}
+                onClick={handleAddModal}
+              >
+                <h2
+                  className={`journal__subheading ${
+                    darkTheme ? "journal__subheading--dark" : ""
+                  }`}
+                >
+                  Add your daily journal entry
+                </h2>
+                <img src={add} alt="Add Icon" className="journal__icon" />
+              </div>
               {isAddModalOpen && (
                 <JournalForm
                   closeAddModal={closeAddModal}
@@ -99,10 +99,15 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
                   getJournalEntries={getJournalEntries}
                 />
               )}
-            <JournalEntries getJournalEntries={getJournalEntries} journalEntries={journalEntries} darkTheme={darkTheme}/>
-          </div>
-        </main>
-      </>
+              <JournalEntries
+                getJournalEntries={getJournalEntries}
+                journalEntries={journalEntries}
+                darkTheme={darkTheme}
+              />
+            </div>
+          </main>
+        </>
+      )}
     </>
   );
 }

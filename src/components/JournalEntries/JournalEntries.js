@@ -6,29 +6,32 @@ export default function JournalEntries({
   journalEntries,
   darkTheme,
 }) {
-  
   return (
     <>
       <section className="entries">
-        <h2 className="entries__heading">Your previous journal entries</h2>
+        <h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>Your previous journal entries</h2>
         <div className="entries__entry">
           {journalEntries &&
-            journalEntries.map((entry) => {
-              return (
-                <JournalEntry
-                  key={entry.id}
-                  id={entry.id}
-                  date={entry.created_at}
-                  entry={entry.entry}
-                  gratitude={entry.gratitude}
-                  getJournalEntries={getJournalEntries}
-                  darkTheme={darkTheme}
-                />
-              );
-            })}
+            journalEntries
+              .sort((a, b) => {
+                const dateA = new Date(a.created_at);
+                const dateB = new Date(b.created_at);
+                return dateB - dateA;
+              })
+              .map((entry) => {
+                return (
+                  <JournalEntry
+                    key={entry.id}
+                    id={entry.id}
+                    entry={entry.entry}
+                    timestamp={entry.created_at}
+                    gratitude={entry.gratitude}
+                    getJournalEntries={getJournalEntries}
+                    darkTheme={darkTheme}
+                  />
+                );
+              })}
         </div>
-        <p className="entries__link">Click here to see more</p>
-        <p className="entries__link">Click here to see less</p>
       </section>
     </>
   );

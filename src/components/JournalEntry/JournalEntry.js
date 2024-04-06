@@ -1,19 +1,29 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import EditModal from "../EditModal";
 import edit from "../../assets/icons/edit-25.png";
 import deleteIcon from "../../assets/icons/delete-25.png";
 import "./JournalEntry.scss";
 
 export default function JournalEntry({
   id,
-  created_at,
+  timestamp,
   entry,
   gratitude,
   getJournalEntries,
   darkTheme,
 }) {
+  const formattedDate = new Date(timestamp).toLocaleDateString("en-GB");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const handleEditModal = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
 
   const handleDeleteModal = () => {
     setIsDeleteModalOpen(true);
@@ -23,33 +33,23 @@ export default function JournalEntry({
     setIsDeleteModalOpen(false);
   };
 
-  const handleDeleteJournal = async(id) => {
-    const authToken = localStorage.getItem("authToken");
-    try {
-      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/journals/${id}`, {
-        headers: {
-          authorization: `Bearer ${authToken}`,
-        },
-      });
-      closeDeleteModal();
-      getJournalEntries();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <>
-      <article className="entry">
-        <div>
-          {/* <p className="entry__subheading">{created_at}</p> */}
-          <p className="entry__subheading">Entry</p>
+      <article className={`entry ${darkTheme ? "entry--dark" : ""}`}>
+        <div className="entry__row">
+          <p className={`entry__subheading ${darkTheme ? "entry__subheading--dark" : ""}`}>Entry</p>
+          <p className={`entry__date ${darkTheme ? "entry__date--dark" : ""}`}>{formattedDate}</p>
         </div>
-        <p className="entry__text">{entry}</p>
-        <p className="entry__subheading">Gratitude</p>
-        <p className="entry__text">{gratitude}</p>
+        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>{entry}</p>
+        <p className={`entry__subheading ${darkTheme ? "entry__subheading--dark" : ""}`}>Gratitude</p>
+        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>{gratitude}</p>
         <div className="entry__icons">
-          <img src={edit} alt="Edit Icon" className="entry__icon" />
+          <img
+            src={edit}
+            alt="Edit Icon"
+            className="entry__icon"
+            onClick={handleEditModal}
+          />
           <img
             src={deleteIcon}
             alt="Delete Icon"
@@ -58,12 +58,20 @@ export default function JournalEntry({
           />
         </div>
       </article>
+      {isEditModalOpen && (
+        <EditModal
+          id={id}
+          closeEditModal={closeEditModal}
+          getJournalEntries={getJournalEntries}
+          darkTheme={darkTheme}
+        />
+      )}
       {isDeleteModalOpen && (
         <DeleteModal
           id={id}
           darkTheme={darkTheme}
           closeDeleteModal={closeDeleteModal}
-          handleDeleteJournal={handleDeleteJournal}
+          getJournalEntries={getJournalEntries}
         />
       )}
     </>

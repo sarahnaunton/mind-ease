@@ -1,8 +1,27 @@
+import axios from "axios";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./DeleteModal.scss";
 
-export default function DeleteModal({id, closeDeleteModal, handleDeleteJournal, darkTheme}) {
+export default function DeleteModal({id, closeDeleteModal, getJournalEntries, darkTheme}) {
+    
+  const handleDeleteJournal = async () => {
+    const authToken = localStorage.getItem("authToken");
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_BASE_URL}/journals/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      closeDeleteModal();
+      getJournalEntries();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="overlay">
