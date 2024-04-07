@@ -6,7 +6,9 @@ import LogInPage from "./pages/LogInPage";
 import HomePage from "./pages/HomePage/HomePage";
 import JournalPage from "./pages/JournalPage/JournalPage";
 import MoodFormPage from "./pages/MoodFormPage/MoodFormPage";
+import MoodGraphPage from "./pages/MoodGraphPage/MoodGraphPage";
 import "./App.scss";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,8 +29,8 @@ function App() {
         <Route path="home" element={<HomePage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} />
         <Route path="journal" element={<JournalPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
         <Route path="mood-form" element={<MoodFormPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
-        {/* <Route path="mood-graph" element={<MoodGaphPage />} /> 
-        <Route path="*" element={<NotFoundPage />} />  */}
+        <Route path="mood-graph" element={<MoodGraphPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
+        {/* <Route path="*" element={<NotFoundPage />} />  */}
       </Routes>
     </BrowserRouter>
   );
