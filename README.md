@@ -550,18 +550,16 @@ One has to have an account and be signed into the app to be able to use it. Only
 
 ## Nice-to-haves
 
-  
-
 - Animation
 
 - Add toggle for dark theme
 
 - Loading page skeleton
 
-- Delete button to have confirmation modal
-
 - General resources page using 3rd party API (e.g. NHS)
 
 - Personalised coping strategies
 
 - Personalised crisis support page
+
+- User can edit their information and delete their account

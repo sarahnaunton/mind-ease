@@ -1,31 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Chart from "chart.js/auto";
 
-export default function MoodGraph() {
-  const [scores, setScores] = useState(null);
+export default function MoodGraph({ scores, darkTheme }) {
   const [chartInstance, setChartInstance] = useState(null);
-
-  const getScores = async () => {
-    const authToken = localStorage.getItem("authToken");
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/scores`,
-        {
-          headers: {
-            authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setScores(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getScores();
-  }, []);
 
   useEffect(() => {
     if (!scores || !Chart) {
@@ -74,11 +51,15 @@ export default function MoodGraph() {
         type: "line",
         data: {
           labels: scores.map((row) =>
-            new Date(row.created_at).toLocaleDateString("en-GB", {day: "numeric", month: "numeric", year: "2-digit"})
+            new Date(row.created_at).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "numeric",
+              year: "2-digit",
+            })
           ),
           datasets: [
             {
-              label: "Mental Heath Score",
+              label: "OBI Score",
               data: scores.map((row) => row.score),
               borderColor: "rgba(56, 56, 56, 0.7)",
             },
@@ -91,13 +72,12 @@ export default function MoodGraph() {
                 display: true,
                 text: "Date",
                 font: {
-                    size: 14,
-                    weight: "bold",
-
+                  size: 14,
+                  weight: "bold",
                 },
-                },
-                grid: {
-                    display: false,
+              },
+              grid: {
+                display: false,
               },
             },
             y: {
@@ -105,9 +85,9 @@ export default function MoodGraph() {
                 display: true,
                 text: "Score",
                 font: {
-                    size: 14,
-                    weight: "bold",
-                }
+                  size: 14,
+                  weight: "bold",
+                },
               },
               min: 16,
               max: 64,
@@ -127,9 +107,12 @@ export default function MoodGraph() {
 
   return (
     <section>
-      <div>
+        {!scores && (
+            <p className={`graph-page__message ${
+                darkTheme ? "graph-page__message--dark" : ""
+              }`}> You have no recorded scores</p>
+        )}
         <canvas id="myChart"></canvas>
-      </div>
     </section>
   );
 }

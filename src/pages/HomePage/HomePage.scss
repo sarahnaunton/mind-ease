@@ -41,13 +41,13 @@
     margin-top: 2.5rem;
 
     &--dark {
-        color: $color-dark-text-primary;
+      color: $color-dark-text-primary;
     }
   }
 
   &__articles {
     @include tablet-and-desktop {
-        @include flex(row, center, center);
+      @include flex(row, center, center);
     }
   }
 
@@ -59,37 +59,61 @@
     border-radius: 20px;
 
     @include tablet-and-desktop {
-        @include flex (column, center, center);
-        gap: 1rem;
-        width: 12.5rem;
-        margin-right: 2rem;
+      @include flex(column, center, center);
+      gap: 1rem;
+      width: 12.5rem;
+      margin-right: 2rem;
     }
 
     @include desktop {
-        width: 17.5rem;
+      width: 17.5rem;
     }
 
     &--blue {
       background-color: $color-background-quinary;
 
+      &:hover {
+        outline: 5px solid $color-dark-border-tertiary;
+      }
+
       &--dark {
         background-color: $color-dark-background-quinary;
+
+        &:hover {
+          outline: 5px solid $color-border-tertiary;
+        }
       }
     }
 
     &--orange {
       background-color: $color-background-tertiary;
 
+      &:hover {
+        outline: 5px solid $color-dark-border-quaternary;
+      }
+
       &--dark {
         background-color: $color-dark-background-tertiary;
+
+        &:hover {
+            outline: 5px solid $color-border-quaternary;
+          }
       }
     }
 
     &--green {
       background-color: $color-background-quaternary;
 
+      &:hover {
+        outline: 5px solid $color-dark-border-secondary;
+      }
+
       &--dark {
         background-color: $color-dark-background-quaternary;
+
+        &:hover {
+            outline: 5px solid $color-border-secondary;
+          }
       }
     }
   }
@@ -102,7 +126,7 @@
     @include subheading($color-text-secondary);
 
     &--dark {
-        color: $color-dark-text-primary;
+      color: $color-dark-text-primary;
     }
   }
 }

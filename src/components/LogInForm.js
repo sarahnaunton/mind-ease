@@ -21,6 +21,8 @@ export default function LogInForm({setIsLoggedIn}) {
     const handleForm = async (event) => {
       event.preventDefault();
       setFormSubmitted(false);
+      setErrorMessage(false)
+      setFormError({})
   
       let formValid = true;
       const error = {};

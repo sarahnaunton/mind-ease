@@ -1,0 +1,72 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.graph-page {
+  @include flex(column, center, center);
+  background-color: $color-background-primary;
+  padding-bottom: 10rem;
+
+  @include tablet-and-desktop {
+    padding-top: 6rem;
+  }
+
+  &--dark {
+    background-color: $color-dark-background-primary;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 1rem;
+
+    @include tablet-and-desktop {
+      padding: 2rem;
+    }
+  }
+
+  &__heading {
+    @include heading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__information {
+    border: 3px solid $color-border-tertiary;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__subheading {
+    @include subheading($color-text-tertiary);
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__message {
+    @include subheading($color-text-quaternary);
+    text-align: center;
+
+    &--dark {
+        color: $color-dark-text-tertiary;
+    }
+  }
+
+  &__graph {
+    border: 3px solid $color-border-quaternary;
+    border-radius: 20px;
+    padding: 0.5rem;
+
+    &--dark {
+        border-color: $color-dark-border-quaternary;
+    }
+  }
+}

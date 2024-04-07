@@ -26,6 +26,8 @@ export default function SignUpForm() {
     const handleForm = async (event) => {
       event.preventDefault();
       setFormSubmitted(false);
+      setErrorMessage(false)
+      setFormError({})
   
       let formValid = true;
       const error = {};

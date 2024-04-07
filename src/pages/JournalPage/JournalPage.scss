@@ -4,7 +4,7 @@
 .journal {
   @include flex(row, center, center);
   background-color: $color-background-primary;
-  padding-bottom: 5rem;
+  padding-bottom: 8rem;
 
   @include tablet-and-desktop {
     padding-top: 6rem;

@@ -1,0 +1,38 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.score {
+  margin-bottom: 2rem;
+
+  &__heading {
+    @include subheading($color-text-quinary);
+
+    &--dark {
+        color: $color-dark-text-quaternary;
+    }
+  }
+
+  &__container {
+    @include flex(row, start, center);
+    gap: 1rem;
+  }
+
+  &__subheading {
+    @include body-text($color-text-primary);
+    font-weight: 600;
+    margin-top: 0;
+
+    &--dark {
+        color: $color-dark-text-primary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    margin-top: 0;
+
+    &--dark {
+        color: $color-dark-text-primary;
+    }
+  }
+}

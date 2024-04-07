@@ -9,7 +9,8 @@ export default function JournalEntries({
   return (
     <>
       <section className="entries">
-        <h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>Your previous journal entries</h2>
+        {!journalEntries && (<h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>You have no previous journal entries</h2>)}
+        {journalEntries && (<h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>Your previous journal entries</h2>)}
         <div className="entries__entry">
           {journalEntries &&
             journalEntries
