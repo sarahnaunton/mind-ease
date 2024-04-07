@@ -190,7 +190,6 @@ export default function MoodForm({ darkTheme }) {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [responses, setResponses] = useState({});
-  const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -220,13 +219,13 @@ export default function MoodForm({ darkTheme }) {
 
     let category;
     if (score < 30) {
-      category = "low";
+      category = "Low";
     }
     if (score >= 30 && score < 45) {
-      category = "medium";
+      category = "Medium";
     }
     if (score >= 45) {
-      category = "high";
+      category = "High";
     }
 
     try {
@@ -294,9 +293,6 @@ export default function MoodForm({ darkTheme }) {
             <div className="mood-form__button">
               <Button darkTheme={darkTheme}>Submit</Button>
             </div>
-            {formError.form && (
-              <p className="mood-form__error">{formError.form}</p>
-            )}
             {errorMessage && (
               <p className="mood-form__error">
                 {" "}

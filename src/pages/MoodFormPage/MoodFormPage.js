@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import MoodForm from "../../components/MoodForm/MoodForm";
@@ -16,6 +16,14 @@ export default function MoodFormPage({ setIsLoggedIn, isLoggedIn }) {
     setDarkTheme((prevDarkTheme) => !prevDarkTheme);
     localStorage.setItem("theme", JSON.stringify(!darkTheme));
   };
+
+  useEffect(() => {
+    const themeJSON = localStorage.getItem("theme");
+    if (themeJSON) {
+      setDarkTheme(JSON.parse(themeJSON));
+    }
+  }, []);
+
 
   return (
     <>
