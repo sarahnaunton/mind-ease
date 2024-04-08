@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.article {
+  @include flex(row, center, center);
+  gap: 1rem;
+
+  @include tablet-and-desktop {
+    @include flex(column, center, center);
+  }
+
+  &__heading {
+    @include subheading($color-text-secondary);
+
+    @include tablet-and-desktop {
+    margin-bottom: 0;
+    }
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__icon {
+    margin-bottom: 1rem;
+  }
+}

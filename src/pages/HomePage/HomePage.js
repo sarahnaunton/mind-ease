@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
+import HomePageGreeting from "../../components/HomePageGreeting/HomePageGreeting";
+import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
 import journal from "../../assets/icons/journal-50.png";
@@ -46,29 +48,19 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
     setDarkTheme((prevDarkTheme) => !prevDarkTheme);
     localStorage.setItem("theme", JSON.stringify(!darkTheme));
   };
+
   useEffect(() => {
+    window.scrollTo(0,0)
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));
     }
   }, []);
 
-  const time = new Date().getHours();
-  let greeting;
-  if (time < 12) {
-    greeting = "Good Morning";
-  } else if (time >= 12 && time < 18) {
-    greeting = "Good Afternoon";
-  } else if (time >= 18 && time < 24) {
-    greeting = "Good Evening";
-  } else {
-    greeting = "Hello";
-  }
-
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {userData && (
+      {isLoggedIn && (
         <>
           <Navigation
             handleLogout={handleLogout}
@@ -77,22 +69,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
           />
           <main className={`home ${darkTheme ? "home--dark" : ""}`}>
             <div className="home__container">
-              <div>
-                <h1
-                  className={`home__greeting ${
-                    darkTheme ? "home__greeting--dark" : ""
-                  }`}
-                >
-                  {greeting},{" "}
-                  <span
-                    className={`home__name ${
-                      darkTheme ? "home__name--dark" : ""
-                    }`}
-                  >
-                    {userData.first_name}
-                  </span>
-                </h1>
-              </div>
+              <HomePageGreeting darkTheme={darkTheme} userData={userData} />
               <section>
                 <h2
                   className={`home__heading ${
@@ -103,67 +80,37 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                 </h2>
                 <div className="home__articles">
                   <Link to="/mood-form" className="home__link">
-                    {" "}
-                    <article
+                    <div
                       className={`home__article home__article--blue ${
                         darkTheme ? "home__article--blue--dark" : ""
                       }`}
                     >
-                      <p
-                        className={`home__subheading ${
-                          darkTheme ? "home__subheading--dark" : ""
-                        }`}
-                      >
+                      <HomePageArticle darkTheme={darkTheme} icon={smile}>
                         Mood Check In
-                      </p>
-                      <img
-                        className="home__icon"
-                        src={smile}
-                        alt="Smile Icon"
-                      />
-                    </article>
+                      </HomePageArticle>
+                    </div>
                   </Link>
                   <Link to="/mood-graph" className="home__link">
-                    {" "}
-                    <article
+                    <div
                       className={`home__article home__article--orange ${
                         darkTheme ? "home__article--orange--dark" : ""
                       }`}
                     >
-                      <p
-                        className={`home__subheading ${
-                          darkTheme ? "home__subheading--dark" : ""
-                        }`}
-                      >
-                        Mood Tracker
-                      </p>
-                      <img
-                        className="home__icon"
-                        src={graph}
-                        alt="Graph Icon"
-                      />
-                    </article>
+                      <HomePageArticle darkTheme={darkTheme} icon={graph}>
+                        Mood Check In
+                      </HomePageArticle>
+                    </div>
                   </Link>
                   <Link to="/journal" className="home__link">
-                    {" "}
-                    <article
+                    <div
                       className={`home__article home__article--green ${
                         darkTheme ? "home__article--green--dark" : ""
                       }`}
                     >
-                      <p
-                        className={`home__subheading ${
-                          darkTheme ? "home__subheading--dark" : ""
-                        }`}
-                      >
+                      <HomePageArticle darkTheme={darkTheme} icon={journal}>
                         Mood Journal
-                      </p>
-                      <img
-                        className="home__icon"
-                        src={journal}
-                        alt="Journal Icon"
-                      />
-                    </article>
+                      </HomePageArticle>
+                    </div>
                   </Link>
                 </div>
               </section>

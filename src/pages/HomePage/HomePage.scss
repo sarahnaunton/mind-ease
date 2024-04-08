@@ -20,22 +20,6 @@
     padding: 2rem;
   }
 
-  &__greeting {
-    @include heading($color-text-primary);
-
-    &--dark {
-      color: $color-dark-text-primary;
-    }
-  }
-
-  &__name {
-    color: $color-text-tertiary;
-
-    &--dark {
-      color: $color-dark-text-tertiary;
-    }
-  }
-
   &__heading {
     @include heading($color-text-primary);
     margin-top: 2.5rem;
@@ -52,15 +36,12 @@
   }
 
   &__article {
-    @include flex(row, center, center);
     gap: 2rem;
     margin-bottom: 2rem;
     padding: 1rem 0;
     border-radius: 20px;
 
     @include tablet-and-desktop {
-      @include flex(column, center, center);
-      gap: 1rem;
       width: 12.5rem;
       margin-right: 2rem;
     }
@@ -120,13 +101,5 @@
 
   &__link {
     text-decoration: none;
-  }
-
-  &__subheading {
-    @include subheading($color-text-secondary);
-
-    &--dark {
-      color: $color-dark-text-primary;
-    }
   }
 }
