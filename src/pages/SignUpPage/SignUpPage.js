@@ -5,8 +5,8 @@ import "./SignUpPage.scss";
 
 export default function SignUpPage() {
   return (
-    <section className="account">
-      <div className="account__container">
+    <main className="account">
+      <section className="account__container">
         <h1 className="account__logo">MindEase</h1>
         <h2 className="account__heading">Sign Up</h2>
         <div className="account__greeting">
@@ -21,7 +21,7 @@ export default function SignUpPage() {
             Log In
           </Link>
         </p>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }

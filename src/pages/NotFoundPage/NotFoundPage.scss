@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.found {
+    @include flex(column, center, center);
+    background-color: $color-background-primary;
+  
+    &__container {
+      width: 100%;
+      height: 100vh;
+      padding: 2rem;
+      max-width: $max-width;
+      @include flex(column, center, center);
+    }
+  
+    &__text {
+      @include subheading($color-text-primary);
+      text-align: center;
+    }
+  
+    &__link {
+      font-weight: 700;
+      color: $color-button-primary;
+  
+      &:hover {
+        color: $color-button-secondary;
+      }
+    }
+}

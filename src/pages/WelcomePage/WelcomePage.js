@@ -4,8 +4,8 @@ import "./WelcomePage.scss";
 
 export default function WelcomePage() {
   return (
-    <section className="welcome">
-      <div className="welcome__container">
+    <main className="welcome">
+      <section className="welcome__container">
         <h1 className="welcome__logo">MindEase</h1>
         <p className="welcome__text">
           Welcome to MindEase, your guide to mental wellness. Recognise signs of
@@ -20,7 +20,7 @@ export default function WelcomePage() {
             <Button>Log In</Button>
           </Link>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
