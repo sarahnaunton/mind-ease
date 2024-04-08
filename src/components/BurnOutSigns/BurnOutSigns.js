@@ -16,43 +16,25 @@ export default function BurnOutSigns({ darkTheme }) {
     <>
       <article className={`signs ${darkTheme ? "signs--dark" : ""}`}>
         <h2 className="signs__subheading">
-          What are some of the signs that could mean you are burnt out?
+          What are some signs that you might be experiencing burnout?
         </h2>
-        <p
-          className={`signs__text ${darkTheme ? "signs__text--dark" : ""}`}
-        >
+        <p className={`signs__text ${darkTheme ? "signs__text--dark" : ""}`}>
           {" "}
           Recognising the signs of burnout is the first step to reclaiming your
           well-being.
         </p>
         <ul>
-          <li
-            className={`signs__item ${
-              darkTheme ? "signs__item--dark" : ""
-            }`}
-          >
+          <li className={`signs__item ${darkTheme ? "signs__item--dark" : ""}`}>
             Persistent exhaustion despite adequate rest and sleep.
           </li>
-          <li
-            className={`signs__item ${
-              darkTheme ? "signs__item--dark" : ""
-            }`}
-          >
+          <li className={`signs__item ${darkTheme ? "signs__item--dark" : ""}`}>
             Decreased satisfaction with your work, relationships or in life.
           </li>
-          <li
-            className={`signs__item ${
-              darkTheme ? "signs__item--dark" : ""
-            }`}
-          >
+          <li className={`signs__item ${darkTheme ? "signs__item--dark" : ""}`}>
             Decreased motivation and productivity, including finding it
             challenging to engage fully in tasks you once enjoyed.
           </li>
-          <li
-            className={`signs__item ${
-              darkTheme ? "signs__item--dark" : ""
-            }`}
-          >
+          <li className={`signs__item ${darkTheme ? "signs__item--dark" : ""}`}>
             Physical symptoms like headaches, stomach issues, or frequent
             illnesses may also be signs of burnout, as the body reacts to
             prolonged stress.

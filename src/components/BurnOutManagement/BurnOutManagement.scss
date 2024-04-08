@@ -1,0 +1,60 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.management {
+  border: 3px solid $color-border-quaternary;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+
+  &--dark {
+    border-color: $color-dark-border-quaternary;
+  }
+
+  &__subheading {
+    @include subheading($color-background-tertiary);
+
+    &--dark {
+      color: $color-dark-background-tertiary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    font-weight: 600;
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__item {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__wrapper {
+    @include flex(row, center, center);
+  }
+
+  &__link {
+    @include body-text($color-text-quaternary);
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-dark-text-tertiary;
+    }
+
+    &--dark {
+      color: $color-dark-text-tertiary;
+
+      &:hover {
+        color: $color-text-quaternary;
+      }
+    }
+  }
+}

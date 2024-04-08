@@ -40,8 +40,16 @@ export default function MoodHubPage({ setIsLoggedIn, isLoggedIn }) {
           />
           <main className={`hub ${darkTheme ? "hub--dark" : ""}`}>
             <div className="hub__container">
-              <h1 className={`hub__heading ${darkTheme ? "hub__heading--dark" : ""}`}>What is burnout?</h1>
-              <div className={`hub__text ${darkTheme ? "hub__text--dark" : ""}`}>
+              <h1
+                className={`hub__heading ${
+                  darkTheme ? "hub__heading--dark" : ""
+                }`}
+              >
+                What is burnout?
+              </h1>
+              <div
+                className={`hub__text ${darkTheme ? "hub__text--dark" : ""}`}
+              >
                 <p>
                   Burnout is the result of prolonged pressure from work, leading
                   to complete mental, physical, and emotional exhaustion.

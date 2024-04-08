@@ -19,7 +19,7 @@ export default function BurnOutCauses({ darkTheme }) {
           darkTheme ? "causes__subheading--dark" : ""
         }`}
       >
-        There are lots of different things that could lead to burn out such as:
+        Many things can lead to burnout:
       </h2>
       <ul>
         <li className={`causes__item ${darkTheme ? "causes__item--dark" : ""}`}>

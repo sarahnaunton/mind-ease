@@ -98,7 +98,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                       }`}
                     >
                       <HomePageArticle darkTheme={darkTheme} icon={graph}>
-                        Mood Check In
+                        Mood Tracker
                       </HomePageArticle>
                     </div>
                   </Link>
