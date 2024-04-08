@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import MoodForm from "../../components/MoodForm/MoodForm";
 import "./MoodFormPage.scss";
 
 export default function MoodFormPage({ setIsLoggedIn, isLoggedIn }) {
-  const navigate = useNavigate();
   const [darkTheme, setDarkTheme] = useState(false);
 
   const handleLogout = () => {

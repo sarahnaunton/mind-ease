@@ -1,3 +1,4 @@
+import { useState } from "react";
 import JournalEntry from "../JournalEntry/JournalEntry";
 import "./JournalEntries.scss";
 
@@ -6,14 +7,74 @@ export default function JournalEntries({
   journalEntries,
   darkTheme,
 }) {
+  const [searchJournal, setSearchJournal] = useState("");
+
+  const handleSearch = (event) => {
+    setSearchJournal(event.target.value);
+  };
+
+  const filteredJournals =
+    journalEntries &&
+    journalEntries.filter((entry) => {
+      const searchedText = searchJournal.toLowerCase();
+      const text = entry.entry.toLowerCase();
+      const gratitude = entry.gratitude.toLowerCase();
+      const timestamp = new Date(entry.created_at).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+      });
+
+      return (
+        text.includes(searchedText) ||
+        gratitude.includes(searchedText) ||
+        timestamp.includes(searchedText)
+      );
+    });
+
   return (
     <>
       <section className="entries">
-        {journalEntries && journalEntries.length === 0 && (<h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>You have no previous journal entries</h2>)}
-        {journalEntries && journalEntries.length > 0 && (<h2 className={`entries__heading ${darkTheme ? "entries__heading--dark" : ""}`}>Your previous journal entries</h2>)}
+        {!journalEntries && (
+          <h2
+            className={`entries__heading ${
+              darkTheme ? "entries__heading--dark" : ""
+            }`}
+          >
+            Unable to get previous journal entries
+          </h2>
+        )}
+        {journalEntries && journalEntries.length === 0 && (
+          <h2
+            className={`entries__heading ${
+              darkTheme ? "entries__heading--dark" : ""
+            }`}
+          >
+            You have no previous journal entries
+          </h2>
+        )}
+        {journalEntries && journalEntries.length > 0 && (
+          <div className="entries__introduction">
+            <h2
+              className={`entries__heading ${
+                darkTheme ? "entries__heading--dark" : ""
+              }`}
+            >
+              Your previous journal entries
+            </h2>
+            <input
+             className={`entries__search ${
+                darkTheme ? "entries__search--dark" : ""
+              }`}
+              name="search"
+              placeholder="Search"
+              onChange={handleSearch}
+            ></input>
+          </div>
+        )}
         <div className="entries__entry">
           {journalEntries &&
-            journalEntries
+            filteredJournals
               .sort((a, b) => {
                 const dateA = new Date(a.created_at);
                 const dateB = new Date(b.created_at);

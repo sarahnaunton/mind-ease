@@ -4,6 +4,8 @@ import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
+import GraphNoAnswer from "../../components/GraphNoAnswer/GraphNoAnswer";
+import GraphOneAnswer from "../../components/GraphOneAnswer";
 import MoodGraph from "../../components/MoodGraph";
 import MoodScore from "../../components/MoodScore/MoodScore";
 import "./MoodGraphPage.scss";
@@ -49,28 +51,6 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
     }
   }, []);
 
-  const noQuestionnairesJSX = (
-    <section>
-      <p
-        className={`graph-page__message ${
-          darkTheme ? "graph-page__message--dark" : ""
-        }`}
-      >
-        You have no burn out questionnaire scores recorded yet.
-      </p>
-      <p
-        className={`graph-page__message ${
-          darkTheme ? "graph-page__message--dark" : ""
-        }`}
-      >
-        Take this opportunity to reflect on your well-being. If you're unsure
-        where to begin, consider completing the burnout questionnaire. It's a
-        valuable tool for assessing your stress levels and identifying areas for
-        improvement.
-      </p>
-    </section>
-  );
-
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
@@ -111,31 +91,9 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
                   </p>
                 </div>
               </section>
-              {!chartData && noQuestionnairesJSX}
+              {!chartData && <GraphNoAnswer darkTheme={darkTheme} />}
               {chartData && chartData.length < 2 && (
-                <>
-                  <MoodScore chartData={chartData} darkTheme={darkTheme} />
-                  <section>
-                    <p
-                      className={`graph-page__message ${
-                        darkTheme ? "graph-page__message--dark" : ""
-                      }`}
-                    >
-                      You haven't accumulated sufficient questionnaire responses
-                      to be displayed on the graph.
-                    </p>
-                    <p
-                      className={`graph-page__message ${
-                        darkTheme ? "graph-page__message--dark" : ""
-                      }`}
-                    >
-                      Keep track of your progress by completing the
-                      questionnaire regularly. Your mental well-being matters,
-                      and taking the time to reflect and assess your feelings
-                      can be a valuable step towards self-care and improvement.
-                    </p>
-                  </section>
-                </>
+                <GraphOneAnswer darkTheme={darkTheme} chartData={chartData}/>
               )}
               {chartData && chartData.length >= 2 && (
                 <>

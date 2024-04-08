@@ -13,7 +13,7 @@ export default function JournalEntry({
   getJournalEntries,
   darkTheme,
 }) {
-  const formattedDate = new Date(timestamp).toLocaleDateString("en-GB");
+  const formattedDate = new Date(timestamp).toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year:"numeric"})
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -37,12 +37,30 @@ export default function JournalEntry({
     <>
       <article className={`entry ${darkTheme ? "entry--dark" : ""}`}>
         <div className="entry__row">
-          <p className={`entry__subheading ${darkTheme ? "entry__subheading--dark" : ""}`}>Entry</p>
-          <p className={`entry__date ${darkTheme ? "entry__date--dark" : ""}`}>{formattedDate}</p>
+          <p
+            className={`entry__subheading ${
+              darkTheme ? "entry__subheading--dark" : ""
+            }`}
+          >
+            Entry
+          </p>
+          <p className={`entry__date ${darkTheme ? "entry__date--dark" : ""}`}>
+            {formattedDate}
+          </p>
         </div>
-        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>{entry}</p>
-        <p className={`entry__subheading ${darkTheme ? "entry__subheading--dark" : ""}`}>Gratitude</p>
-        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>{gratitude}</p>
+        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>
+          {entry}
+        </p>
+        <p
+          className={`entry__subheading ${
+            darkTheme ? "entry__subheading--dark" : ""
+          }`}
+        >
+          Gratitude
+        </p>
+        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>
+          {gratitude}
+        </p>
         <div className="entry__icons">
           <img
             src={edit}

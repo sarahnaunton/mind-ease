@@ -4,7 +4,7 @@
 .home {
   @include flex(row, center, start);
   background-color: $color-background-primary;
-  height: 100vh;
+  padding-bottom: 8rem;
 
   @include tablet-and-desktop {
     padding-top: 6rem;

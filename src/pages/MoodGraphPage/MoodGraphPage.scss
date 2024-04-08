@@ -51,15 +51,6 @@
     }
   }
 
-  &__message {
-    @include subheading($color-text-quaternary);
-    text-align: center;
-
-    &--dark {
-        color: $color-dark-text-tertiary;
-    }
-  }
-
   &__graph {
     border: 3px solid $color-border-tertiary;
     border-radius: 20px;
@@ -68,6 +59,7 @@
 
     &--dark {
         border-color: $color-dark-border-quaternary;
+        background-color: $color-dark-background-senary;
     }
   }
 }
