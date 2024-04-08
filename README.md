@@ -77,6 +77,8 @@ The user profile for the mental health app focused on burnout can encompass a di
 
 	- chart.js
 
+    - react-chartjs-2
+
 - Server libraries:
 
 	- knex

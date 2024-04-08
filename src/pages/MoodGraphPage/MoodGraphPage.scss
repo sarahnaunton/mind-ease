@@ -61,9 +61,10 @@
   }
 
   &__graph {
-    border: 3px solid $color-border-quaternary;
+    border: 3px solid $color-border-tertiary;
     border-radius: 20px;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    background-color: $color-background-secondary;
 
     &--dark {
         border-color: $color-dark-border-quaternary;

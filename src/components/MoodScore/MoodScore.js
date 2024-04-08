@@ -1,9 +1,9 @@
 import "./MoodScore.scss";
 
-export default function MoodScore({ scores, darkTheme }) {
+export default function MoodScore({ chartData, darkTheme }) {
   return (
     <>
-      {scores && (
+      {chartData && (
         <section className="score">
           <h3
             className={`score__heading ${
@@ -23,7 +23,7 @@ export default function MoodScore({ scores, darkTheme }) {
             <p
               className={`score__text ${darkTheme ? "score__text--dark" : ""}`}
             >
-              {scores[scores.length - 1].score}
+              {chartData[chartData.length - 1].score}
             </p>
           </div>
           <div className="score__container">
@@ -37,7 +37,7 @@ export default function MoodScore({ scores, darkTheme }) {
             <p
               className={`score__text ${darkTheme ? "score__text--dark" : ""}`}
             >
-              {scores[scores.length - 1].category} risk
+              {chartData[chartData.length - 1].category} risk
             </p>
           </div>
         </section>

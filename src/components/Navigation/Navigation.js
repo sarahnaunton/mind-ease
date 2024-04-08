@@ -6,6 +6,7 @@ import sun from "../../assets/icons/sun-50.png";
 import "./Navigation.scss";
 
 export default function Navigation({ handleLogout, darkTheme, handleTheme }) {
+    
   return (
     <nav className={`nav ${darkTheme ? "nav--dark" : ""}`}>
       <div className="nav__container">
