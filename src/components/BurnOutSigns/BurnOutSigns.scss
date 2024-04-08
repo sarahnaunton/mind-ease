@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.burnout {
+.signs {
   border: 3px solid $color-border-tertiary;
   border-radius: 20px;
   padding: 1rem 1.5rem;
@@ -12,6 +12,23 @@
 
   &__subheading {
     @include subheading($color-text-tertiary);
+
+    &--green {
+        color: $color-text-quinary;
+
+        &--dark {
+            color:$color-dark-text-quaternary;
+        }
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    font-weight: 600;
+
+    &--dark {
+        color: $color-dark-text-primary;
+    }
   }
 
   &__item {
@@ -26,5 +43,9 @@
     @include body-text($color-text-tertiary);
     text-decoration: underline;
     cursor: pointer;
+
+    &:hover {
+        color: $color-dark-text-quinary;
+    }
   }
 }

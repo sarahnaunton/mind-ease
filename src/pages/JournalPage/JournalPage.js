@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
-import SignsBurnOut from "../../components/SignsBurnOut/SignsBurnOut";
+import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
 import JournalForm from "../../components/JournalForm/JournalForm";
 import JournalEntries from "../../components/JournalEntries/JournalEntries";
 import add from "../../assets/icons/add-50.png";
@@ -21,6 +21,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
 
   useEffect(() => {
     getJournalEntries();
+    window.scrollTo(0, 0);
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));
@@ -76,7 +77,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
               >
                 How are you feeling today?
               </h1>
-              <SignsBurnOut darkTheme={darkTheme} />
+              <BurnOutSigns darkTheme={darkTheme} />
               <div
                 className={`journal__add ${
                   darkTheme ? "journal__add--dark" : ""

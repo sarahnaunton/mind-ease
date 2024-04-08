@@ -1,0 +1,47 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.causes {
+  border: 3px solid $color-border-secondary;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+
+  &--dark {
+    border-color: $color-dark-border-secondary;
+  }
+
+  &__subheading {
+    @include subheading($color-text-quinary);
+
+    &--dark {
+      color: $color-dark-text-quaternary;
+    }
+  }
+
+  &__item {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__link {
+    @include body-text($color-text-quinary);
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-dark-text-quaternary;
+    }
+
+    &--dark {
+        color: $color-dark-text-quaternary;
+
+        &:hover {
+            color: $color-text-quinary;
+        }
+    }
+  }
+}

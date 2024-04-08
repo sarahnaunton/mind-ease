@@ -18,6 +18,7 @@ export default function MoodFormPage({ setIsLoggedIn, isLoggedIn }) {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));

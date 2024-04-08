@@ -32,6 +32,7 @@
   &__articles {
     @include tablet-and-desktop {
       @include flex(row, center, center);
+      flex-wrap: wrap;
     }
   }
 
@@ -77,8 +78,8 @@
         background-color: $color-dark-background-tertiary;
 
         &:hover {
-            outline: 5px solid $color-border-quaternary;
-          }
+          outline: 5px solid $color-border-quaternary;
+        }
       }
     }
 
@@ -93,8 +94,24 @@
         background-color: $color-dark-background-quaternary;
 
         &:hover {
-            outline: 5px solid $color-border-secondary;
-          }
+          outline: 5px solid $color-border-secondary;
+        }
+      }
+    }
+
+    &--navy {
+      background-color: $color-dark-background-quinary;
+
+      &:hover {
+        outline: 5px solid $color-border-tertiary;
+      }
+
+      &--dark {
+        background-color: $color-dark-background-septenary;
+
+        &:hover {
+          outline: 5px solid $color-dark-background-quinary;
+        }
       }
     }
   }

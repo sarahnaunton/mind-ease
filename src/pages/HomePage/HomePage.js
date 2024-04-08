@@ -8,6 +8,7 @@ import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
 import journal from "../../assets/icons/journal-50.png";
+import info from "../../assets/icons/info.png";
 import "./HomePage.scss";
 
 export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
@@ -50,7 +51,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));
@@ -109,6 +110,17 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                     >
                       <HomePageArticle darkTheme={darkTheme} icon={journal}>
                         Mood Journal
+                      </HomePageArticle>
+                    </div>
+                  </Link>
+                  <Link to="/mood-information" className="home__link">
+                    <div
+                      className={`home__article home__article--navy ${
+                        darkTheme ? "home__article--navy--dark" : ""
+                      }`}
+                    >
+                      <HomePageArticle darkTheme={darkTheme} icon={info}>
+                        Mood Hub
                       </HomePageArticle>
                     </div>
                   </Link>

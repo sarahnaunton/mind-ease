@@ -45,6 +45,7 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
 
   useEffect(() => {
     getChartData();
+    window.scrollTo(0, 0);
     const themeJSON = localStorage.getItem("theme");
     if (themeJSON) {
       setDarkTheme(JSON.parse(themeJSON));
@@ -93,7 +94,7 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
               </section>
               {!chartData && <GraphNoAnswer darkTheme={darkTheme} />}
               {chartData && chartData.length < 2 && (
-                <GraphOneAnswer darkTheme={darkTheme} chartData={chartData}/>
+                <GraphOneAnswer darkTheme={darkTheme} chartData={chartData} />
               )}
               {chartData && chartData.length >= 2 && (
                 <>

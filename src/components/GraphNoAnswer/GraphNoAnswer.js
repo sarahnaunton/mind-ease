@@ -8,7 +8,7 @@ export default function GraphNoAnswer({darkTheme}) {
           darkTheme ? "message__heading--dark" : ""
         }`}
       >
-        You have no burn out questionnaire scores recorded yet.
+        You have no burnout questionnaire scores recorded yet.
       </p>
       <p
         className={`message__text ${
