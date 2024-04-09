@@ -13,31 +13,8 @@
     }
   }
 
-  &__text {
-    @include body-text($color-text-primary);
-    font-weight: 600;
-
-    &--dark {
-      color: $color-dark-text-primary;
-    }
-  }
-
   &__link {
     text-decoration: none;
     cursor: pointer;
-  }
-
-
-  &__image {
-    border: 3px solid $color-border-primary;
-    border-radius: 20px;
-    object-fit: contain;
-    width: 5rem;
-    height: 4rem;
-
-     @include tablet-and-desktop {
-        width: 15rem;
-        height: 10rem;
-     }
   }
 }

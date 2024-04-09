@@ -58,7 +58,7 @@ export default function MoodHubPage({ setIsLoggedIn, isLoggedIn }) {
               <BurnOutCauses darkTheme={darkTheme} />
               <BurnOutSigns darkTheme={darkTheme} />
               <BurnOutManagement darkTheme={darkTheme} />
-              <BurnOutResources />
+              <BurnOutResources darkTheme={darkTheme} />
             </div>
           </main>
         </>
