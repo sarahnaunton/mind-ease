@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./BoosterForm.scss";
 
-export default function BoosterForm({ closeAddModal, darkTheme }) {
+export default function BoosterForm({ closeAddModal, darkTheme, getBoosterEntries }) {
   const [formData, setFormData] = useState({
     activity: ""
   });
@@ -48,6 +48,7 @@ export default function BoosterForm({ closeAddModal, darkTheme }) {
           },
         }
       );
+      getBoosterEntries();
       setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);

@@ -33,7 +33,6 @@ export default function JournalEntries({
     });
 
   return (
-    <>
       <section className="entries">
         {!journalEntries && (
           <h2
@@ -95,6 +94,5 @@ export default function JournalEntries({
               })}
         </div>
       </section>
-    </>
   );
 }

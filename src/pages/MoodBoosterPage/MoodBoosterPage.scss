@@ -66,4 +66,9 @@
       color: $color-dark-text-primary;
     }
   }
+
+  &__error {
+    @include body-small-text($color-text-error);
+    text-align: center;
+  }
 }

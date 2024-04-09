@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import BoosterForm from "../../components/BoosterForm/BoosterForm";
+import BoosterEntries from "../../components/BoosterEntries";
 import add from "../../assets/icons/add-50.png";
 import "./MoodBoosterPage.scss";
 
@@ -11,9 +13,30 @@ export default function MoodBoosterPage({
   handleTheme,
   darkTheme,
 }) {
+  const [boosterEntries, setBoosterEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const getBoosterEntries = async () => {
+    const authToken = localStorage.getItem("authToken");
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/activities`,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setBoosterEntries(data);
+      setErrorMessage(false);
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
+  };
 
   useEffect(() => {
+    getBoosterEntries();
     window.scrollTo(0, 0);
   }, []);
 
@@ -37,18 +60,48 @@ export default function MoodBoosterPage({
           />
           <main className={`booster ${darkTheme ? "booster--dark" : ""}`}>
             <div className="booster__container">
-              <h1 className={`booster__heading ${darkTheme ? "booster__heading--dark" : ""}`}>What makes you happy?</h1>
-              <p className={`booster__text ${darkTheme ? "booster__text--dark" : ""}`}>Description of the page</p>
-              <div onClick={handleAddModal} className={`booster__add ${darkTheme ? "booster__add--dark" : ""}`}>
-                <h2 className={`booster__subheading ${darkTheme ? "booster__subheading--dark" : ""}`}>Add a mood booster</h2>
-                <img src={add} alt="Add Icon" className="booster__icon"/>
+              <h1
+                className={`booster__heading ${
+                  darkTheme ? "booster__heading--dark" : ""
+                }`}
+              >
+                What makes you happy?
+              </h1>
+              <p
+                className={`booster__text ${
+                  darkTheme ? "booster__text--dark" : ""
+                }`}
+              >
+                Description of the page
+              </p>
+              <div
+                onClick={handleAddModal}
+                className={`booster__add ${
+                  darkTheme ? "booster__add--dark" : ""
+                }`}
+              >
+                <h2
+                  className={`booster__subheading ${
+                    darkTheme ? "booster__subheading--dark" : ""
+                  }`}
+                >
+                  Add a mood booster
+                </h2>
+                <img src={add} alt="Add Icon" className="booster__icon" />
               </div>
               {isAddModalOpen && (
                 <BoosterForm
                   closeAddModal={closeAddModal}
                   darkTheme={darkTheme}
+                  getBoosterEntries={getBoosterEntries}
                 />
               )}
+              <BoosterEntries
+                getBoosterEntries={getBoosterEntries}
+                boosterEntries={boosterEntries}
+                darkTheme={darkTheme}
+              />
+              {errorMessage && <p className="booster__error">{errorMessage}</p>}
             </div>
           </main>
         </>
