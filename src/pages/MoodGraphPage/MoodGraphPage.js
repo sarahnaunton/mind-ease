@@ -12,9 +12,8 @@ import "./MoodGraphPage.scss";
 
 Chart.register(CategoryScale);
 
-export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
+export default function MoodGraphPage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
   const [chartData, setChartData] = useState(null);
-  const [darkTheme, setDarkTheme] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
   const getChartData = async () => {
@@ -35,23 +34,9 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-  };
-
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
-
   useEffect(() => {
     getChartData();
     window.scrollTo(0, 0);
-    const themeJSON = localStorage.getItem("theme");
-    if (themeJSON) {
-      setDarkTheme(JSON.parse(themeJSON));
-    }
   }, []);
 
   return (

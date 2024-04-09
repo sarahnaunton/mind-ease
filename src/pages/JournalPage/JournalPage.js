@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
@@ -9,25 +8,15 @@ import JournalEntries from "../../components/JournalEntries/JournalEntries";
 import add from "../../assets/icons/add-50.png";
 import "./JournalPage.scss";
 
-export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
-  const [darkTheme, setDarkTheme] = useState(false);
+export default function JournalPage({
+  isLoggedIn,
+  handleLogout,
+  darkTheme,
+  handleTheme,
+}) {
   const [journalEntries, setJournalEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-  };
-
-  useEffect(() => {
-    getJournalEntries();
-    window.scrollTo(0, 0);
-    const themeJSON = localStorage.getItem("theme");
-    if (themeJSON) {
-      setDarkTheme(JSON.parse(themeJSON));
-    }
-  }, []);
 
   const getJournalEntries = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -47,10 +36,10 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
     }
   };
 
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
+  useEffect(() => {
+    getJournalEntries();
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAddModal = () => {
     setIsAddModalOpen(true);

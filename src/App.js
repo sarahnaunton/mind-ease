@@ -7,12 +7,15 @@ import HomePage from "./pages/HomePage/HomePage";
 import JournalPage from "./pages/JournalPage/JournalPage";
 import MoodFormPage from "./pages/MoodFormPage/MoodFormPage";
 import MoodGraphPage from "./pages/MoodGraphPage/MoodGraphPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import MoodBoosterPage from "./pages/MoodBoosterPage/MoodBoosterPage";
 import MoodHubPage from "./pages/MoodHubPage/MoodHubPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import "./App.scss";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
@@ -21,18 +24,99 @@ function App() {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+  };
+
+  const handleTheme = () => {
+    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
+    localStorage.setItem("theme", JSON.stringify(!darkTheme));
+  };
+
+  useEffect(() => {
+    const themeJSON = localStorage.getItem("theme");
+    if (themeJSON) {
+      setDarkTheme(JSON.parse(themeJSON));
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="log-in" element={<LogInPage setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="home" element={<HomePage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} />
-        <Route path="journal" element={<JournalPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
-        <Route path="mood-form" element={<MoodFormPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
-        <Route path="mood-graph" element={<MoodGraphPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>} /> 
-        <Route path="mood-information" element={<MoodHubPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>}/>
-        <Route path="*" element={<NotFoundPage  isLoggedIn={isLoggedIn}/>} /> 
+        <Route
+          path="log-in"
+          element={<LogInPage setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="home"
+          element={
+            <HomePage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route
+          path="journal"
+          element={
+            <JournalPage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route
+          path="mood-form"
+          element={
+            <MoodFormPage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route
+          path="mood-graph"
+          element={
+            <MoodGraphPage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route
+          path="mood-boosters"
+          element={
+            <MoodBoosterPage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route
+          path="mood-information"
+          element={
+            <MoodHubPage
+              isLoggedIn={isLoggedIn}
+              handleLogout={handleLogout}
+              darkTheme={darkTheme}
+              handleTheme={handleTheme}
+            />
+          }
+        />
+        <Route path="*" element={<NotFoundPage isLoggedIn={isLoggedIn} />} />
       </Routes>
     </BrowserRouter>
   );

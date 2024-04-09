@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import MoodForm from "../../components/MoodForm/MoodForm";
 import "./MoodFormPage.scss";
 
-export default function MoodFormPage({ setIsLoggedIn, isLoggedIn }) {
-  const [darkTheme, setDarkTheme] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-  };
-
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
+export default function MoodFormPage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const themeJSON = localStorage.getItem("theme");
-    if (themeJSON) {
-      setDarkTheme(JSON.parse(themeJSON));
-    }
   }, []);
 
   return (

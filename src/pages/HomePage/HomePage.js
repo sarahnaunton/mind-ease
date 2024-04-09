@@ -8,19 +8,13 @@ import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
 import journal from "../../assets/icons/journal-50.png";
+import rocket from "../../assets/icons/rocket.png"
 import info from "../../assets/icons/info.png";
 import "./HomePage.scss";
 
-export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
+export default function HomePage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
   const [userData, setUserData] = useState(null);
-  const [darkTheme, setDarkTheme] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      getUserData();
-    }
-  }, [isLoggedIn]);
 
   const getUserData = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -41,23 +35,9 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-    setUserData(null);
-  };
-
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
-
   useEffect(() => {
+    getUserData();
     window.scrollTo(0, 0);
-    const themeJSON = localStorage.getItem("theme");
-    if (themeJSON) {
-      setDarkTheme(JSON.parse(themeJSON));
-    }
   }, []);
 
   return (
@@ -112,6 +92,17 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                     >
                       <HomePageArticle darkTheme={darkTheme} icon={journal}>
                         Mood Journal
+                      </HomePageArticle>
+                    </div>
+                  </Link>
+                  <Link to="/mood-boosters" className="home__link">
+                    <div
+                      className={`home__article home__article--grey ${
+                        darkTheme ? "home__article--grey--dark" : ""
+                      }`}
+                    >
+                      <HomePageArticle darkTheme={darkTheme} icon={rocket}>
+                        Mood Booster
                       </HomePageArticle>
                     </div>
                   </Link>

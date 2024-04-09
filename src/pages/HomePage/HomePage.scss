@@ -99,6 +99,22 @@
       }
     }
 
+    &--grey {
+      background-color: $color-dark-background-senary;
+
+      &:hover {
+        outline: 5px solid $color-border-primary;
+      }
+
+      &--dark {
+        background-color: $color-dark-background-secondary;
+
+        &:hover {
+          outline: 5px solid $color-dark-border-primary;
+        }
+      }
+    }
+
     &--navy {
       background-color: $color-dark-background-quinary;
 

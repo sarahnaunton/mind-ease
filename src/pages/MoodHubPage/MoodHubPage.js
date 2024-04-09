@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
@@ -7,26 +7,11 @@ import BurnOutManagement from "../../components/BurnOutManagement/BurnOutManagem
 import BurnOutResources from "../../components/BurnOutResources/BurnOutResources";
 import "./MoodHubPage.scss";
 
-export default function MoodHubPage({ setIsLoggedIn, isLoggedIn }) {
-  const [darkTheme, setDarkTheme] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-  };
+export default function MoodHubPage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const themeJSON = localStorage.getItem("theme");
-    if (themeJSON) {
-      setDarkTheme(JSON.parse(themeJSON));
-    }
   }, []);
-
-  const handleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-    localStorage.setItem("theme", JSON.stringify(!darkTheme));
-  };
 
   return (
     <>

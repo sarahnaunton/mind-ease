@@ -101,7 +101,6 @@ export default function JournalForm({
             id="entry"
             value={formData.entry}
             onChange={handleChange}
-            placeholder="Write your journal entry here..."
           ></textarea>
         </fieldset>
         {formError.entry && (
@@ -124,7 +123,6 @@ export default function JournalForm({
             id="gratitude"
             value={formData.gratitude}
             onChange={handleChange}
-            placeholder="Write your daily gratitude here..."
           ></textarea>
         </fieldset>
         {formError.gratitude && (
