@@ -41,6 +41,7 @@ export default function MoodForm({ darkTheme }) {
 
     event.preventDefault();
     setFormSubmitted(false);
+    setErrorMessage(false);
 
     const score = Object.values(responses).reduce(
       (total, value) => total + parseInt(value),
@@ -76,8 +77,7 @@ export default function MoodForm({ darkTheme }) {
       setFormSubmitted(true);
       navigate("/mood-graph");
     } catch (error) {
-      setErrorMessage(true);
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -124,12 +124,7 @@ export default function MoodForm({ darkTheme }) {
             <div className="mood-form__button">
               <Button darkTheme={darkTheme}>Submit</Button>
             </div>
-            {errorMessage && (
-              <p className="mood-form__error">
-                {" "}
-                Something went wrong, please try again later.
-              </p>
-            )}
+            {errorMessage && <p className="mood-form__error">{errorMessage}</p>}
             {successMessage && (
               <p
                 className={`mood-form__success ${

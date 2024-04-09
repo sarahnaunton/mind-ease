@@ -4,7 +4,11 @@ import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./JournalForm.scss";
 
-export default function JournalForm({ getJournalEntries, closeAddModal, darkTheme }) {
+export default function JournalForm({
+  getJournalEntries,
+  closeAddModal,
+  darkTheme,
+}) {
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
@@ -23,6 +27,8 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
 
     event.preventDefault();
     setFormSubmitted(false);
+    setErrorMessage(false);
+    setFormError({});
 
     let formValid = true;
     const error = {};
@@ -62,8 +68,7 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
       });
       closeAddModal();
     } catch (error) {
-      setErrorMessage(true);
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -128,19 +133,13 @@ export default function JournalForm({ getJournalEntries, closeAddModal, darkThem
         <div className="journal-form__button">
           <Button darkTheme={darkTheme}>Submit</Button>
         </div>
-        {errorMessage && (
-          <p className="journal-form__error">
-            {" "}
-            Something went wrong, please try again later.
-          </p>
-        )}
+        {errorMessage && <p className="journal-form__error">{errorMessage}</p>}
         {successMessage && (
           <p
             className={`journal-form__success ${
               darkTheme ? "journal-form__sucess--dark" : ""
             }`}
           >
-            {" "}
             Successful!
           </p>
         )}

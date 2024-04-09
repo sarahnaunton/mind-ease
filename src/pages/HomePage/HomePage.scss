@@ -119,4 +119,9 @@
   &__link {
     text-decoration: none;
   }
+
+  &__error {
+    @include body-small-text($color-text-error);
+    text-align: center;
+  }
 }

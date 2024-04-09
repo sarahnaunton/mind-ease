@@ -58,8 +58,13 @@
     background-color: $color-background-secondary;
 
     &--dark {
-        border-color: $color-dark-border-quaternary;
-        background-color: $color-dark-background-senary;
+      border-color: $color-dark-border-quaternary;
+      background-color: $color-dark-background-senary;
     }
+  }
+
+  &__error {
+    @include body-small-text($color-text-error);
+    text-align: center;
   }
 }

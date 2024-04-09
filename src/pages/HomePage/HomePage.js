@@ -14,6 +14,7 @@ import "./HomePage.scss";
 export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
   const [userData, setUserData] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -34,8 +35,9 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
         }
       );
       setUserData(data);
+      setErrorMessage(false);
     } catch (error) {
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -126,6 +128,7 @@ export default function HomePage({ isLoggedIn, setIsLoggedIn }) {
                   </Link>
                 </div>
               </section>
+              {errorMessage && <p className="home__error">{errorMessage}</p>}
             </div>
           </main>
         </>

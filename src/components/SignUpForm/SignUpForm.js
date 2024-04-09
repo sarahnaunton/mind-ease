@@ -93,8 +93,7 @@ export default function SignUpForm() {
         });
         navigate("/log-in");
       } catch (error) {
-        setErrorMessage(true);
-        console.error(error);
+        setErrorMessage(error.response.data.error);
       }
     };
 
@@ -207,8 +206,7 @@ export default function SignUpForm() {
       </div>
       {errorMessage && (
         <p className="form__error">
-          {" "}
-          Something went wrong, please try again later.
+          {errorMessage}
         </p>
       )}
       {successMessage && (

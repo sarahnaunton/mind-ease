@@ -13,6 +13,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
   const [darkTheme, setDarkTheme] = useState(false);
   const [journalEntries, setJournalEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -40,8 +41,9 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
         }
       );
       setJournalEntries(data);
+      setErrorMessage(false);
     } catch (error) {
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -105,6 +107,7 @@ export default function JournalPage({ setIsLoggedIn, isLoggedIn }) {
                 journalEntries={journalEntries}
                 darkTheme={darkTheme}
               />
+              {errorMessage && <p className="journal__error">{errorMessage}</p>}
             </div>
           </main>
         </>

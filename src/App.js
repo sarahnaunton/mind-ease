@@ -8,9 +8,8 @@ import JournalPage from "./pages/JournalPage/JournalPage";
 import MoodFormPage from "./pages/MoodFormPage/MoodFormPage";
 import MoodGraphPage from "./pages/MoodGraphPage/MoodGraphPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import "./App.scss";
 import MoodHubPage from "./pages/MoodHubPage/MoodHubPage";
-
+import "./App.scss";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

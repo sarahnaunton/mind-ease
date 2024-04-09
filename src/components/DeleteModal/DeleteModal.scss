@@ -57,4 +57,9 @@
   &__button {
     @include flex(row, center, center);
   }
+
+  &__error {
+    @include body-small-text($color-text-error);
+    text-align: center;
+  }
 }

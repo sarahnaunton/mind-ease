@@ -15,6 +15,7 @@ Chart.register(CategoryScale);
 export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
   const [chartData, setChartData] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const getChartData = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -28,8 +29,9 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
         }
       );
       setChartData(data);
+      setErrorMessage(false);
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -92,8 +94,10 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
                   </p>
                 </div>
               </section>
-              {!chartData && <GraphNoAnswer darkTheme={darkTheme} />}
-              {chartData && chartData.length < 2 && (
+              {chartData && chartData.length === 0 && (
+                <GraphNoAnswer darkTheme={darkTheme} />
+              )}
+              {chartData && chartData.length > 0 && chartData.length < 2 && (
                 <GraphOneAnswer darkTheme={darkTheme} chartData={chartData} />
               )}
               {chartData && chartData.length >= 2 && (
@@ -108,6 +112,7 @@ export default function MoodGraphPage({ setIsLoggedIn, isLoggedIn }) {
                   </div>
                 </>
               )}
+              {errorMessage && <p className="graph-page__error">{errorMessage}</p>}
             </div>
           </main>
         </>

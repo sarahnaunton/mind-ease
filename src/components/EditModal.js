@@ -30,15 +30,16 @@ export default function EditModal({
           },
         }
       );
-      setFormData({entry: data.entry, gratitude: data.gratitude })
+      setFormData({ entry: data.entry, gratitude: data.gratitude });
+      setErrorMessage(false);
     } catch (error) {
-      console.error(error);
+        setErrorMessage(error.response.data.error);
     }
   };
 
   useEffect(() => {
     getJournalEntry();
-  },[id])
+  }, [id]);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -49,11 +50,13 @@ export default function EditModal({
 
     event.preventDefault();
     setFormSubmitted(false);
+    setErrorMessage(false);
+    setFormError({});
 
     let formValid = true;
     const error = {};
 
-    if (!formData.entry && !formData.gratitude) {
+    if (!formData.entry || !formData.gratitude) {
       formValid = false;
       error.form =
         "Please edit either your journal entry or gratitude, or both";
@@ -80,7 +83,7 @@ export default function EditModal({
       setFormSubmitted(true);
       closeEditModal();
     } catch (error) {
-      console.error(error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -145,19 +148,13 @@ export default function EditModal({
         <div className="journal-form__button">
           <Button darkTheme={darkTheme}>Submit</Button>
         </div>
-        {errorMessage && (
-          <p className="journal-form__error">
-            {" "}
-            Something went wrong, please try again later.
-          </p>
-        )}
+        {errorMessage && <p className="journal-form__error">{errorMessage}</p>}
         {successMessage && (
           <p
             className={`journal-form__success ${
               darkTheme ? "journal-form__sucess--dark" : ""
             }`}
           >
-            {" "}
             Successful!
           </p>
         )}

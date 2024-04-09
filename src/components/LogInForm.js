@@ -58,8 +58,7 @@ export default function LogInForm({setIsLoggedIn}) {
         });
         navigate("/home");
       } catch (error) {
-        setErrorMessage(true);
-        console.error(error);
+        setErrorMessage(error.response.data.error);
       }
     };
 
@@ -110,13 +109,11 @@ export default function LogInForm({setIsLoggedIn}) {
       </div>
       {errorMessage && (
         <p className="form__error">
-          {" "}
-          Something went wrong, please try again later.
+          {errorMessage}
         </p>
       )}
       {successMessage && (
         <p className="form__text form__text--success">
-          {" "}
           Successful! Directing you to the log in page.
         </p>
       )}
