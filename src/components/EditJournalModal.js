@@ -4,7 +4,7 @@ import Button from "./Button/Button";
 import close from "../assets/icons/close-25.png";
 import "./JournalForm/JournalForm.scss";
 
-export default function EditModal({
+export default function EditJournalModal({
   id,
   closeEditModal,
   darkTheme,

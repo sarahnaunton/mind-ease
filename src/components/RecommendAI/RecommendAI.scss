@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.recommend {
+  &__heading {
+    @include heading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__button {
+    @include flex(row, center, center);
+  }
+
+  &__error {
+    @include body-small-text($color-text-error);
+    text-align: center;
+  }
+}

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
@@ -8,35 +7,19 @@ import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
 import journal from "../../assets/icons/journal-50.png";
-import rocket from "../../assets/icons/rocket.png"
+import rocket from "../../assets/icons/rocket.png";
 import info from "../../assets/icons/info.png";
 import "./HomePage.scss";
 
-export default function HomePage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
-  const [userData, setUserData] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(false);
-
-  const getUserData = async () => {
-    const authToken = localStorage.getItem("authToken");
-
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/users`,
-        {
-          headers: {
-            authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserData(data);
-      setErrorMessage(false);
-    } catch (error) {
-      setErrorMessage(error.response.data.error);
-    }
-  };
-
+export default function HomePage({
+  isLoggedIn,
+  handleLogout,
+  darkTheme,
+  handleTheme,
+  userData,
+  errorMessage,
+}) {
   useEffect(() => {
-    getUserData();
     window.scrollTo(0, 0);
   }, []);
 

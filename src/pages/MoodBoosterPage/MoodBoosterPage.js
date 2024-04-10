@@ -4,14 +4,18 @@ import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import BoosterForm from "../../components/BoosterForm/BoosterForm";
 import BoosterEntries from "../../components/BoosterEntries";
+import BurnOutResources from "../../components/BurnOutResources/BurnOutResources";
 import add from "../../assets/icons/add-50.png";
 import "./MoodBoosterPage.scss";
+import RecommendAI from "../../components/RecommendAI/RecommendAI";
 
 export default function MoodBoosterPage({
   isLoggedIn,
   handleLogout,
   handleTheme,
   darkTheme,
+  userData,
+  chartData,
 }) {
   const [boosterEntries, setBoosterEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -72,7 +76,28 @@ export default function MoodBoosterPage({
                   darkTheme ? "booster__text--dark" : ""
                 }`}
               >
-                Description of the page
+                This page is where we celebrate the simple joys that brighten
+                our days.
+              </p>
+              <p
+                className={`booster__text ${
+                  darkTheme ? "booster__text--dark" : ""
+                }`}
+              >
+                In times of burnout, it's especially crucial to have a curated
+                list of activities that bring us joy. Even when we're least
+                inclined to engage in them, these mood boosters can serve as
+                helpful prompts, gently nudging us back towards a state of
+                balance and contentment.
+              </p>
+              <p
+                className={`booster__text ${
+                  darkTheme ? "booster__text--dark" : ""
+                }`}
+              >
+                These boosters can encompass a variety of activities, ranging
+                from the calming practice of yoga to the peacefulness of a
+                nature walk, or even the immersion of a good book.
               </p>
               <div
                 onClick={handleAddModal}
@@ -101,6 +126,15 @@ export default function MoodBoosterPage({
                 boosterEntries={boosterEntries}
                 darkTheme={darkTheme}
               />
+              {boosterEntries && userData && chartData && (
+                <RecommendAI
+                  darkTheme={darkTheme}
+                  boosterEntries={boosterEntries}
+                  userData={userData}
+                  chartData={chartData}
+                />
+              )}
+              <BurnOutResources darkTheme={darkTheme} />
               {errorMessage && <p className="booster__error">{errorMessage}</p>}
             </div>
           </main>

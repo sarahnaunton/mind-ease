@@ -2,7 +2,8 @@ import { useState } from "react";
 import DeleteBoosterModal from "../DeleteBoosterModal";
 import edit from "../../assets/icons/edit-25.png";
 import deleteIcon from "../../assets/icons/delete-25.png";
-
+import EditBoosterModal from "../EditBoosterModal";
+import "./BoosterEntry.scss";
 
 export default function BoosterEntry({
   id,
@@ -30,37 +31,37 @@ export default function BoosterEntry({
   };
   return (
     <>
-      <article className={`entry ${darkTheme ? "entry--dark" : ""}`}>
+      <article className={`booster-entry ${darkTheme ? "booster-entry--dark" : ""}`}>
         <p
-          className={`entry__subheading ${
-            darkTheme ? "entry__subheading--dark" : ""
+          className={`booster-entry__subheading ${
+            darkTheme ? "booster-entry__subheading--dark" : ""
           }`}
         >
           {activity}
         </p>
-        <div className="entry__icons">
+        <div className="booster-entry__icons">
           <img
             src={edit}
             alt="Edit Icon"
-            className="entry__icon"
+            className="booster-entry__icon"
             onClick={handleEditModal}
           />
           <img
             src={deleteIcon}
             alt="Delete Icon"
-            className="entry__icon"
+            className="booster-entry__icon"
             onClick={handleDeleteModal}
           />
         </div>
       </article>
-      {/* {isEditModalOpen && (
+      {isEditModalOpen && (
         <EditBoosterModal
           id={id}
           closeEditModal={closeEditModal}
           getBoosterEntries={getBoosterEntries}
           darkTheme={darkTheme}
         />
-      )} */}
+      )}
       {isDeleteModalOpen && (
         <DeleteBoosterModal
           id={id}

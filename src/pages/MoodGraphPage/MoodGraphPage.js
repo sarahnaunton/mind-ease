@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
@@ -12,30 +11,15 @@ import "./MoodGraphPage.scss";
 
 Chart.register(CategoryScale);
 
-export default function MoodGraphPage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
-  const [chartData, setChartData] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(false);
-
-  const getChartData = async () => {
-    const authToken = localStorage.getItem("authToken");
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/scores`,
-        {
-          headers: {
-            authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setChartData(data);
-      setErrorMessage(false);
-    } catch (error) {
-      setErrorMessage(error.response.data.error);
-    }
-  };
-
+export default function MoodGraphPage({
+  isLoggedIn,
+  handleLogout,
+  darkTheme,
+  handleTheme,
+  chartData,
+  errorMessage,
+}) {
   useEffect(() => {
-    getChartData();
     window.scrollTo(0, 0);
   }, []);
 
@@ -97,7 +81,9 @@ export default function MoodGraphPage({ isLoggedIn, handleLogout, darkTheme, han
                   </div>
                 </>
               )}
-              {errorMessage && <p className="graph-page__error">{errorMessage}</p>}
+              {errorMessage && (
+                <p className="graph-page__error">{errorMessage}</p>
+              )}
             </div>
           </main>
         </>

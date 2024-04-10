@@ -1,7 +1,8 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.journal-entry {
+.booster-entry {
+  @include flex(row, space-between, start);
   background-color: $color-background-secondary;
   border: 3px solid $color-border-quaternary;
   border-radius: 20px;
@@ -9,13 +10,8 @@
   margin-bottom: 1rem;
 
   @include tablet-and-desktop {
-    margin: auto;
-    width: 48%;
-  }
-
-  @include desktop {
-    width: 30%;
-    margin: auto;
+    @include flex(row, start, start);
+    gap: 3rem;
   }
 
   &--dark {
@@ -41,7 +37,7 @@
   &__date {
     @include body-small-text($color-text-quaternary);
     margin-top: 0;
-    
+
     &--dark {
       color: $color-dark-text-tertiary;
     }
@@ -57,7 +53,8 @@
   }
 
   &__icons {
-    @include flex(row, space-between, start);
+    @include flex(row, start, start);
+    gap: 1rem;
     cursor: pointer;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import EditModal from "../EditModal";
+import DeleteJournalModal from "../DeleteJournalModal/DeleteJournalModal";
+import EditJournalModal from "../EditJournalModal";
 import edit from "../../assets/icons/edit-25.png";
 import deleteIcon from "../../assets/icons/delete-25.png";
 import "./JournalEntry.scss";
@@ -35,49 +35,49 @@ export default function JournalEntry({
 
   return (
     <>
-      <article className={`entry ${darkTheme ? "entry--dark" : ""}`}>
-        <div className="entry__row">
+      <article className={`journal-entry ${darkTheme ? "entry--dark" : ""}`}>
+        <div className="journal-entry__row">
           <p
-            className={`entry__subheading ${
-              darkTheme ? "entry__subheading--dark" : ""
+            className={`journal-entry__subheading ${
+              darkTheme ? "journal-entry__subheading--dark" : ""
             }`}
           >
             Entry
           </p>
-          <p className={`entry__date ${darkTheme ? "entry__date--dark" : ""}`}>
+          <p className={`journal-entry__date ${darkTheme ? "journal-entry__date--dark" : ""}`}>
             {formattedDate}
           </p>
         </div>
-        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>
+        <p className={`journal-entry__text ${darkTheme ? "journal-entry__text--dark" : ""}`}>
           {entry}
         </p>
         <p
-          className={`entry__subheading ${
-            darkTheme ? "entry__subheading--dark" : ""
+          className={`journal-entry__subheading ${
+            darkTheme ? "journal-entry__subheading--dark" : ""
           }`}
         >
           Gratitude
         </p>
-        <p className={`entry__text ${darkTheme ? "entry__text--dark" : ""}`}>
+        <p className={`journal-entry__text ${darkTheme ? "journal-entry__text--dark" : ""}`}>
           {gratitude}
         </p>
-        <div className="entry__icons">
+        <div className="journal-entry__icons">
           <img
             src={edit}
             alt="Edit Icon"
-            className="entry__icon"
+            className="journal-entry__icon"
             onClick={handleEditModal}
           />
           <img
             src={deleteIcon}
             alt="Delete Icon"
-            className="entry__icon"
+            className="journal-entry__icon"
             onClick={handleDeleteModal}
           />
         </div>
       </article>
       {isEditModalOpen && (
-        <EditModal
+        <EditJournalModal
           id={id}
           closeEditModal={closeEditModal}
           getJournalEntries={getJournalEntries}
@@ -85,7 +85,7 @@ export default function JournalEntry({
         />
       )}
       {isDeleteModalOpen && (
-        <DeleteModal
+        <DeleteJournalModal
           id={id}
           darkTheme={darkTheme}
           closeDeleteModal={closeDeleteModal}

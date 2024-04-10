@@ -108,7 +108,7 @@ export default function BurnOutManagement({ darkTheme }) {
         >
           Also remember to use your strategies in your{" "}
           <Link
-            to="/home"
+            to="/mood-boosters"
             className={`management__link ${
               darkTheme ? "management__link--dark" : ""
             }`}

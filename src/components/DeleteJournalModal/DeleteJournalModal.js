@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
-import "./DeleteModal.scss";
+import "./DeleteJournalModal.scss";
 
-export default function DeleteModal({
+export default function DeleteJournalModal({
   id,
   closeDeleteModal,
   getJournalEntries,
