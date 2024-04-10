@@ -13,18 +13,24 @@ export default function RecommendAI({
   const [recommendation, setRecomendation] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
 
-  //gives an array of booster activities
   const boosters = boosterEntries.map((booster) => {
     return booster.activity;
   });
 
-  //gives an array of user information
+  const currentDate = new Date();
+  const yearStarted = new Date(userData.year_started, 0);
+  const yearsExperience = currentDate.getFullYear() - yearStarted.getFullYear();
+
   const userInfo = {
     firstname: userData.first_name,
-    lastname: userData.last_name,
+    birthday: userData.date_of_birth,
+    occupation: userData.occupation,
+    jobRole: userData.role,
+    workSetting: userData.work_setting,
+    weeklyWorkingHours: userData.week_working_hours,
+    yearsExperience,
   };
 
-  //gives an array for score with the score and the category
   const score = chartData.map((data) => {
     return [data.score, data.created_at];
   });
@@ -34,7 +40,7 @@ export default function RecommendAI({
     messages: [
       {
         role: "user",
-        content: `for a mental health well-being app, please can you suggest personalised recommendations for strategies and activities for the user to improve their mood based on the following information : the users information ${userInfo}, activities which they enjoy and makes them happy ${boosters}, their oldenburg burnout inventory score over time ${score}. Please can your answer introduction be 'here are some personalized recommendations for strategies and activities to help you improve your mood and well-being'. Please can the response use the activities they have already listed, but also suggest some new activities based on what they already like. Please can the text in the response be in 2nd person and mention their name ${userData.first_name} once. Please can the response have suggestions listed in the format of bullet points and also 5 bullet points. Please can the response end in a sentance reminding them of the importance of mental well-being and something encouraging. Please format the response as markdown. 
+        content: `for a mental health well-being app, please can you suggest personalised recommendations for strategies and activities for the user to improve their mood based on the following information:  1) the users personal and work information included here ${userInfo}, 2) activities which they enjoy and makes them happy included here ${boosters}, 3) their oldenburg burnout inventory scores ${score}. Please can the response specifically refer to the information provided including referring to their working life as given in the ${userInfo}, their oldenburg burnout inventory score and its pattern over time ${score}, activities they have already listed ${boosters}, but also suggest some new activities based on what they already like. Please can your answer introduction include their name ${userInfo.firstname} and a generic sentance about the potential challenges faced of working in their occupation ${userInfo.occupation} and role ${userInfo.jobRole} and then say 'here are some personalised recommendations for strategies and activities to help you improve your mood and well-being'. Please can the text in the response be in 2nd person. Please can the response have suggestions listed in the format of bullet points. Please can there be 6 bullet points. Please can the response end 'Remember, prioritising your mental well-being is essential for overall health and happiness. Keep taking small steps towards self-care and seeking support when needed. You are on the right path towards a healthier mindset. You've got this ${userInfo.firstname}.' Please ensure english spelling with 's' rather than 'z'. Please format the response as markdown. 
 
       `,
       },
@@ -55,7 +61,6 @@ export default function RecommendAI({
           },
         }
       );
-    console.log(data.choices[0].message.content)
       const generatedMessage = data.choices[0].message.content;
       setRecomendation(generatedMessage);
       setErrorMessage(false);
@@ -77,7 +82,11 @@ export default function RecommendAI({
       <div className="recommend__text">
         {recommendation && <Markdown>{recommendation}</Markdown>}
       </div>
-      {errorMessage && <p className="journal-form__error">Something went wrong, please try again</p>}
+      {errorMessage && (
+        <p className="journal-form__error">
+          Something went wrong, please try again
+        </p>
+      )}
     </section>
   );
 }

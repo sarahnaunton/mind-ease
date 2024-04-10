@@ -12,6 +12,12 @@ export default function SignUpForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    birthday: "",
+    occupation: "",
+    role: "",
+    experience: "",
+    setting: "",
+    hours: "",
   });
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
@@ -203,7 +209,8 @@ export default function SignUpForm() {
       <p>
         You are not required to provide the following information, but any
         details you share will help us better understand your needs and
-        preferences, and help us suggest more personalised strategies to boost your mood.
+        preferences, and help us suggest more personalised strategies to boost
+        your mood.
       </p>
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="birthday">
@@ -215,7 +222,7 @@ export default function SignUpForm() {
           id="birthday"
           name="birthday"
           onChange={handleChange}
-          //   value={formData.birthday}
+          value={formData.birthday}
         />
       </fieldset>
       <fieldset className="form__fieldset">
@@ -228,7 +235,7 @@ export default function SignUpForm() {
           id="occupation"
           name="occupation"
           onChange={handleChange}
-          //   value={formData.occupation}
+          value={formData.occupation}
         />
       </fieldset>
       <fieldset className="form__fieldset">
@@ -241,21 +248,20 @@ export default function SignUpForm() {
           id="role"
           name="role"
           onChange={handleChange}
-          //   value={formData.role}
+          value={formData.role}
         />
       </fieldset>
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="experience">
-          Years of Experience
+          What year did you start your current occupation?
         </label>
         <input
           className="form__input"
-          type="text"
+          type="number"
           id="experience"
           name="experience"
           onChange={handleChange}
-          placeholder="How many  do you typically work per week?"
-          //   value={formData.hours}
+          value={formData.experience}
         />
       </fieldset>
       <fieldset className="form__fieldset">
@@ -269,7 +275,7 @@ export default function SignUpForm() {
           name="setting"
           onChange={handleChange}
           placeholder="Office, Remote, Healthcare, Education"
-          //   value={formData.setting}
+          value={formData.setting}
         />
       </fieldset>
       <fieldset className="form__fieldset">
@@ -278,12 +284,12 @@ export default function SignUpForm() {
         </label>
         <input
           className="form__input"
-          type="text"
+          type="number"
           id="hours"
           name="hours"
           onChange={handleChange}
           placeholder="How many hours do you typically work per week?"
-          //   value={formData.hours}
+          value={formData.hours}
         />
       </fieldset>
       <div className="form__button">
