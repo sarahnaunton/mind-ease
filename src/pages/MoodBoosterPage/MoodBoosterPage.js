@@ -97,9 +97,6 @@ export default function MoodBoosterPage() {
                 from the calming practice of yoga to the peacefulness of a
                 nature walk, or even the immersion of a good book.
               </p>
-              {boosterEntries && boosterEntries.length > 0 && (
-                <DailyBooster boosterEntries={boosterEntries} />
-              )}
               <div
                 onClick={handleAddModal}
                 className={`booster__add ${
@@ -131,6 +128,9 @@ export default function MoodBoosterPage() {
                   userData={userData}
                   chartData={chartData}
                 />
+              )}
+              {boosterEntries && boosterEntries.length > 0 && (
+                <DailyBooster boosterEntries={boosterEntries} />
               )}
               <HappyResources />
               {errorMessage && <p className="booster__error">{errorMessage}</p>}

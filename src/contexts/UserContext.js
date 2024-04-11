@@ -30,7 +30,7 @@ function UserProvider(props) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ userData, errorMessage }}>
+    <UserContext.Provider value={{ userData, getUserData, errorMessage }}>
       {props.children}
     </UserContext.Provider>
   );
