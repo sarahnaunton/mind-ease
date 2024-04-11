@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
+import DailyBooster from "../../components/DailyBooster/DailyBooster";
 import BoosterForm from "../../components/BoosterForm/BoosterForm";
 import BoosterEntries from "../../components/BoosterEntries";
-import BurnOutResources from "../../components/BurnOutResources/BurnOutResources";
+import RecommendAI from "../../components/RecommendAI/RecommendAI";
+import HappyResources from "../../components/HappyResouces";
 import add from "../../assets/icons/add-50.png";
 import "./MoodBoosterPage.scss";
-import RecommendAI from "../../components/RecommendAI/RecommendAI";
+
 
 export default function MoodBoosterPage({
   isLoggedIn,
@@ -99,6 +101,9 @@ export default function MoodBoosterPage({
                 from the calming practice of yoga to the peacefulness of a
                 nature walk, or even the immersion of a good book.
               </p>
+              {boosterEntries && (
+                <DailyBooster boosterEntries={boosterEntries} darkTheme={darkTheme}/>
+              )}
               <div
                 onClick={handleAddModal}
                 className={`booster__add ${
@@ -134,7 +139,7 @@ export default function MoodBoosterPage({
                   chartData={chartData}
                 />
               )}
-              <BurnOutResources darkTheme={darkTheme} />
+              <HappyResources darkTheme={darkTheme} />
               {errorMessage && <p className="booster__error">{errorMessage}</p>}
             </div>
           </main>
