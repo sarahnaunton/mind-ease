@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,7 +13,9 @@ import mhFoundation from "../../assets/images/mental-health-foundation-logo.png"
 import nhs from "../../assets/images/NHS.png";
 import "./BurnOutResources.scss";
 
-export default function BurnOutResources({ darkTheme }) {
+export default function BurnOutResources() {
+  const { darkTheme } = useContext(ThemeContext);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -38,7 +42,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={mhMatters} darkTheme={darkTheme}>
+          <BurnOutResource image={mhMatters}>
             Mental Health UK
           </BurnOutResource>
         </Link>
@@ -48,7 +52,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={nhs} darkTheme={darkTheme}>
+          <BurnOutResource image={nhs}>
             NHS Every Mind Matters
           </BurnOutResource>
         </Link>
@@ -59,7 +63,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={mind} darkTheme={darkTheme}>
+          <BurnOutResource image={mind}>
             Mind
           </BurnOutResource>
         </Link>
@@ -70,7 +74,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={rethink} darkTheme={darkTheme}>
+          <BurnOutResource image={rethink}>
             Rething Mental Illness
           </BurnOutResource>
         </Link>
@@ -80,7 +84,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={mhFoundation} darkTheme={darkTheme}>
+          <BurnOutResource image={mhFoundation}>
             Mental Health Foundation
           </BurnOutResource>
         </Link>
@@ -90,7 +94,7 @@ export default function BurnOutResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={calm} darkTheme={darkTheme}>
+          <BurnOutResource image={calm}>
             Campaign Against Living Miserably
           </BurnOutResource>
         </Link>

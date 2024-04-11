@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { UserContext } from "../../contexts/UserContext";
+import { ChartContext } from "../../contexts/ChartContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import DailyBooster from "../../components/DailyBooster/DailyBooster";
@@ -10,15 +14,11 @@ import HappyResources from "../../components/HappyResouces";
 import add from "../../assets/icons/add-50.png";
 import "./MoodBoosterPage.scss";
 
-
-export default function MoodBoosterPage({
-  isLoggedIn,
-  handleLogout,
-  handleTheme,
-  darkTheme,
-  userData,
-  chartData,
-}) {
+export default function MoodBoosterPage() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { darkTheme } = useContext(ThemeContext);
+  const { userData } = useContext(UserContext);
+  const { chartData } = useContext(ChartContext);
   const [boosterEntries, setBoosterEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -59,11 +59,7 @@ export default function MoodBoosterPage({
       {!isLoggedIn && <LogInMessage />}
       {isLoggedIn && (
         <>
-          <Navigation
-            handleLogout={handleLogout}
-            darkTheme={darkTheme}
-            handleTheme={handleTheme}
-          />
+          <Navigation />
           <main className={`booster ${darkTheme ? "booster--dark" : ""}`}>
             <div className="booster__container">
               <h1
@@ -101,8 +97,8 @@ export default function MoodBoosterPage({
                 from the calming practice of yoga to the peacefulness of a
                 nature walk, or even the immersion of a good book.
               </p>
-              {boosterEntries && (
-                <DailyBooster boosterEntries={boosterEntries} darkTheme={darkTheme}/>
+              {boosterEntries && boosterEntries.length > 0 && (
+                <DailyBooster boosterEntries={boosterEntries} />
               )}
               <div
                 onClick={handleAddModal}
@@ -122,24 +118,21 @@ export default function MoodBoosterPage({
               {isAddModalOpen && (
                 <BoosterForm
                   closeAddModal={closeAddModal}
-                  darkTheme={darkTheme}
                   getBoosterEntries={getBoosterEntries}
                 />
               )}
               <BoosterEntries
                 getBoosterEntries={getBoosterEntries}
                 boosterEntries={boosterEntries}
-                darkTheme={darkTheme}
               />
               {boosterEntries && userData && chartData && (
                 <RecommendAI
-                  darkTheme={darkTheme}
                   boosterEntries={boosterEntries}
                   userData={userData}
                   chartData={chartData}
                 />
               )}
-              <HappyResources darkTheme={darkTheme} />
+              <HappyResources />
               {errorMessage && <p className="booster__error">{errorMessage}</p>}
             </div>
           </main>

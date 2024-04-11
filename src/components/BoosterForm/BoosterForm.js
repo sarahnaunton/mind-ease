@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import axios from "axios";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./BoosterForm.scss";
 
-export default function BoosterForm({ closeAddModal, darkTheme, getBoosterEntries }) {
+export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
+  const { darkTheme } = useContext(ThemeContext);
+
   const [formData, setFormData] = useState({
-    activity: ""
+    activity: "",
   });
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
@@ -67,7 +70,12 @@ export default function BoosterForm({ closeAddModal, darkTheme, getBoosterEntrie
         onSubmit={handleForm}
         className={`booster-form ${darkTheme ? "booster-form--dark" : ""}`}
       >
-        <img src={close} alt="Close Icon" onClick={closeAddModal} className="booster-form__icon"/>
+        <img
+          src={close}
+          alt="Close Icon"
+          onClick={closeAddModal}
+          className="booster-form__icon"
+        />
         <fieldset className="booster-form__fieldset">
           <label
             htmlFor="booster"
@@ -83,15 +91,15 @@ export default function BoosterForm({ closeAddModal, darkTheme, getBoosterEntrie
             value={formData.activity}
             onChange={handleChange}
             className={`booster-form__input ${
-                darkTheme ? "booster-form__input--dark" : ""
-              }`}
+              darkTheme ? "booster-form__input--dark" : ""
+            }`}
           ></textarea>
         </fieldset>
         {formError.activity && (
           <p className="booster-form__error">{formError.activity}</p>
         )}
         <div className="booster-form__button">
-          <Button darkTheme={darkTheme}>Submit</Button>
+          <Button>Submit</Button>
         </div>
         {errorMessage && <p className="booster-form__error">{errorMessage}</p>}
         {successMessage && (

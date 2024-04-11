@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./HomePageArticle.scss";
 
-export default function HomePageArticle({ children, icon, darkTheme }) {
+export default function HomePageArticle({ children, icon }) {
+  const { darkTheme } = useContext(ThemeContext);
   return (
     <>
       <article className="article">

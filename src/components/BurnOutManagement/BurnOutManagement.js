@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 import "./BurnOutManagement.scss";
 
-export default function BurnOutManagement({ darkTheme }) {
+export default function BurnOutManagement() {
+  const { darkTheme } = useContext(ThemeContext);
+
   return (
     <section className={`management ${darkTheme ? "management--dark" : ""}`}>
       <h2
@@ -113,7 +118,7 @@ export default function BurnOutManagement({ darkTheme }) {
               darkTheme ? "management__link--dark" : ""
             }`}
           >
-            Mood Booster
+            Mood Boosters
           </Link>
         </p>
       </div>

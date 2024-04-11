@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useNavigate } from "react-router-dom";
 import questions from "../../data/questions";
 import Button from "../Button/Button";
 import "./MoodForm.scss";
 
-export default function MoodForm({ darkTheme }) {
+export default function MoodForm() {
   const navigate = useNavigate();
+  const { darkTheme } = useContext(ThemeContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [responses, setResponses] = useState({});
   const [selectFieldValue, setSelectFieldValue] = useState("");
@@ -122,7 +124,7 @@ export default function MoodForm({ darkTheme }) {
               Please press the Submit button to finalise your responses.
             </p>
             <div className="mood-form__button">
-              <Button darkTheme={darkTheme}>Submit</Button>
+              <Button>Submit</Button>
             </div>
             {errorMessage && <p className="mood-form__error">{errorMessage}</p>}
             {successMessage && (
@@ -141,12 +143,12 @@ export default function MoodForm({ darkTheme }) {
       <div className="mood-form__buttons">
         {currentQuestionIndex > 0 && (
           <div className="mood-form__button" onClick={handlePrevious}>
-            <Button darkTheme={darkTheme}>Previous</Button>
+            <Button>Previous</Button>
           </div>
         )}
         {currentQuestionIndex < 16 && (
           <div className="mood-form__button" onClick={handleNext}>
-            <Button darkTheme={darkTheme}>Next</Button>
+            <Button>Next</Button>
           </div>
         )}
       </div>

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +12,7 @@ import positiveNews from "../assets/images/positive-news-logo-500.jpg";
 import rtbc from "../assets/images/rtbc.jpg";
 import BurnOutResource from "./BurnOutResource/BurnOutResource";
 
-export default function HappyResources({ darkTheme }) {
+export default function HappyResources() {
   const settings = {
     dots: false,
     infinite: true,
@@ -21,6 +23,7 @@ export default function HappyResources({ darkTheme }) {
     autoplaySpeed: 1000,
     cssEase: "linear",
   };
+  const { darkTheme } = useContext(ThemeContext);
   return (
     <section className={`resources ${darkTheme ? "resources--dark" : ""}`}>
       <h2
@@ -37,7 +40,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={goodgoodgood} darkTheme={darkTheme}>
+          <BurnOutResource image={goodgoodgood}>
             Good Good Good
           </BurnOutResource>
         </Link>
@@ -47,7 +50,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={optimist} darkTheme={darkTheme}>
+          <BurnOutResource image={optimist}>
             Optimist Daily
           </BurnOutResource>
         </Link>
@@ -58,7 +61,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={goodNews} darkTheme={darkTheme}>
+          <BurnOutResource image={goodNews}>
             Good News Network
           </BurnOutResource>
         </Link>
@@ -69,7 +72,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={positiveNews} darkTheme={darkTheme}>
+          <BurnOutResource image={positiveNews}>
             Positive News
           </BurnOutResource>
         </Link>
@@ -79,7 +82,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={rtbc} darkTheme={darkTheme}>
+          <BurnOutResource image={rtbc}>
             Reasons to be Cheerful
           </BurnOutResource>
         </Link>
@@ -89,7 +92,7 @@ export default function HappyResources({ darkTheme }) {
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <BurnOutResource image={happyNews} darkTheme={darkTheme}>
+          <BurnOutResource image={happyNews}>
             The Happy News
           </BurnOutResource>
         </Link>

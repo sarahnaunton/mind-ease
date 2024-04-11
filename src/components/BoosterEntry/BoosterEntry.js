@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import DeleteBoosterModal from "../DeleteBoosterModal";
 import edit from "../../assets/icons/edit-25.png";
 import deleteIcon from "../../assets/icons/delete-25.png";
 import EditBoosterModal from "../EditBoosterModal";
 import "./BoosterEntry.scss";
 
-export default function BoosterEntry({
-  id,
-  activity,
-  getBoosterEntries,
-  darkTheme,
-}) {
+export default function BoosterEntry({ id, activity, getBoosterEntries }) {
+  const { darkTheme } = useContext(ThemeContext);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -31,7 +28,9 @@ export default function BoosterEntry({
   };
   return (
     <>
-      <article className={`booster-entry ${darkTheme ? "booster-entry--dark" : ""}`}>
+      <article
+        className={`booster-entry ${darkTheme ? "booster-entry--dark" : ""}`}
+      >
         <p
           className={`booster-entry__subheading ${
             darkTheme ? "booster-entry__subheading--dark" : ""
@@ -59,13 +58,11 @@ export default function BoosterEntry({
           id={id}
           closeEditModal={closeEditModal}
           getBoosterEntries={getBoosterEntries}
-          darkTheme={darkTheme}
         />
       )}
       {isDeleteModalOpen && (
         <DeleteBoosterModal
           id={id}
-          darkTheme={darkTheme}
           closeDeleteModal={closeDeleteModal}
           getBoosterEntries={getBoosterEntries}
         />

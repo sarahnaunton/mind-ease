@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import "./NotFoundPage.scss";
 
-export default function NotFoundPage({ isLoggedIn }) {
+export default function NotFoundPage() {
+    const {isLoggedIn } = useContext(AuthContext);
+
   return (
     <>
       {!isLoggedIn && <LogInMessage />}

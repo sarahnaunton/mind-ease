@@ -29,6 +29,14 @@
     }
   }
 
+  &__subheading {
+    @include subheading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
   &__articles {
     @include tablet-and-desktop {
       @include flex(row, center, center);

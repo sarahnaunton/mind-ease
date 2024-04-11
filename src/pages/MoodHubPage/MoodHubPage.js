@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
@@ -7,7 +9,9 @@ import BurnOutManagement from "../../components/BurnOutManagement/BurnOutManagem
 import BurnOutResources from "../../components/BurnOutResources/BurnOutResources";
 import "./MoodHubPage.scss";
 
-export default function MoodHubPage({ isLoggedIn, handleLogout, darkTheme, handleTheme }) {
+export default function MoodHubPage() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { darkTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,11 +22,7 @@ export default function MoodHubPage({ isLoggedIn, handleLogout, darkTheme, handl
       {!isLoggedIn && <LogInMessage />}
       {isLoggedIn && (
         <>
-          <Navigation
-            handleLogout={handleLogout}
-            darkTheme={darkTheme}
-            handleTheme={handleTheme}
-          />
+          <Navigation />
           <main className={`hub ${darkTheme ? "hub--dark" : ""}`}>
             <div className="hub__container">
               <h1
@@ -40,10 +40,10 @@ export default function MoodHubPage({ isLoggedIn, handleLogout, darkTheme, handl
                   to complete mental, physical, and emotional exhaustion.
                 </p>
               </div>
-              <BurnOutCauses darkTheme={darkTheme} />
-              <BurnOutSigns darkTheme={darkTheme} />
-              <BurnOutManagement darkTheme={darkTheme} />
-              <BurnOutResources darkTheme={darkTheme} />
+              <BurnOutCauses />
+              <BurnOutSigns />
+              <BurnOutManagement />
+              <BurnOutResources />
             </div>
           </main>
         </>

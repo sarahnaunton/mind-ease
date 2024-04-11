@@ -1,8 +1,11 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./HomePageGreeting.scss";
 
-export default function HomePageGreeting({ userData, darkTheme }) {
-  
-    const time = new Date().getHours();
+export default function HomePageGreeting({ userData }) {
+  const { darkTheme } = useContext(ThemeContext);
+
+  const time = new Date().getHours();
   let greeting;
   if (time < 12) {
     greeting = "Good Morning";

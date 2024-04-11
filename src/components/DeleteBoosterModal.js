@@ -1,14 +1,15 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Button from "../components/Button/Button";
 import close from "../assets/icons/close-25.png";
 
 export default function DeleteBoosterModal({
   id,
-  darkTheme,
   closeDeleteModal,
   getBoosterEntries,
 }) {
+  const { darkTheme } = useContext(ThemeContext);
   const [errorMessage, setErrorMessage] = useState(false);
 
   const handleDeleteBooster = async () => {
@@ -56,7 +57,7 @@ export default function DeleteBoosterModal({
           }}
           className="delete__button"
         >
-          <Button darkTheme={darkTheme}>Delete</Button>
+          <Button>Delete</Button>
         </div>
         {errorMessage && <p className="delete__error">{errorMessage}</p>}
       </section>

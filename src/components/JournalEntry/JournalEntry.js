@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 import DeleteJournalModal from "../DeleteJournalModal/DeleteJournalModal";
 import EditJournalModal from "../EditJournalModal";
 import edit from "../../assets/icons/edit-25.png";
@@ -11,9 +13,14 @@ export default function JournalEntry({
   entry,
   gratitude,
   getJournalEntries,
-  darkTheme,
 }) {
-  const formattedDate = new Date(timestamp).toLocaleDateString("en-GB", { day: "numeric", month: "numeric", year:"numeric"})
+  const { darkTheme } = useContext(ThemeContext);
+
+  const formattedDate = new Date(timestamp).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -44,11 +51,19 @@ export default function JournalEntry({
           >
             Entry
           </p>
-          <p className={`journal-entry__date ${darkTheme ? "journal-entry__date--dark" : ""}`}>
+          <p
+            className={`journal-entry__date ${
+              darkTheme ? "journal-entry__date--dark" : ""
+            }`}
+          >
             {formattedDate}
           </p>
         </div>
-        <p className={`journal-entry__text ${darkTheme ? "journal-entry__text--dark" : ""}`}>
+        <p
+          className={`journal-entry__text ${
+            darkTheme ? "journal-entry__text--dark" : ""
+          }`}
+        >
           {entry}
         </p>
         <p
@@ -58,7 +73,11 @@ export default function JournalEntry({
         >
           Gratitude
         </p>
-        <p className={`journal-entry__text ${darkTheme ? "journal-entry__text--dark" : ""}`}>
+        <p
+          className={`journal-entry__text ${
+            darkTheme ? "journal-entry__text--dark" : ""
+          }`}
+        >
           {gratitude}
         </p>
         <div className="journal-entry__icons">
@@ -81,13 +100,11 @@ export default function JournalEntry({
           id={id}
           closeEditModal={closeEditModal}
           getJournalEntries={getJournalEntries}
-          darkTheme={darkTheme}
         />
       )}
       {isDeleteModalOpen && (
         <DeleteJournalModal
           id={id}
-          darkTheme={darkTheme}
           closeDeleteModal={closeDeleteModal}
           getJournalEntries={getJournalEntries}
         />

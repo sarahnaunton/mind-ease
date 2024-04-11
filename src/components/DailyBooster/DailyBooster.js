@@ -1,7 +1,9 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./DailyBooster.scss";
 
-
-export default function DailyBooster({ boosterEntries, darkTheme }) {
+export default function DailyBooster({ boosterEntries }) {
+  const { darkTheme } = useContext(ThemeContext);
   const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
 
   return (

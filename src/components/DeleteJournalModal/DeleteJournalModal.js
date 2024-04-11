@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./DeleteJournalModal.scss";
@@ -8,8 +9,8 @@ export default function DeleteJournalModal({
   id,
   closeDeleteModal,
   getJournalEntries,
-  darkTheme,
 }) {
+  const { darkTheme } = useContext(ThemeContext);
   const [errorMessage, setErrorMessage] = useState(false);
 
   const handleDeleteJournal = async () => {
@@ -57,13 +58,9 @@ export default function DeleteJournalModal({
           }}
           className="delete__button"
         >
-          <Button darkTheme={darkTheme}>Delete</Button>
+          <Button>Delete</Button>
         </div>
-        {errorMessage && (
-        <p className="delete__error">
-          {errorMessage}
-        </p>
-      )}
+        {errorMessage && <p className="delete__error">{errorMessage}</p>}
       </section>
     </div>
   );

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./BurnOutSigns.scss";
 
-export default function BurnOutSigns({ darkTheme }) {
+export default function BurnOutSigns() {
+  const { darkTheme } = useContext(ThemeContext);
   const [isBurnOutModalOpen, setIsBurnOutModalOpen] = useState(false);
 
   const handleBurnOutModal = () => {

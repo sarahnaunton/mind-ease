@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "../components/Button/Button";
 
-export default function LogInForm({setIsLoggedIn}) {
+export default function LogInForm() {
+    const {setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
       email: "",

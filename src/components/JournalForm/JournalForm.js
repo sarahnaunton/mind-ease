@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import axios from "axios";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close-25.png";
 import "./JournalForm.scss";
 
-export default function JournalForm({
-  getJournalEntries,
-  closeAddModal,
-  darkTheme,
-}) {
+export default function JournalForm({ getJournalEntries, closeAddModal }) {
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
   });
+  const { darkTheme } = useContext(ThemeContext);
+
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -129,7 +128,7 @@ export default function JournalForm({
           <p className="journal-form__error">{formError.gratitude}</p>
         )}
         <div className="journal-form__button">
-          <Button darkTheme={darkTheme}>Submit</Button>
+          <Button>Submit</Button>
         </div>
         {errorMessage && <p className="journal-form__error">{errorMessage}</p>}
         {successMessage && (

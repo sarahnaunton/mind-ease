@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import "./MoodScore.scss";
 
-export default function MoodScore({ chartData, darkTheme }) {
+export default function MoodScore({ chartData }) {
+  const { darkTheme } = useContext(ThemeContext);
+
   return (
     <>
       {chartData && (

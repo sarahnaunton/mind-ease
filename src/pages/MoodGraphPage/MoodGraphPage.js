@@ -1,4 +1,8 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ChartContext } from "../../contexts/ChartContext";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
@@ -11,14 +15,11 @@ import "./MoodGraphPage.scss";
 
 Chart.register(CategoryScale);
 
-export default function MoodGraphPage({
-  isLoggedIn,
-  handleLogout,
-  darkTheme,
-  handleTheme,
-  chartData,
-  errorMessage,
-}) {
+export default function MoodGraphPage() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { darkTheme } = useContext(ThemeContext);
+  const { chartData, errorMessage } = useContext(ChartContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,11 +29,7 @@ export default function MoodGraphPage({
       {!isLoggedIn && <LogInMessage />}
       {isLoggedIn && (
         <>
-          <Navigation
-            handleLogout={handleLogout}
-            darkTheme={darkTheme}
-            handleTheme={handleTheme}
-          />
+          <Navigation />
           <main className={`graph-page ${darkTheme ? "graph-page--dark" : ""}`}>
             <div className="graph-page__container">
               <section>
@@ -63,15 +60,13 @@ export default function MoodGraphPage({
                   </p>
                 </div>
               </section>
-              {chartData && chartData.length === 0 && (
-                <GraphNoAnswer darkTheme={darkTheme} />
-              )}
+              {chartData && chartData.length === 0 && <GraphNoAnswer />}
               {chartData && chartData.length > 0 && chartData.length < 2 && (
-                <GraphOneAnswer darkTheme={darkTheme} chartData={chartData} />
+                <GraphOneAnswer chartData={chartData} />
               )}
               {chartData && chartData.length >= 2 && (
                 <>
-                  <MoodScore chartData={chartData} darkTheme={darkTheme} />
+                  <MoodScore chartData={chartData} />
                   <div
                     className={`graph-page__graph ${
                       darkTheme ? "graph-page__graph--dark" : ""

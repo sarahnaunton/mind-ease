@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import MoodScore from "./MoodScore/MoodScore";
 
-export default function GraphOneAnswer({ chartData, darkTheme }) {
+export default function GraphOneAnswer({ chartData }) {
+  const { darkTheme } = useContext(ThemeContext);
   return (
     <>
-      <MoodScore chartData={chartData} darkTheme={darkTheme} />
+      <MoodScore chartData={chartData} />
       <section>
         <p
           className={`message__heading ${

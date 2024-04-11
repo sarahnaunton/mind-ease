@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { UserContext } from "../../contexts/UserContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import HomePageGreeting from "../../components/HomePageGreeting/HomePageGreeting";
@@ -11,14 +14,11 @@ import rocket from "../../assets/icons/rocket.png";
 import info from "../../assets/icons/info.png";
 import "./HomePage.scss";
 
-export default function HomePage({
-  isLoggedIn,
-  handleLogout,
-  darkTheme,
-  handleTheme,
-  userData,
-  errorMessage,
-}) {
+export default function HomePage() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { darkTheme } = useContext(ThemeContext);
+  const { userData, errorMessage } = useContext(UserContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,15 +28,33 @@ export default function HomePage({
       {!isLoggedIn && <LogInMessage />}
       {isLoggedIn && (
         <>
-          <Navigation
-            handleLogout={handleLogout}
-            darkTheme={darkTheme}
-            handleTheme={handleTheme}
-          />
+          <Navigation />
           <main className={`home ${darkTheme ? "home--dark" : ""}`}>
             <div className="home__container">
-              <HomePageGreeting darkTheme={darkTheme} userData={userData} />
+              <HomePageGreeting userData={userData} />
               <section>
+                <p
+                  className={`home__heading ${
+                    darkTheme ? "home__heading--dark" : ""
+                  }`}
+                >
+                  Explore MindEase
+                </p>
+                <p
+                  className={`home__subheading ${
+                    darkTheme ? "home__subheading--dark" : ""
+                  }`}
+                >
+                  Track your burnout score, journal your thoughts, and discover
+                  personalised activities for your well-being.
+                </p>
+                <p
+                  className={`home__subheading ${
+                    darkTheme ? "home__subheading--dark" : ""
+                  }`}
+                >
+                  Let's thrive together.
+                </p>
                 <h2
                   className={`home__heading ${
                     darkTheme ? "home__heading--dark" : ""
@@ -51,7 +69,7 @@ export default function HomePage({
                         darkTheme ? "home__article--blue--dark" : ""
                       }`}
                     >
-                      <HomePageArticle darkTheme={darkTheme} icon={smile}>
+                      <HomePageArticle icon={smile}>
                         Mood Check In
                       </HomePageArticle>
                     </div>
@@ -62,7 +80,7 @@ export default function HomePage({
                         darkTheme ? "home__article--orange--dark" : ""
                       }`}
                     >
-                      <HomePageArticle darkTheme={darkTheme} icon={graph}>
+                      <HomePageArticle icon={graph}>
                         Mood Tracker
                       </HomePageArticle>
                     </div>
@@ -73,7 +91,7 @@ export default function HomePage({
                         darkTheme ? "home__article--green--dark" : ""
                       }`}
                     >
-                      <HomePageArticle darkTheme={darkTheme} icon={journal}>
+                      <HomePageArticle icon={journal}>
                         Mood Journal
                       </HomePageArticle>
                     </div>
@@ -84,7 +102,7 @@ export default function HomePage({
                         darkTheme ? "home__article--grey--dark" : ""
                       }`}
                     >
-                      <HomePageArticle darkTheme={darkTheme} icon={rocket}>
+                      <HomePageArticle icon={rocket}>
                         Mood Booster
                       </HomePageArticle>
                     </div>
@@ -95,9 +113,7 @@ export default function HomePage({
                         darkTheme ? "home__article--navy--dark" : ""
                       }`}
                     >
-                      <HomePageArticle darkTheme={darkTheme} icon={info}>
-                        Mood Hub
-                      </HomePageArticle>
+                      <HomePageArticle icon={info}>Mood Hub</HomePageArticle>
                     </div>
                   </Link>
                 </div>

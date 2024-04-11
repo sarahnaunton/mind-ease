@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
@@ -8,15 +10,17 @@ import JournalEntries from "../../components/JournalEntries/JournalEntries";
 import add from "../../assets/icons/add-50.png";
 import "./JournalPage.scss";
 
-export default function JournalPage({
-  isLoggedIn,
-  handleLogout,
-  darkTheme,
-  handleTheme,
-}) {
+export default function JournalPage() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const { darkTheme } = useContext(ThemeContext);
   const [journalEntries, setJournalEntries] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+
+  useEffect(() => {
+    getJournalEntries();
+    window.scrollTo(0, 0);
+  }, []);
 
   const getJournalEntries = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -36,11 +40,6 @@ export default function JournalPage({
     }
   };
 
-  useEffect(() => {
-    getJournalEntries();
-    window.scrollTo(0, 0);
-  }, []);
-
   const handleAddModal = () => {
     setIsAddModalOpen(true);
   };
@@ -54,11 +53,7 @@ export default function JournalPage({
       {!isLoggedIn && <LogInMessage />}
       {isLoggedIn && (
         <>
-          <Navigation
-            handleLogout={handleLogout}
-            darkTheme={darkTheme}
-            handleTheme={handleTheme}
-          />
+          <Navigation />
           <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
             <div className="journal__container">
               <h1
@@ -68,7 +63,7 @@ export default function JournalPage({
               >
                 How are you feeling today?
               </h1>
-              <BurnOutSigns darkTheme={darkTheme} />
+              <BurnOutSigns />
               <div
                 className={`journal__add ${
                   darkTheme ? "journal__add--dark" : ""
@@ -87,14 +82,12 @@ export default function JournalPage({
               {isAddModalOpen && (
                 <JournalForm
                   closeAddModal={closeAddModal}
-                  darkTheme={darkTheme}
                   getJournalEntries={getJournalEntries}
                 />
               )}
               <JournalEntries
                 getJournalEntries={getJournalEntries}
                 journalEntries={journalEntries}
-                darkTheme={darkTheme}
               />
               {errorMessage && <p className="journal__error">{errorMessage}</p>}
             </div>

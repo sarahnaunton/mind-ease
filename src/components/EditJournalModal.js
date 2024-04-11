@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Button from "./Button/Button";
 import close from "../assets/icons/close-25.png";
 import "./JournalForm/JournalForm.scss";
@@ -7,9 +8,10 @@ import "./JournalForm/JournalForm.scss";
 export default function EditJournalModal({
   id,
   closeEditModal,
-  darkTheme,
+
   getJournalEntries,
 }) {
+  const { darkTheme } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
     entry: "",
     gratitude: "",
@@ -33,7 +35,7 @@ export default function EditJournalModal({
       setFormData({ entry: data.entry, gratitude: data.gratitude });
       setErrorMessage(false);
     } catch (error) {
-        setErrorMessage(error.response.data.error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
@@ -146,7 +148,7 @@ export default function EditJournalModal({
           <p className="journal-form__error">{formError.form}</p>
         )}
         <div className="journal-form__button">
-          <Button darkTheme={darkTheme}>Submit</Button>
+          <Button>Submit</Button>
         </div>
         {errorMessage && <p className="journal-form__error">{errorMessage}</p>}
         {successMessage && (

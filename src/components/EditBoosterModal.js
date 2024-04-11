@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import Button from "./Button/Button";
 import close from "../assets/icons/close-25.png";
 
@@ -7,8 +8,8 @@ export default function EditBoosterModal({
   id,
   closeEditModal,
   getBoosterEntries,
-  darkTheme,
 }) {
+  const { darkTheme } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
     activity: "",
   });
@@ -122,7 +123,7 @@ export default function EditBoosterModal({
             <p className="booster-form__error">{formError.activity}</p>
           )}
           <div className="booster-form__button">
-            <Button darkTheme={darkTheme}>Submit</Button>
+            <Button>Submit</Button>
           </div>
           {errorMessage && (
             <p className="booster-form__error">{errorMessage}</p>

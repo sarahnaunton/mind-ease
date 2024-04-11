@@ -3,7 +3,7 @@ import wave from "../assets/icons/wave.png";
 import LogInForm from "../components/LogInForm";
 import "./SignUpPage/SignUpPage.scss";
 
-export default function LogInPage({ setIsLoggedIn }) {
+export default function LogInPage() {
   return (
     <main className="account">
       <section className="account__container">
@@ -14,7 +14,7 @@ export default function LogInPage({ setIsLoggedIn }) {
           <img className="account__icon" src={wave} alt="Wave Icon" />
         </div>
         <p className="account__text">Please log in below</p>
-        <LogInForm setIsLoggedIn={setIsLoggedIn}/>
+        <LogInForm/>
         <p className="account__text">
           Don't have an account?{" "}
           <Link className="account__link" to="/sign-up">
