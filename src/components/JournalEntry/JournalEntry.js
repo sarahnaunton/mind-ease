@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-
 import DeleteJournalModal from "../DeleteJournalModal/DeleteJournalModal";
 import EditJournalModal from "../EditJournalModal";
 import edit from "../../assets/icons/edit-25.png";

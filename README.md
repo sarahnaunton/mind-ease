@@ -58,11 +58,13 @@ The user profile for the mental health app focused on burnout can encompass a di
 
   - chart.js
 
-    - react-chartjs-2
+     - react-chartjs-2
 
-    - react-slick
+ - react-slick
 
-    - markdown-to-jsx
+- markdown-to-jsx
+
+- react-loading-skeleton
 
 - Server libraries:
 

@@ -8,6 +8,7 @@ export default function DailyBooster({ boosterEntries }) {
   const [recommendation, setRecommendation] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
   const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
+  const randomActivity = boosterEntries[randomIndex].activity
 
   const getRecommendation = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -22,12 +23,12 @@ export default function DailyBooster({ boosterEntries }) {
       );
 
       if (!data.length) {
-        setRecommendation(boosterEntries[randomIndex].activity);
+        setRecommendation(randomActivity);
 
         await axios.post(
           `${process.env.REACT_APP_API_BASE_URL}/recommendations`,
           {
-            recommendation: recommendation,
+            recommendation: randomActivity,
           },
           {
             headers: {
@@ -48,12 +49,12 @@ export default function DailyBooster({ boosterEntries }) {
         }
 
         if (updatedAt !== currentDate) {
-          setRecommendation(boosterEntries[randomIndex].activity);
+          setRecommendation(randomActivity);
 
           await axios.put(
-            `${process.env.REACT_APP_API_BASE_URL}/recommendations`,
+            `${process.env.REACT_APP_API_BASE_URL}/recommendations/${data[0].id}`,
             {
-              recommendation: recommendation,
+              recommendation: randomActivity,
             },
             {
               headers: {

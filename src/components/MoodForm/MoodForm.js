@@ -22,15 +22,20 @@ export default function MoodForm() {
     if (!selectFieldValue) {
       return;
     }
-    setSelectFieldValue("");
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+
+    setCurrentQuestionIndex((prevIndex) => {
+      // If the next question was previously answered, put the answer in the select field
+      setSelectFieldValue(responses[`question-${prevIndex + 2}`] || "");
+
+      // Update the current question index regardless
+      return prevIndex + 1;
+    });
   };
 
   const handlePrevious = () => {
+    // Update the select value to the previous answer
     setCurrentQuestionIndex((prevIndex) => {
-      //Update the select value to the previous answer
-      const previousAnswer = responses[`question-${prevIndex}`];
-      setSelectFieldValue(previousAnswer);
+      setSelectFieldValue(responses[`question-${prevIndex}`]);
       return prevIndex - 1;
     });
   };
