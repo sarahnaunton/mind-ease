@@ -47,7 +47,7 @@ export default function JournalEntries({ getJournalEntries, journalEntries }) {
             darkTheme ? "entries__heading--dark" : ""
           }`}
         >
-          You have no previous journal entries
+          You have no previous journal entries, how about starting one now?
         </h2>
       )}
       {journalEntries && journalEntries.length > 0 && (

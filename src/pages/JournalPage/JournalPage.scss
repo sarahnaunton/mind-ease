@@ -28,6 +28,17 @@
     }
   }
 
+  &__introduction {
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
   &__add {
     @include flex(row, center, center);
     gap: 0.5rem;

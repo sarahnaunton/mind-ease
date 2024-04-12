@@ -20,7 +20,7 @@ export default function GraphOneAnswer({ chartData }) {
           className={`message__text ${darkTheme ? "message__text--dark" : ""}`}
         >
           Keep track of your progress by completing the questionnaire regularly.
-          Your mental well-being matters, and taking the time to reflect and
+          Your mental wellbeing matters, and taking the time to reflect and
           assess your feelings can be a valuable step towards self-care and
           improvement.
         </p>

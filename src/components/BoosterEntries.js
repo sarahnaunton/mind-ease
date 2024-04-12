@@ -22,7 +22,7 @@ export default function BoosterEntries({ getBoosterEntries, boosterEntries }) {
             darkTheme ? "entries__heading--dark" : ""
           }`}
         >
-          You have no mood boosters recorded
+          You have no mood boosters, how about creating one now?
         </h2>
       )}
       {boosterEntries && boosterEntries.length > 0 && (

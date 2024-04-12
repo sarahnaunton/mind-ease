@@ -42,7 +42,7 @@ export default function JournalEntry({
 
   return (
     <>
-      <article className={`journal-entry ${darkTheme ? "entry--dark" : ""}`}>
+      <article className={`journal-entry ${darkTheme ? "journal-entry--dark" : ""}`}>
         <div className="journal-entry__row">
           <p
             className={`journal-entry__subheading ${

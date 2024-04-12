@@ -61,8 +61,29 @@ export default function JournalPage() {
                   darkTheme ? "journal__heading--dark" : ""
                 }`}
               >
-                How are you feeling today?
+                What's on your mind?
               </h1>
+              <div className="journal__introduction">
+              <p
+                className={`journal__text ${
+                  darkTheme ? "journal__text--dark" : ""
+                }`}
+              >
+                Welcome to your journaling space, where your thoughts find
+                expression and your emotions are heard.
+              </p>
+              <p
+                className={`journal__text ${
+                  darkTheme ? "journal__text--dark" : ""
+                }`}
+              >
+                Journaling offers a unique opportunity to understand yourself
+                better, gain clarity, and encourage personal growth. Through
+                journaling, you can track your progress, celebrate victories,
+                and navigate challenges. Remember, every entry is a step towards
+                self-discovery and empowerment.
+              </p>
+              </div>
               <BurnOutSigns />
               <div
                 className={`journal__add ${

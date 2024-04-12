@@ -49,6 +49,7 @@ export default function DailyBooster({ boosterEntries }) {
 
         if (updatedAt !== currentDate) {
           setRecommendation(boosterEntries[randomIndex].activity);
+
           await axios.put(
             `${process.env.REACT_APP_API_BASE_URL}/recommendations`,
             {
@@ -76,21 +77,34 @@ export default function DailyBooster({ boosterEntries }) {
   return (
     <>
       {recommendation && (
-        <div className="inspiration">
-          <h2
-            className={`inspiration__heading ${
-              darkTheme ? "inspiration__heading--dark" : ""
-            } `}
-          >
-            Your daily inspiration
-          </h2>
-          <p className="inspiration__text"> Description</p>
-          <div className="inspiration__container">
-            <p className="inspiration__activity">{recommendation}</p>
+          <div className={`inspiration ${
+            darkTheme ? "inspiration--dark" : ""
+          } `}>
+            <h2
+              className="inspiration__heading"
+            >
+              Your daily inspiration
+            </h2>
+            <p className={`inspiration__text ${
+            darkTheme ? "inspiration__text--dark" : ""
+          } `}>
+              Discovering daily inspiration can be challenging, so why not leave
+              it to us?{" "}
+            </p>
+            <p className={`inspiration__text ${
+            darkTheme ? "inspiration__text--dark" : ""
+          } `}>
+              Try incorporating your selected activity into your daily schedule
+              for a refreshing boost.
+            </p>
+            <div className="inspiration__container">
+              <p className={`inspiration__activity ${
+            darkTheme ? "inspiration__activity--dark" : ""
+          } `}>{recommendation}</p>
+            </div>
           </div>
-        </div>
       )}
-      {errorMessage && <p className="booster__error">{errorMessage}</p>}
+      {errorMessage && <p className="inspiration__error">{errorMessage}</p>}
     </>
   );
 }

@@ -10,7 +10,7 @@ export default function WelcomePage() {
         <p className="welcome__text">
           Welcome to MindEase, your guide to mental wellness. Recognise signs of
           burnout early and take proactive steps to maintain balance and
-          well-being.
+          wellbeing.
         </p>
         <div className="welcome__buttons">
           <Link to="/sign-up">

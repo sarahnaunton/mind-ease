@@ -69,34 +69,41 @@ export default function MoodBoosterPage() {
               >
                 What makes you happy?
               </h1>
-              <p
-                className={`booster__text ${
-                  darkTheme ? "booster__text--dark" : ""
+              <div
+                className={`booster__introduction ${
+                  darkTheme ? "booster__introduction--dark" : ""
                 }`}
               >
-                This page is where we celebrate the simple joys that brighten
-                our days.
-              </p>
-              <p
-                className={`booster__text ${
-                  darkTheme ? "booster__text--dark" : ""
-                }`}
-              >
-                In times of burnout, it's especially crucial to have a curated
-                list of activities that bring us joy. Even when we're least
-                inclined to engage in them, these mood boosters can serve as
-                helpful prompts, gently nudging us back towards a state of
-                balance and contentment.
-              </p>
-              <p
-                className={`booster__text ${
-                  darkTheme ? "booster__text--dark" : ""
-                }`}
-              >
-                These boosters can encompass a variety of activities, ranging
-                from the calming practice of yoga to the peacefulness of a
-                nature walk, or even the immersion of a good book.
-              </p>
+                <p
+                  className={`booster__text ${
+                    darkTheme ? "booster__text--dark" : ""
+                  }`}
+                >
+                  This page is where you can celebrate the simple joys that
+                  brighten your day.
+                </p>
+                <p
+                  className={`booster__text ${
+                    darkTheme ? "booster__text--dark" : ""
+                  }`}
+                >
+                  In times of burnout, it's especially important to have a
+                  mindful list of activities that bring us joy. Even when we're
+                  least inclined to engage in them, these mood boosters can
+                  serve as helpful prompts, gently nudging us back towards a
+                  state of balance and wellbeing.
+                </p>
+                <p
+                  className={`booster__text ${
+                    darkTheme ? "booster__text--dark" : ""
+                  }`}
+                >
+                  These boosters can encompass a variety of activities, ranging
+                  from the calming practice of yoga to the peacefulness of a
+                  nature walk, or even the immersion of a good book. Ultimately,
+                  the choice is yours.
+                </p>
+              </div>
               <div
                 onClick={handleAddModal}
                 className={`booster__add ${
@@ -122,15 +129,15 @@ export default function MoodBoosterPage() {
                 getBoosterEntries={getBoosterEntries}
                 boosterEntries={boosterEntries}
               />
+              {boosterEntries && boosterEntries.length > 0 && (
+                <DailyBooster boosterEntries={boosterEntries} />
+              )}
               {boosterEntries && userData && chartData && (
                 <RecommendAI
                   boosterEntries={boosterEntries}
                   userData={userData}
                   chartData={chartData}
                 />
-              )}
-              {boosterEntries && boosterEntries.length > 0 && (
-                <DailyBooster boosterEntries={boosterEntries} />
               )}
               <HappyResources />
               {errorMessage && <p className="booster__error">{errorMessage}</p>}

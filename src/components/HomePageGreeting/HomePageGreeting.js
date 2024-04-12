@@ -38,13 +38,7 @@ export default function HomePageGreeting({ userData }) {
             }`}
           >
             {greeting},{" "}
-            <span
-              className={`greeting__name ${
-                darkTheme ? "greeting__name--dark" : ""
-              }`}
-            >
-              {userData.first_name}
-            </span>
+            <span className="greeting__name">{userData.first_name}</span>
           </h1>
         </section>
       )}

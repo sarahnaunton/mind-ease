@@ -27,12 +27,27 @@
       color: $color-dark-text-primary;
     }
   }
+  
+  &__introduction {
+    margin-bottom: 2rem;
+  }
 
-  &__text {
+  &__subheading {
     @include body-text($color-text-primary);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
 
     &--dark {
       color: $color-dark-text-primary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-quaternary);
+    text-align: center;
+
+    &--dark {
+      color: $color-dark-text-tertiary;
     }
   }
 }

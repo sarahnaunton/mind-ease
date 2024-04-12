@@ -50,6 +50,9 @@ export default function DeleteJournalModal({
         </h1>
         <p className={`delete__text ${darkTheme ? "delete__text--dark" : ""}`}>
           Please confirm you would like to delete this entry from your journal.
+        </p>
+        <p className={`delete__text ${darkTheme ? "delete__text--dark" : ""}`}>
+          {" "}
           You won't be able to undo this action.
         </p>
         <div

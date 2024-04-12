@@ -33,7 +33,7 @@ export default function BurnOutResources() {
           darkTheme ? "resources__subheading--dark" : ""
         }`}
       >
-        Here are some resources which can provide further support and guidance{" "}
+        Here are some resources that can provide additional support and guidance{" "}
       </h2>
       <Slider {...settings}>
         <Link

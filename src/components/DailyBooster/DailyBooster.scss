@@ -2,12 +2,19 @@
 @use "../../styles/partials/variables" as *;
 
 .inspiration {
-  &__heading {
-    @include heading($color-text-primary);
+  border: 3px solid $color-border-tertiary;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 35rem;
+  text-align:  center;
 
-    &--dark {
-      color: $color-dark-text-primary;
-    }
+  &--dark {
+    border-color: $color-dark-border-tertiary;
+  }
+
+  &__heading {
+    @include subheading($color-text-tertiary);
   }
 
   &__text {
@@ -24,7 +31,7 @@
 
   &__activity {
     @include subheading($color-text-secondary);
-    background-color: $color-button-primary;
+    background-color: $color-background-quinary;
     text-transform: uppercase;
     text-align: center;
     border-radius: 20px;
@@ -32,9 +39,14 @@
     margin: 2rem;
 
     &--dark {
-      background-color: $color-dark-button-primary;
-      color: $color-dark-text-secondary;
-
+      background-color: $color-dark-background-quinary;
+      color: $color-dark-text-primary;
     }
+  }
+
+  &__error {
+    @include error-text;
+    text-align: center;
+    margin: 0 0 0.5rem 0;
   }
 }

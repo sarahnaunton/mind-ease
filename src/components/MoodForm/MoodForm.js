@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
+import { ChartContext } from "../../contexts/ChartContext";
 import questions from "../../data/questions";
 import Button from "../Button/Button";
 import "./MoodForm.scss";
@@ -9,6 +10,7 @@ import "./MoodForm.scss";
 export default function MoodForm() {
   const navigate = useNavigate();
   const { darkTheme } = useContext(ThemeContext);
+  const { getChartData } = useContext(ChartContext);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [responses, setResponses] = useState({});
   const [selectFieldValue, setSelectFieldValue] = useState("");
@@ -77,6 +79,7 @@ export default function MoodForm() {
       setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
+      getChartData();
       navigate("/mood-graph");
     } catch (error) {
       setErrorMessage(error.response.data.error);
@@ -126,6 +129,14 @@ export default function MoodForm() {
             <div className="mood-form__button">
               <Button>Submit</Button>
             </div>
+            <p
+              className={`mood-form__text ${
+                darkTheme ? "mood-form__text--dark" : ""
+              }`}
+            >
+              Keep in mind, regularly completing the questionnaire is essential
+              for understanding and improving your mental wellbeing.
+            </p>
             {errorMessage && <p className="mood-form__error">{errorMessage}</p>}
             {successMessage && (
               <p

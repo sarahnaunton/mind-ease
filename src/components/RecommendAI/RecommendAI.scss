@@ -3,15 +3,25 @@
 
 .recommend {
   &__heading {
-    @include heading($color-text-primary);
+    @include subheading($color-text-quaternary);
+
+    &--dark {
+      color: $color-dark-text-tertiary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
 
     &--dark {
       color: $color-dark-text-primary;
     }
   }
 
-  &__text {
-    @include body-text($color-text-primary);
+  &__encourage {
+    @extend .recommend__text;
+    font-weight: 600;
+    text-align: center;
 
     &--dark {
       color: $color-dark-text-primary;

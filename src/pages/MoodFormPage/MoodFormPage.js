@@ -22,13 +22,29 @@ export default function MoodFormPage() {
           <Navigation />
           <main className={`mood-page ${darkTheme ? "mood-page--dark" : ""}`}>
             <div className="mood-page__container">
-              <h1
-                className={`mood-page__heading ${
-                  darkTheme ? "mood-page__heading--dark" : ""
-                }`}
-              >
-                Complete the questionnaire below
-              </h1>
+              <h1 className={`mood-page__heading ${
+                    darkTheme ? "mood-page__heading--dark" : ""
+                  }`}>How are you feeling today?</h1>
+              <div className={`mood-page__introduction ${
+                    darkTheme ? "mood-page__introduction--dark" : ""
+                  }`}>
+                <h2
+                  className={`mood-page__subheading ${
+                    darkTheme ? "mood-page__subheading--dark" : ""
+                  }`}
+                >
+                  Your understanding of your mental wellbeing is essential for
+                  taking steps towards improvement.
+                </h2>
+                <h3
+                  className={`mood-page__subheading ${
+                    darkTheme ? "mood-page__subheading--dark" : ""
+                  }`}
+                >
+                  Continue your empowering journey by completing the
+                  questionnaire below.
+                </h3>
+              </div>
               <p
                 className={`mood-page__text ${
                   darkTheme ? "mood-page__text--dark" : ""

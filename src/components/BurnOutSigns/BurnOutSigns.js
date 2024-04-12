@@ -23,7 +23,7 @@ export default function BurnOutSigns() {
         <p className={`signs__text ${darkTheme ? "signs__text--dark" : ""}`}>
           {" "}
           Recognising the signs of burnout is the first step to reclaiming your
-          well-being.
+          wellbeing.
         </p>
         <ul>
           <li className={`signs__item ${darkTheme ? "signs__item--dark" : ""}`}>

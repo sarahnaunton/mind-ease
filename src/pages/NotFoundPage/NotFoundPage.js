@@ -14,14 +14,14 @@ export default function NotFoundPage() {
         <main className="found">
           <section className="found__container">
             <p className="found__text">
-              Ooops! It seems like you've wandered off the beaten path.
+              Ooops! We couldn't find that page.
             </p>
             <p className="found__text">
               Take a moment to breathe and remember, setbacks are just detours
               on the road to better mental health.
             </p>
             <p className="found__text">
-              Feel free to navigate back to the{" "}
+              Head back to the{" "}
               <Link className="found__link" to="/home">
                 {" "}
                 home page

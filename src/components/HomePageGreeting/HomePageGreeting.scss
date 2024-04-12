@@ -12,9 +12,5 @@
 
   &__name {
     @include heading( $color-text-tertiary);
-
-    &--dark {
-      color: $color-dark-text-tertiary;
-    }
   }
 }

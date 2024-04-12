@@ -22,7 +22,7 @@ export default function BurnOutManagement() {
         }`}
       >
         To tackle burnout head-on, it's essential to take proactive steps to
-        protect your mental and emotional well-being.
+        protect your mental and emotional wellbeing.
       </p>
       <p
         className={`management__text ${
@@ -111,7 +111,7 @@ export default function BurnOutManagement() {
             darkTheme ? "management__text--dark" : ""
           }`}
         >
-          Also remember to use your strategies in your{" "}
+          Also, remember to use your strategies in your{" "}
           <Link
             to="/mood-boosters"
             className={`management__link ${

@@ -33,28 +33,42 @@ export default function HomePage() {
             <div className="home__container">
               <HomePageGreeting userData={userData} />
               <section>
-                <p
-                  className={`home__heading ${
-                    darkTheme ? "home__heading--dark" : ""
+                <div
+                  className={`home__explore ${
+                    darkTheme ? "home__explore--dark" : ""
                   }`}
                 >
-                  Explore MindEase
-                </p>
-                <p
-                  className={`home__subheading ${
-                    darkTheme ? "home__subheading--dark" : ""
-                  }`}
-                >
-                  Track your burnout score, journal your thoughts, and discover
-                  personalised activities for your well-being.
-                </p>
-                <p
-                  className={`home__subheading ${
-                    darkTheme ? "home__subheading--dark" : ""
-                  }`}
-                >
-                  Let's thrive together.
-                </p>
+                  <p
+                    className={`home__subheading ${
+                      darkTheme ? "home__subheading--dark" : ""
+                    }`}
+                  >
+                    Explore{" "}
+                    <span
+                      className={`home__logo ${
+                        darkTheme ? "home__logo--dark" : ""
+                      }`}
+                    >
+                      MindEase
+                    </span>
+                    ,
+                  </p>
+                  <p
+                    className={`home__subheading ${
+                      darkTheme ? "home__subheading--dark" : ""
+                    }`}
+                  >
+                    Monitor your burnout score, journal your thoughts, and
+                    discover personalised activities for your wellbeing.
+                  </p>
+                  <p
+                    className={`home__subheading ${
+                      darkTheme ? "home__subheading--dark" : ""
+                    }`}
+                  >
+                    Let's thrive together!
+                  </p>
+                </div>
                 <h2
                   className={`home__heading ${
                     darkTheme ? "home__heading--dark" : ""

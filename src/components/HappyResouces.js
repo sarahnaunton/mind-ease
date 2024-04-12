@@ -31,7 +31,7 @@ export default function HappyResources() {
           darkTheme ? "resources__subheading--dark" : ""
         }`}
       >
-        Here are some resources which can provide you happiness and joy
+        Discover a variety of uplifting resources to bring happiness and joy into your day
       </h2>
       <Slider {...settings}>
         <Link

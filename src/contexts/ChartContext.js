@@ -30,7 +30,7 @@ function ChartProvider(props) {
   }, []);
 
   return (
-    <ChartContext.Provider value={{ chartData, errorMessage }}>
+    <ChartContext.Provider value={{ chartData, getChartData, errorMessage }}>
       {props.children}
     </ChartContext.Provider>
   );

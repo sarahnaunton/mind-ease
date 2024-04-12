@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { ChartContext } from "../../contexts/ChartContext";
@@ -12,16 +11,18 @@ import GraphOneAnswer from "../../components/GraphOneAnswer";
 import MoodGraph from "../../components/MoodGraph";
 import MoodScore from "../../components/MoodScore/MoodScore";
 import "./MoodGraphPage.scss";
+import MoodProgress from "../../components/MoodProgress/MoodProgress";
 
 Chart.register(CategoryScale);
 
 export default function MoodGraphPage() {
   const { isLoggedIn } = useContext(AuthContext);
   const { darkTheme } = useContext(ThemeContext);
-  const { chartData, errorMessage } = useContext(ChartContext);
+  const { chartData, getChartData, errorMessage } = useContext(ChartContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getChartData();
   }, []);
 
   return (
@@ -38,7 +39,7 @@ export default function MoodGraphPage() {
                     darkTheme ? "graph-page__heading--dark" : ""
                   }`}
                 >
-                  Monitor your Progress
+                  Monitor your wellbeing
                 </h1>
                 <div className="graph-page__information">
                   <h2
@@ -55,8 +56,16 @@ export default function MoodGraphPage() {
                     }`}
                   >
                     Here, you can visualise your mental health scores over time,
-                    helping you track your journey towards well-being and
+                    helping you track your journey towards wellbeing and
                     identify patterns in your burnout levels.
+                  </p>
+                  <p
+                    className={`graph-page__text ${
+                      darkTheme ? "graph-page__text--dark" : ""
+                    }`}
+                  >
+                    Low scores suggest a lower risk of burnout, while high
+                    scores indicate a higher risk.{" "}
                   </p>
                 </div>
               </section>
@@ -74,6 +83,7 @@ export default function MoodGraphPage() {
                   >
                     <MoodGraph chartData={chartData} />
                   </div>
+                  <MoodProgress chartData={chartData} />
                 </>
               )}
               {errorMessage && (
