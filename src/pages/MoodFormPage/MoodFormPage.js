@@ -4,6 +4,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
 import Navigation from "../../components/Navigation/Navigation";
 import MoodForm from "../../components/MoodForm/MoodForm";
+import thinking from "../../assets/icons/thinking.png";
 import "./MoodFormPage.scss";
 
 export default function MoodFormPage() {
@@ -34,7 +35,7 @@ export default function MoodFormPage() {
                   }`}
                 >
                   Your understanding of your mental wellbeing is essential for
-                  taking steps towards improvement.
+                  taking steps towards improvement. <img src={thinking} alt="Thinking emoji" className="mood-page__icon" />
                 </h2>
                 <h3
                   className={`mood-page__subheading ${

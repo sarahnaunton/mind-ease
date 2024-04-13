@@ -23,9 +23,18 @@ export default function SignUpForm() {
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleInformationModal = () => {
+    setIsInformationModalOpen(true);
+  };
+
+  const closeInformationModal = () => {
+    setIsInformationModalOpen(false);
   };
 
   const handleForm = async (event) => {
@@ -115,14 +124,13 @@ export default function SignUpForm() {
           type="text"
           id="firstname"
           name="firstname"
+          placeholder="First Name"
           onChange={handleChange}
           value={formData.firstname}
         />
       </fieldset>
       {formError.firstname && (
-        <fieldset className="form__fieldset">
-          <p className="form__error">{formError.firstname}</p>
-        </fieldset>
+        <p className="form__error">{formError.firstname}</p>
       )}
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="lastname">
@@ -135,14 +143,13 @@ export default function SignUpForm() {
           type="text"
           id="lastname"
           name="lastname"
+          placeholder="Last Name"
           onChange={handleChange}
           value={formData.lastname}
         />
       </fieldset>
       {formError.lastname && (
-        <fieldset className="form__fieldset">
-          <p className="form__error">{formError.lastname}</p>
-        </fieldset>
+        <p className="form__error">{formError.lastname}</p>
       )}
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="email">
@@ -155,15 +162,12 @@ export default function SignUpForm() {
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           onChange={handleChange}
           value={formData.email}
         />
       </fieldset>
-      {formError.email && (
-        <fieldset className="form__fieldset">
-          <p className="form__error">{formError.email}</p>
-        </fieldset>
-      )}
+      {formError.email && <p className="form__error">{formError.email}</p>}
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="password">
           Password
@@ -175,16 +179,13 @@ export default function SignUpForm() {
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           onChange={handleChange}
           value={formData.password}
         />
       </fieldset>
       {formError.password && (
-        <fieldset className="form__fieldset">
-          <p className="form__error form__error--spacing">
-            {formError.password}
-          </p>
-        </fieldset>
+        <p className="form__error form__error--spacing">{formError.password}</p>
       )}
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="confirmPassword">
@@ -197,108 +198,123 @@ export default function SignUpForm() {
           type="password"
           id="confirmPassword"
           name="confirmPassword"
+          placeholder="Confirm Password"
           onChange={handleChange}
           value={formData.confirmPassword}
         />
       </fieldset>
       {formError.confirmPassword && (
-        <fieldset className="form__fieldset">
-          <p className="form__error">{formError.confirmPassword}</p>
-        </fieldset>
+        <p className="form__error">{formError.confirmPassword}</p>
       )}
-      <p>
-        You are not required to provide the following information, but any
-        details you share will help us better understand your needs and
-        preferences, and help us suggest more personalised strategies to boost
-        your mood.
-      </p>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="birthday">
-          Date of Birth
-        </label>
-        <input
-          className="form__input"
-          type="date"
-          id="birthday"
-          name="birthday"
-          onChange={handleChange}
-          value={formData.birthday}
-        />
-      </fieldset>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="occupation">
-          Occupation
-        </label>
-        <input
-          className="form__input"
-          type="text"
-          id="occupation"
-          name="occupation"
-          onChange={handleChange}
-          value={formData.occupation}
-        />
-      </fieldset>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="role">
-          Job Role
-        </label>
-        <input
-          className="form__input"
-          type="text"
-          id="role"
-          name="role"
-          onChange={handleChange}
-          value={formData.role}
-        />
-      </fieldset>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="experience">
-          What year did you start your current occupation?
-        </label>
-        <input
-          className="form__input"
-          type="number"
-          id="experience"
-          name="experience"
-          onChange={handleChange}
-          value={formData.experience}
-        />
-      </fieldset>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="setting">
-          Work Setting
-        </label>
-        <input
-          className="form__input"
-          type="text"
-          id="setting"
-          name="setting"
-          onChange={handleChange}
-          placeholder="Office, Remote, Healthcare, Education"
-          value={formData.setting}
-        />
-      </fieldset>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="hours">
-          Work Hours
-        </label>
-        <input
-          className="form__input"
-          type="number"
-          id="hours"
-          name="hours"
-          onChange={handleChange}
-          placeholder="How many hours do you typically work per week?"
-          value={formData.hours}
-        />
-      </fieldset>
+      {!isInformationModalOpen && (
+        <p className="form__link" onClick={handleInformationModal}>
+          Click here to provide additional information
+        </p>
+      )}
+      {isInformationModalOpen && (
+        <>
+          <p className="form__text">
+            The following information is not required, but any details you share
+            will help us better understand your needs and preferences, and help
+            us suggest more personalised strategies to boost your mood.
+          </p>
+          <fieldset className="form__fieldset">
+            <label className="form__label" htmlFor="birthday">
+              Date of Birth
+            </label>
+            <input
+              className="form__input form__input--spacing"
+              type="date"
+              id="birthday"
+              name="birthday"
+              onChange={handleChange}
+              value={formData.birthday}
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <label className="form__label" htmlFor="occupation">
+              Occupation
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="occupation"
+              name="occupation"
+              placeholder="Occupation"
+              onChange={handleChange}
+              value={formData.occupation}
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <label className="form__label" htmlFor="role">
+              Job Role
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="role"
+              name="role"
+              placeholder="Job Role"
+              onChange={handleChange}
+              value={formData.role}
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <label
+              className="form__label form__label--spacing"
+              htmlFor="experience"
+            >
+              Year started current job?
+            </label>
+            <input
+              className="form__input"
+              type="number"
+              id="experience"
+              name="experience"
+              placeholder="E.g. 2013"
+              onChange={handleChange}
+              value={formData.experience}
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <label className="form__label" htmlFor="setting">
+              Work Setting
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="setting"
+              name="setting"
+              onChange={handleChange}
+              placeholder="E.g. office or remote"
+              value={formData.setting}
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <label className="form__label" htmlFor="hours">
+              Work Hours
+            </label>
+            <input
+              className="form__input"
+              type="number"
+              id="hours"
+              name="hours"
+              onChange={handleChange}
+              placeholder="Typical hours per week"
+              value={formData.hours}
+            />
+          </fieldset>
+          <p className="form__link" onClick={closeInformationModal}>
+            Click here to see less
+          </p>
+        </>
+      )}
       <div className="form__button">
         <Button>Sign Up</Button>
       </div>
       {errorMessage && <p className="form__error">{errorMessage}</p>}
       {successMessage && (
         <p className="form__text form__text--success">
-          {" "}
           Successful! Directing you to the log in page.
         </p>
       )}

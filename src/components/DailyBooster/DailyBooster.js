@@ -7,8 +7,11 @@ export default function DailyBooster({ boosterEntries }) {
   const { darkTheme } = useContext(ThemeContext);
   const [recommendation, setRecommendation] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
+  const [text, setText] = useState("Click to Reveal");
+  const [isAnimation, setIsAnimation] = useState(false);
+
   const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
-  const randomActivity = boosterEntries[randomIndex].activity
+  const randomActivity = boosterEntries[randomIndex].activity;
 
   const getRecommendation = async () => {
     const authToken = localStorage.getItem("authToken");
@@ -38,7 +41,7 @@ export default function DailyBooster({ boosterEntries }) {
         );
       }
 
-      if (data) {
+      if (data.length) {
         const updatedAt = new Date(data[0].updated_at).toLocaleDateString(
           "en-GB"
         );
@@ -75,35 +78,52 @@ export default function DailyBooster({ boosterEntries }) {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleClick = () => {
+    setTimeout(() => {
+      setText(recommendation);
+    }, 1500);
+    setIsAnimation(true);
+  };
+
   return (
     <>
       {recommendation && (
-          <div className={`inspiration ${
-            darkTheme ? "inspiration--dark" : ""
-          } `}>
-            <h2
-              className="inspiration__heading"
+        <div className={`inspiration ${darkTheme ? "inspiration--dark" : ""} `}>
+          <h2 className="inspiration__heading">Your daily inspiration</h2>
+          <p
+            className={`inspiration__text ${
+              darkTheme ? "inspiration__text--dark" : ""
+            } `}
+          >
+            Discovering daily inspiration can be challenging, so why not leave
+            it to us?{" "}
+          </p>
+          <p
+            className={`inspiration__text ${
+              darkTheme ? "inspiration__text--dark" : ""
+            } `}
+          >
+            Give us a minute to think before clicking to reveal your activity.
+            In the meantime, take a moment to breathe.
+          </p>
+          <div className="inspiration__container" onClick={handleClick}>
+            <p
+              className={`inspiration__activity ${
+                isAnimation ? "inspiration__activity--animation" : ""
+              } `}
             >
-              Your daily inspiration
-            </h2>
-            <p className={`inspiration__text ${
-            darkTheme ? "inspiration__text--dark" : ""
-          } `}>
-              Discovering daily inspiration can be challenging, so why not leave
-              it to us?{" "}
+              {text}
             </p>
-            <p className={`inspiration__text ${
-            darkTheme ? "inspiration__text--dark" : ""
-          } `}>
-              Try incorporating your selected activity into your daily schedule
-              for a refreshing boost.
-            </p>
-            <div className="inspiration__container">
-              <p className={`inspiration__activity ${
-            darkTheme ? "inspiration__activity--dark" : ""
-          } `}>{recommendation}</p>
-            </div>
           </div>
+          <p
+            className={`inspiration__text ${
+              darkTheme ? "inspiration__text--dark" : ""
+            } `}
+          >
+            Try incorporating your selected activity into your daily schedule
+            for a refreshing boost.
+          </p>
+        </div>
       )}
       {errorMessage && <p className="inspiration__error">{errorMessage}</p>}
     </>

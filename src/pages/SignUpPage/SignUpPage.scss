@@ -8,6 +8,7 @@
   &__container {
     max-width: $max-width;
     background-color: $color-background-secondary;
+    border: 3px solid $color-border-tertiary;
     width: 95%;
     border-radius: 20px;
     margin-top: 2rem;
@@ -15,6 +16,10 @@
     @include flex(column, start, center);
 
     @include tablet-and-desktop {
+      width: 80%;
+    }
+
+    @include desktop {
       width: 50%;
     }
   }
@@ -54,7 +59,7 @@
     color: $color-button-primary;
 
     &:hover {
-        color: $color-button-secondary;
+      color: $color-button-secondary;
     }
   }
 }

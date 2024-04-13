@@ -39,6 +39,11 @@
     }
   }
 
+  &__icon {
+    width: 1.5rem;
+    vertical-align: top;
+  }
+
   &__add {
     @include flex(row, center, center);
     gap: 0.5rem;

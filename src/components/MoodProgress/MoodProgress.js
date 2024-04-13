@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Link } from "react-router-dom";
+import bicep from "../../assets/icons/bicep.png";
+import clap from "../../assets/icons/clap.png";
+import celebration from "../../assets/icons/celebration.png";
 import "./MoodProgress.scss";
 
 export default function MoodProgress({ chartData }) {
@@ -22,20 +25,13 @@ export default function MoodProgress({ chartData }) {
               darkTheme ? "progress__text--dark" : ""
             }`}
           >
-            Congratulations! Your efforts are paying off.
-          </p>
-          <p
-            className={`progress__text ${
-              darkTheme ? "progress__text--dark" : ""
-            }`}
-          >
-            Your lower score indicates progress towards a healthier mindset.{" "}
-          </p>
-          <p
-            className={`progress__text ${
-              darkTheme ? "progress__text--dark" : ""
-            }`}
-          >
+            Congratulations! Your efforts are paying off.{" "}
+            <img
+              src={celebration}
+              alt="Celebration Icon"
+              className="progress__icon"
+            />
+            Your lower score indicates progress towards a healthier mindset.
             Keep up the great work!
           </p>
         </section>
@@ -55,7 +51,8 @@ export default function MoodProgress({ chartData }) {
               darkTheme ? "progress__text--dark" : ""
             }`}
           >
-            Consistency is key on your journey to improved wellbeing. Well done!
+            Consistency is key on your journey to improved wellbeing. Well done!{" "}
+            <img src={clap} alt="Clap Icon" className="progress__icon" />
           </p>
           <p
             className={`progress__text ${
@@ -92,7 +89,8 @@ export default function MoodProgress({ chartData }) {
             }`}
           >
             Remember, setbacks are part of the journey. Your courage in facing
-            these challenges is commendable.
+            these challenges is commendable.{" "}
+            <img src={bicep} alt="Bicep Icon" className="progress__icon" />
           </p>
           <p
             className={`progress__text ${

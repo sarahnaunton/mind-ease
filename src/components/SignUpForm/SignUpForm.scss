@@ -6,11 +6,25 @@
     border: none;
     padding: 0;
     @include flex(column, center, start);
+
+    @include tablet-and-desktop {
+      @include flex(row, space-around, center);
+      gap: 1rem;
+      padding: 0 4rem;
+    }
   }
 
   &__label {
     @include subheading($color-text-primary);
     margin-top: 0.5rem;
+
+    &--spacing {
+      width: 15rem;
+    }
+
+    @include tablet-and-desktop {
+      width: 100%;
+    }
   }
 
   &__number {
@@ -29,6 +43,14 @@
       outline: 1px solid $color-border-quaternary;
     }
 
+    &--spacing {
+      width: 85%;
+
+      @include tablet-and-desktop {
+        width: 42%;
+      }
+    }
+
     &--error {
       border: none;
       outline: 2px solid $color-border-error;
@@ -42,26 +64,46 @@
 
   &__error {
     @include error-text;
+    width: 15rem;
+    padding-top: 0.25rem;
     text-align: center;
 
-    &--spacing {
-      padding-left: 1rem;
-      padding-right: 1rem;
-
-      @include tablet-and-desktop {
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
+    @include tablet-and-desktop {
+      width: 80%;
+      margin: auto;
     }
   }
 
   &__text {
-    @include body-text($color-text-primary);
-    margin: 0;
+    @include body-small-text($color-text-tertiary);
     padding: 0.5rem 0;
+    width: 15rem;
+    margin-bottom: 0;
+    text-align: center;
 
     &--success {
       color: $color-text-tertiary;
+    }
+
+    @include tablet-and-desktop {
+      width: 80%;
+      margin: auto;
+    }
+  }
+
+  &__link {
+    @include body-text($color-text-tertiary);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    width: 15rem;
+
+    @include tablet-and-desktop {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $color-dark-text-quinary;
     }
   }
 }

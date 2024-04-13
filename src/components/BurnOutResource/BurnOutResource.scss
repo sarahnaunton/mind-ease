@@ -6,12 +6,12 @@
     border: 3px solid $color-border-primary;
     border-radius: 20px;
     object-fit: contain;
-    width: 5rem;
+    width: 4rem;
     height: 4rem;
 
     @include tablet-and-desktop {
-width: 10rem;
-height: 8rem;
+      width: 10rem;
+      height: 8rem;
     }
 
     @include desktop {
@@ -27,6 +27,7 @@ height: 8rem;
   &__text {
     @include body-small-text($color-text-primary);
     font-weight: 600;
+    margin-right: 0.5rem;
 
     &--dark {
       color: $color-dark-text-primary;

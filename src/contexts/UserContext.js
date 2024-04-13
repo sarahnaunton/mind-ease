@@ -9,19 +9,22 @@ function UserProvider(props) {
 
   const getUserData = async () => {
     const authToken = localStorage.getItem("authToken");
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/users`,
-        {
-          headers: {
-            authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserData(data);
-      setErrorMessage(false);
-    } catch (error) {
-      setErrorMessage(error.response.data.error);
+
+    if (authToken) {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/users`,
+          {
+            headers: {
+              authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
+        setUserData(data);
+        setErrorMessage(false);
+      } catch (error) {
+        setErrorMessage(error.response.data.error);
+      }
     }
   };
 

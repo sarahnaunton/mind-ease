@@ -1,9 +1,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+//Add dark mode to background color and text 
+
 .loader{
     background-color: $color-background-primary;
     @include flex(column, center, center);
+    margin-top: 5rem;
 
     &__heading {
         text-align: center;

@@ -30,6 +30,9 @@
   
   &__introduction {
     margin-bottom: 2rem;
+    border: 3px solid $color-border-tertiary;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
   }
 
   &__subheading {
@@ -50,4 +53,10 @@
       color: $color-dark-text-tertiary;
     }
   }
+
+  &__icon {
+    width: 1.5rem;
+    vertical-align: top;
+  }
+
 }

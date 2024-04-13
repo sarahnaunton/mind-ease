@@ -3,7 +3,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import JournalEntry from "../JournalEntry/JournalEntry";
 import "./JournalEntries.scss";
 
-export default function JournalEntries({ getJournalEntries, journalEntries}) {
+export default function JournalEntries({ getJournalEntries, journalEntries }) {
   const [searchJournal, setSearchJournal] = useState("");
   const { darkTheme } = useContext(ThemeContext);
 

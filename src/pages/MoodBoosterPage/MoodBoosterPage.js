@@ -5,12 +5,14 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
 import { ChartContext } from "../../contexts/ChartContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
+import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import DailyBooster from "../../components/DailyBooster/DailyBooster";
 import BoosterForm from "../../components/BoosterForm/BoosterForm";
 import BoosterEntries from "../../components/BoosterEntries";
 import RecommendAI from "../../components/RecommendAI/RecommendAI";
 import HappyResources from "../../components/HappyResouces";
+import face from "../../assets/icons/face.png";
 import add from "../../assets/icons/add-50.png";
 import "./MoodBoosterPage.scss";
 
@@ -57,7 +59,8 @@ export default function MoodBoosterPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && (
+      {isLoggedIn && !boosterEntries && <Loader />}
+      {isLoggedIn && boosterEntries && (
         <>
           <Navigation />
           <main className={`booster ${darkTheme ? "booster--dark" : ""}`}>
@@ -80,7 +83,8 @@ export default function MoodBoosterPage() {
                   }`}
                 >
                   This page is where you can celebrate the simple joys that
-                  brighten your day.
+                  brighten your day.{" "}
+                  <img src={face} alt="Smile Icon" className="booster__icon" />
                 </p>
                 <p
                   className={`booster__text ${

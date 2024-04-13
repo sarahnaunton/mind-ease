@@ -63,7 +63,7 @@ export default function LogInForm() {
       getUserData();
       navigate("/home");
     } catch (error) {
-        console.log(error)
+      console.log(error);
       setErrorMessage(error.response.data.error);
     }
   };
@@ -81,14 +81,13 @@ export default function LogInForm() {
           type="email"
           id="email"
           name="email"
+          placeholder="Email"
           onChange={handleChange}
           value={formData.email}
         />
       </fieldset>
       {formError.email && (
-        <fieldset className="form__fieldset">
           <p className="form__error">{formError.email}</p>
-        </fieldset>
       )}
       <fieldset className="form__fieldset">
         <label className="form__label" htmlFor="password">
@@ -101,14 +100,13 @@ export default function LogInForm() {
           type="password"
           id="password"
           name="password"
+          placeholder="Password"
           onChange={handleChange}
           value={formData.password}
         />
       </fieldset>
       {formError.password && (
-        <fieldset className="form__fieldset">
           <p className="form__error">{formError.password}</p>
-        </fieldset>
       )}
       <div className="form__button">
         <Button>Log In</Button>

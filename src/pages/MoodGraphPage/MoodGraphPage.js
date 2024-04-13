@@ -5,6 +5,7 @@ import { ChartContext } from "../../contexts/ChartContext";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
+import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import GraphNoAnswer from "../../components/GraphNoAnswer/GraphNoAnswer";
 import GraphOneAnswer from "../../components/GraphOneAnswer";
@@ -28,7 +29,8 @@ export default function MoodGraphPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && (
+      {isLoggedIn && !chartData && <Loader />}
+      {isLoggedIn && chartData && (
         <>
           <Navigation />
           <main className={`graph-page ${darkTheme ? "graph-page--dark" : ""}`}>
@@ -76,6 +78,7 @@ export default function MoodGraphPage() {
               {chartData && chartData.length >= 2 && (
                 <>
                   <MoodScore chartData={chartData} />
+                  <MoodProgress chartData={chartData} />
                   <div
                     className={`graph-page__graph ${
                       darkTheme ? "graph-page__graph--dark" : ""
@@ -83,7 +86,6 @@ export default function MoodGraphPage() {
                   >
                     <MoodGraph chartData={chartData} />
                   </div>
-                  <MoodProgress chartData={chartData} />
                 </>
               )}
               {errorMessage && (

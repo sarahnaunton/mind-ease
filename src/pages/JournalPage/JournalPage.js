@@ -3,10 +3,12 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
+import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
 import JournalForm from "../../components/JournalForm/JournalForm";
 import JournalEntries from "../../components/JournalEntries/JournalEntries";
+import pen from "../../assets/icons/pen.png";
 import add from "../../assets/icons/add-50.png";
 import "./JournalPage.scss";
 
@@ -51,7 +53,11 @@ export default function JournalPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && (
+      {isLoggedIn && !journalEntries&& (
+<Loader/>
+      )
+      }
+      {isLoggedIn && journalEntries &&(
         <>
           <Navigation />
           <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
@@ -64,25 +70,25 @@ export default function JournalPage() {
                 What's on your mind?
               </h1>
               <div className="journal__introduction">
-              <p
-                className={`journal__text ${
-                  darkTheme ? "journal__text--dark" : ""
-                }`}
-              >
-                Welcome to your journaling space, where your thoughts find
-                expression and your emotions are heard.
-              </p>
-              <p
-                className={`journal__text ${
-                  darkTheme ? "journal__text--dark" : ""
-                }`}
-              >
-                Journaling offers a unique opportunity to understand yourself
-                better, gain clarity, and encourage personal growth. Through
-                journaling, you can track your progress, celebrate victories,
-                and navigate challenges. Remember, every entry is a step towards
-                self-discovery and empowerment.
-              </p>
+                <p
+                  className={`journal__text ${
+                    darkTheme ? "journal__text--dark" : ""
+                  }`}
+                >
+                  Welcome to your journaling space, where your thoughts find
+                  expression and your emotions are heard. <img src={pen} alt="Pen Icon" className="journal__icon"/>
+                </p>
+                <p
+                  className={`journal__text ${
+                    darkTheme ? "journal__text--dark" : ""
+                  }`}
+                >
+                  Journaling offers a unique opportunity to understand yourself
+                  better, gain clarity, and encourage personal growth. Through
+                  journaling, you can track your progress, celebrate victories,
+                  and navigate challenges. Remember, every entry is a step
+                  towards self-discovery and empowerment.
+                </p>
               </div>
               <BurnOutSigns />
               <div

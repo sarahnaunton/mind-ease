@@ -1,6 +1,15 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+@keyframes rotate {
+  0% {
+    transform: perspective(850px) rotateY(0deg)
+  }
+  100% {
+    transform: perspective(850px) translateZ(150px) rotateY(180deg);
+  }
+}
+
 .home {
   @include flex(row, center, start);
   background-color: $color-background-primary;
@@ -33,6 +42,11 @@
       background-color: $color-dark-background-secondary;
       color: $color-border-tertiary;
     }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    vertical-align: top;
   }
 
   &__subheading {
@@ -82,12 +96,12 @@
     @include desktop {
       width: 17.5rem;
     }
-
     &--blue {
       background-color: $color-background-quinary;
 
       &:hover {
         outline: 5px solid $color-dark-border-tertiary;
+        animation: rotate 3s;
       }
 
       &--dark {
@@ -104,6 +118,7 @@
 
       &:hover {
         outline: 5px solid $color-dark-border-quaternary;
+        animation: rotate 3s;
       }
 
       &--dark {
@@ -120,6 +135,7 @@
 
       &:hover {
         outline: 5px solid $color-dark-border-secondary;
+        animation: rotate 3s;
       }
 
       &--dark {
@@ -136,6 +152,7 @@
 
       &:hover {
         outline: 5px solid $color-border-primary;
+        animation: rotate 3s;
       }
 
       &--dark {
@@ -152,6 +169,7 @@
 
       &:hover {
         outline: 5px solid $color-border-tertiary;
+        animation: rotate 3s;
       }
 
       &--dark {

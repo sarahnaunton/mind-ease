@@ -4,9 +4,11 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
+import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import HomePageGreeting from "../../components/HomePageGreeting/HomePageGreeting";
 import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
+import thumbsUp from "../../assets/icons/thumbs-up.png";
 import smile from "../../assets/icons/smile-50.png";
 import graph from "../../assets/icons/graph-50.png";
 import journal from "../../assets/icons/journal-50.png";
@@ -26,7 +28,11 @@ export default function HomePage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && (
+      {isLoggedIn && !userData&& (
+<Loader/>
+      )
+      }
+      {isLoggedIn && userData && (
         <>
           <Navigation />
           <main className={`home ${darkTheme ? "home--dark" : ""}`}>
@@ -66,7 +72,7 @@ export default function HomePage() {
                       darkTheme ? "home__subheading--dark" : ""
                     }`}
                   >
-                    Let's thrive together!
+                    Let's thrive together! <img src={thumbsUp} alt="Thumbs Up" className="home__icon"/>
                   </p>
                 </div>
                 <h2

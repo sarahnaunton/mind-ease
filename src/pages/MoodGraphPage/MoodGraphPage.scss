@@ -61,6 +61,11 @@
       border-color: $color-dark-border-quaternary;
       background-color: $color-dark-background-senary;
     }
+
+    @include tablet-and-desktop {
+      width: 75%;
+      margin: auto;
+    }
   }
 
   &__error {

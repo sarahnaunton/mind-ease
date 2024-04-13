@@ -9,19 +9,22 @@ function ChartProvider(props) {
 
   const getChartData = async () => {
     const authToken = localStorage.getItem("authToken");
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/scores`,
-        {
-          headers: {
-            authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setChartData(data);
-      setErrorMessage(false);
-    } catch (error) {
-      setErrorMessage(error.response.data.error);
+
+    if (authToken) {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/scores`,
+          {
+            headers: {
+              authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
+        setChartData(data);
+        setErrorMessage(false);
+      } catch (error) {
+        setErrorMessage(error.response.data.error);
+      }
     }
   };
 

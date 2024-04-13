@@ -1,16 +1,31 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+@keyframes twist {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(360deg) scale(0);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
 .inspiration {
   border: 3px solid $color-border-tertiary;
   border-radius: 20px;
   padding: 1rem;
   margin: 2rem auto;
-  width: 35rem;
-  text-align:  center;
+  text-align: center;
 
   &--dark {
     border-color: $color-dark-border-tertiary;
+  }
+
+  @include tablet-and-desktop {
+    width: 35rem;
   }
 
   &__heading {
@@ -37,6 +52,10 @@
     border-radius: 20px;
     padding: 1rem 2rem;
     margin: 2rem;
+
+    &--animation {
+      animation: twist 3s;
+    }
 
     &--dark {
       background-color: $color-dark-background-quinary;

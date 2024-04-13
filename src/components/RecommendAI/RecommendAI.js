@@ -2,9 +2,10 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Markdown from "markdown-to-jsx";
+import Loader from "../Loader/Loader";
 import Button from "../Button/Button";
 import "./RecommendAI.scss";
-import Loader from "../Loader/Loader";
+
 
 export default function RecommendAI({ boosterEntries, userData, chartData }) {
   const { darkTheme } = useContext(ThemeContext);
@@ -55,7 +56,7 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
         Can the response have suggestions listed in the format of bullet points. 
         Can there be 6 bullet points. 
         Can the response end 'Remember, prioritising your mental wellbeing is essential for overall health and happiness. Keep taking small steps towards self-care and seeking support when needed. 
-        You are on the right path towards a healthier mindset. You've got this ${userInfo.firstname}.' 
+        You are on the right path towards a healthier mindset. You've got this ${userInfo.firstname}!' 
         Ensure english spelling with 's' rather than 'z'. 
         Format the response as markdown. 
       `,

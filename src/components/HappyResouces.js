@@ -45,6 +45,7 @@ export default function HappyResources() {
           </BurnOutResource>
         </Link>
         <Link
+        target="_blank"
           to="https://www.optimistdaily.com/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
