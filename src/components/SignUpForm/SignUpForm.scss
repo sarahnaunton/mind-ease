@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.form {
+.auth-form {
   &__fieldset {
     border: none;
     padding: 0;

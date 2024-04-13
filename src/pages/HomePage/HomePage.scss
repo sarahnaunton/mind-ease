@@ -29,41 +29,6 @@
     padding: 2rem;
   }
 
-  &__explore {
-    background-color: $color-background-secondary;
-    border: 3px solid $color-dark-border-tertiary;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    max-width: 35rem;
-    margin: auto;
-
-    &--dark {
-      background-color: $color-dark-background-secondary;
-      color: $color-border-tertiary;
-    }
-  }
-
-  &__icon {
-    @include icon;
-  }
-
-  &__subheading {
-    @include subheading($color-text-primary);
-
-    &--dark {
-      color: $color-dark-text-primary;
-    }
-  }
-
-  &__logo {
-    @include logo;
-    font-size: 1.6rem;
-
-    @include tablet-and-desktop {
-      font-size: 2rem;
-    }
-  }
 
   &__heading {
     @include heading($color-text-primary);
@@ -72,6 +37,10 @@
     &--dark {
       color: $color-dark-text-primary;
     }
+  }
+
+  &__link {
+    text-decoration: none;
   }
 
   &__articles {
@@ -179,10 +148,6 @@
         }
       }
     }
-  }
-
-  &__link {
-    text-decoration: none;
   }
 
   &__error {

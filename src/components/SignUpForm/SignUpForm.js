@@ -112,14 +112,14 @@ export default function SignUpForm() {
   };
 
   return (
-    <form className="form" onSubmit={handleForm}>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="firstname">
+    <form className="auth-form" onSubmit={handleForm}>
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="firstname">
           First Name
         </label>
         <input
-          className={`form__input ${
-            formError.firstname ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.firstname ? "auth-form__input--error" : ""
           }`}
           type="text"
           id="firstname"
@@ -130,15 +130,15 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.firstname && (
-        <p className="form__error">{formError.firstname}</p>
+        <p className="auth-form__error">{formError.firstname}</p>
       )}
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="lastname">
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="lastname">
           Last Name
         </label>
         <input
-          className={`form__input ${
-            formError.lastname ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.lastname ? "auth-form__input--error" : ""
           }`}
           type="text"
           id="lastname"
@@ -149,15 +149,15 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.lastname && (
-        <p className="form__error">{formError.lastname}</p>
+        <p className="auth-form__error">{formError.lastname}</p>
       )}
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="email">
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="email">
           Email
         </label>
         <input
-          className={`form__input ${
-            formError.email ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.email ? "auth-form__input--error" : ""
           }`}
           type="email"
           id="email"
@@ -167,14 +167,14 @@ export default function SignUpForm() {
           value={formData.email}
         />
       </fieldset>
-      {formError.email && <p className="form__error">{formError.email}</p>}
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="password">
+      {formError.email && <p className="auth-form__error">{formError.email}</p>}
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="password">
           Password
         </label>
         <input
-          className={`form__input ${
-            formError.password ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.password ? "auth-form__input--error" : ""
           }`}
           type="password"
           id="password"
@@ -185,15 +185,17 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.password && (
-        <p className="form__error form__error--spacing">{formError.password}</p>
+        <p className="auth-form__error auth-form__error--spacing">
+          {formError.password}
+        </p>
       )}
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="confirmPassword">
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="confirmPassword">
           Confirm Password
         </label>
         <input
-          className={`form__input ${
-            formError.confirmPassword ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.confirmPassword ? "auth-form__input--error" : ""
           }`}
           type="password"
           id="confirmPassword"
@@ -204,26 +206,26 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.confirmPassword && (
-        <p className="form__error">{formError.confirmPassword}</p>
+        <p className="auth-form__error">{formError.confirmPassword}</p>
       )}
       {!isInformationModalOpen && (
-        <p className="form__link" onClick={handleInformationModal}>
+        <p className="auth-form__link" onClick={handleInformationModal}>
           Click here to provide additional information
         </p>
       )}
       {isInformationModalOpen && (
         <>
-          <p className="form__text">
+          <p className="auth-form__text">
             The following information is not required, but any details you share
             will help us better understand your needs and preferences, and help
             us suggest more personalised strategies to boost your mood.
           </p>
-          <fieldset className="form__fieldset">
-            <label className="form__label" htmlFor="birthday">
+          <fieldset className="auth-form__fieldset">
+            <label className="auth-form__label" htmlFor="birthday">
               Date of Birth
             </label>
             <input
-              className="form__input form__input--spacing"
+              className="auth-form__input auth-form__input--spacing"
               type="date"
               id="birthday"
               name="birthday"
@@ -231,12 +233,12 @@ export default function SignUpForm() {
               value={formData.birthday}
             />
           </fieldset>
-          <fieldset className="form__fieldset">
-            <label className="form__label" htmlFor="occupation">
+          <fieldset className="auth-form__fieldset">
+            <label className="auth-form__label" htmlFor="occupation">
               Occupation
             </label>
             <input
-              className="form__input"
+              className="auth-form__input"
               type="text"
               id="occupation"
               name="occupation"
@@ -245,12 +247,12 @@ export default function SignUpForm() {
               value={formData.occupation}
             />
           </fieldset>
-          <fieldset className="form__fieldset">
-            <label className="form__label" htmlFor="role">
+          <fieldset className="auth-form__fieldset">
+            <label className="auth-form__label" htmlFor="role">
               Job Role
             </label>
             <input
-              className="form__input"
+              className="auth-form__input"
               type="text"
               id="role"
               name="role"
@@ -259,15 +261,15 @@ export default function SignUpForm() {
               value={formData.role}
             />
           </fieldset>
-          <fieldset className="form__fieldset">
+          <fieldset className="auth-form__fieldset">
             <label
-              className="form__label form__label--spacing"
+              className="auth-form__label auth-form__label--spacing"
               htmlFor="experience"
             >
               Year started current job?
             </label>
             <input
-              className="form__input"
+              className="auth-form__input"
               type="number"
               id="experience"
               name="experience"
@@ -276,12 +278,12 @@ export default function SignUpForm() {
               value={formData.experience}
             />
           </fieldset>
-          <fieldset className="form__fieldset">
-            <label className="form__label" htmlFor="setting">
+          <fieldset className="auth-form__fieldset">
+            <label className="auth-form__label" htmlFor="setting">
               Work Setting
             </label>
             <input
-              className="form__input"
+              className="auth-form__input"
               type="text"
               id="setting"
               name="setting"
@@ -290,12 +292,12 @@ export default function SignUpForm() {
               value={formData.setting}
             />
           </fieldset>
-          <fieldset className="form__fieldset">
-            <label className="form__label" htmlFor="hours">
+          <fieldset className="auth-form__fieldset">
+            <label className="auth-form__label" htmlFor="hours">
               Work Hours
             </label>
             <input
-              className="form__input"
+              className="auth-form__input"
               type="number"
               id="hours"
               name="hours"
@@ -304,17 +306,17 @@ export default function SignUpForm() {
               value={formData.hours}
             />
           </fieldset>
-          <p className="form__link" onClick={closeInformationModal}>
+          <p className="auth-form__link" onClick={closeInformationModal}>
             Click here to see less
           </p>
         </>
       )}
-      <div className="form__button">
+      <div className="auth-form__button">
         <Button>Sign Up</Button>
       </div>
-      {errorMessage && <p className="form__error">{errorMessage}</p>}
+      {errorMessage && <p className="auth-form__error">{errorMessage}</p>}
       {successMessage && (
-        <p className="form__text form__text--success">
+        <p className="auth-form__text auth-form__text--success">
           Successful! Directing you to the log in page.
         </p>
       )}

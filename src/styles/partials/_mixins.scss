@@ -79,6 +79,12 @@
     }
   }
 
+  @mixin border($color) {
+    border: 3px solid $color;
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+  }
+
   @mixin icon {
     width: 1.5rem;
     vertical-align: top;

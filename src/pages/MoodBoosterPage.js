@@ -5,15 +5,14 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { UserContext } from "../contexts/UserContext";
 import { ChartContext } from "../contexts/ChartContext";
 import LogInMessage from "../components/LogInMessage/LogInMessage";
-import Loader from "../components/Loader/Loader";
 import Navigation from "../components/Navigation/Navigation";
-import DailyBooster from "../components/DailyBooster/DailyBooster";
-import BoosterForm from "../components/BoosterForm/BoosterForm";
-import BoosterEntries from "../components/BoosterEntries";
-import RecommendAI from "../components/RecommendAI/RecommendAI";
-import HappyResources from "../components/HappyResouces";
-import face from "../assets/icons/face.png";
-import add from "../assets/icons/add-50.png";
+import BoosterIntroduction from "../components/Booster/BoosterIntroduction";
+import BoosterDaily from "../components/Booster/BoosterDaily/BoosterDaily";
+import BoosterForm from "../components/Booster/BoosterForm";
+import BoosterEntries from "../components/Booster/BoosterEntries";
+import RecommendAI from "../components/Booster/RecommendAI/RecommendAI";
+import BoosterResources from "../components/Booster/BoosterResouces";
+import add from "../assets/icons/add.png";
 
 export default function MoodBoosterPage() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -58,8 +57,7 @@ export default function MoodBoosterPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && !boosterEntries && <Loader />}
-      {isLoggedIn && boosterEntries && (
+      {isLoggedIn &&  (
         <>
           <Navigation />
           <main className={`page ${darkTheme ? "page--dark" : ""}`}>
@@ -71,46 +69,13 @@ export default function MoodBoosterPage() {
               >
                 What makes you happy?
               </h1>
-              <div>
-                <p
-                  className={`page__text ${
-                    darkTheme ? "page__text--dark" : ""
-                  }`}
-                >
-                  This page is where you can celebrate the simple joys that
-                  brighten your day.{" "}
-                  <img src={face} alt="Smile Icon" className="page__icon" />
-                </p>
-                <p
-                  className={`page__text ${
-                    darkTheme ? "page__text--dark" : ""
-                  }`}
-                >
-                  In times of burnout, it's especially important to have a
-                  mindful list of activities that bring us joy. Even when we're
-                  least inclined to engage in them, these mood boosters can
-                  serve as helpful prompts, gently nudging us back towards a
-                  state of balance and wellbeing.
-                </p>
-                <p
-                  className={`page__text ${
-                    darkTheme ? "page__text--dark" : ""
-                  }`}
-                >
-                  These boosters can encompass a variety of activities, ranging
-                  from the calming practice of yoga to the peacefulness of a
-                  nature walk, or even the immersion of a good book. Ultimately,
-                  the choice is yours.
-                </p>
-              </div>
+              <BoosterIntroduction />
               {boosterEntries && boosterEntries.length > 0 && (
-                <DailyBooster boosterEntries={boosterEntries} />
+                <BoosterDaily boosterEntries={boosterEntries} />
               )}
               <div
                 onClick={handleAddModal}
-                className={`page__add ${
-                  darkTheme ? "page__add--dark" : ""
-                }`}
+                className={`page__add ${darkTheme ? "page__add--dark" : ""}`}
               >
                 <h2
                   className={`page__label ${
@@ -138,7 +103,7 @@ export default function MoodBoosterPage() {
                   chartData={chartData}
                 />
               )}
-              <HappyResources />
+              <BoosterResources />
               {errorMessage && <p className="page__error">{errorMessage}</p>}
             </div>
           </main>

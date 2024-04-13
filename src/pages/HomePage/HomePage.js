@@ -4,14 +4,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
-import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
-import HomePageGreeting from "../../components/HomePageGreeting/HomePageGreeting";
-import HomePageArticle from "../../components/HomePageArticle/HomePageArticle";
-import thumbsUp from "../../assets/icons/thumbs-up.png";
-import smile from "../../assets/icons/smile-50.png";
-import graph from "../../assets/icons/graph-50.png";
-import journal from "../../assets/icons/journal-50.png";
+import HomePageGreeting from "../../components/Home/HomePageGreeting/HomePageGreeting";
+import HomeIntroduction from "../../components/Home/HomeIntroduction/HomeIntroduction";
+import HomePageArticle from "../../components/Home/HomePageArticle/HomePageArticle";
+import smile from "../../assets/icons/smile.png";
+import graph from "../../assets/icons/graph.png";
+import journal from "../../assets/icons/journal.png";
 import rocket from "../../assets/icons/rocket.png";
 import info from "../../assets/icons/info.png";
 import "./HomePage.scss";
@@ -28,53 +27,14 @@ export default function HomePage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && !userData&& (
-<Loader/>
-      )
-      }
-      {isLoggedIn && userData && (
+      {isLoggedIn && (
         <>
           <Navigation />
           <main className={`home ${darkTheme ? "home--dark" : ""}`}>
             <div className="home__container">
               <HomePageGreeting userData={userData} />
               <section>
-                <div
-                  className={`home__explore ${
-                    darkTheme ? "home__explore--dark" : ""
-                  }`}
-                >
-                  <p
-                    className={`home__subheading ${
-                      darkTheme ? "home__subheading--dark" : ""
-                    }`}
-                  >
-                    Explore{" "}
-                    <span
-                      className={`home__logo ${
-                        darkTheme ? "home__logo--dark" : ""
-                      }`}
-                    >
-                      MindEase
-                    </span>
-                    ,
-                  </p>
-                  <p
-                    className={`home__subheading ${
-                      darkTheme ? "home__subheading--dark" : ""
-                    }`}
-                  >
-                    Monitor your burnout score, journal your thoughts, and
-                    discover personalised activities for your wellbeing.
-                  </p>
-                  <p
-                    className={`home__subheading ${
-                      darkTheme ? "home__subheading--dark" : ""
-                    }`}
-                  >
-                    Let's thrive together! <img src={thumbsUp} alt="Thumbs Up" className="home__icon"/>
-                  </p>
-                </div>
+                <HomeIntroduction />
                 <h2
                   className={`home__heading ${
                     darkTheme ? "home__heading--dark" : ""

@@ -69,14 +69,14 @@ export default function LogInForm() {
   };
 
   return (
-    <form className="form" onSubmit={handleForm}>
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="email">
+    <form className="auth-form" onSubmit={handleForm}>
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="email">
           Email
         </label>
         <input
-          className={`form__input ${
-            formError.email ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.email ? "auth-form__input--error" : ""
           }`}
           type="email"
           id="email"
@@ -87,15 +87,15 @@ export default function LogInForm() {
         />
       </fieldset>
       {formError.email && (
-          <p className="form__error">{formError.email}</p>
+          <p className="auth-form__error">{formError.email}</p>
       )}
-      <fieldset className="form__fieldset">
-        <label className="form__label" htmlFor="password">
+      <fieldset className="auth-form__fieldset">
+        <label className="auth-form__label" htmlFor="password">
           Password
         </label>
         <input
-          className={`form__input ${
-            formError.password ? "form__input--error" : ""
+          className={`auth-form__input ${
+            formError.password ? "auth-form__input--error" : ""
           }`}
           type="password"
           id="password"
@@ -106,14 +106,14 @@ export default function LogInForm() {
         />
       </fieldset>
       {formError.password && (
-          <p className="form__error">{formError.password}</p>
+          <p className="auth-form__error">{formError.password}</p>
       )}
-      <div className="form__button">
+      <div className="auth-form__button">
         <Button>Log In</Button>
       </div>
-      {errorMessage && <p className="form__error">{errorMessage}</p>}
+      {errorMessage && <p className="auth-form__error">{errorMessage}</p>}
       {successMessage && (
-        <p className="form__text form__text--success">
+        <p className="auth-form__text auth-form__text--success">
           Successful! Directing you to the log in page.
         </p>
       )}

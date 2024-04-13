@@ -5,13 +5,12 @@ import { ChartContext } from "../contexts/ChartContext";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import LogInMessage from "../components/LogInMessage/LogInMessage";
-import Loader from "../components/Loader/Loader";
 import Navigation from "../components/Navigation/Navigation";
-import GraphNoAnswer from "../components/GraphNoAnswer/GraphNoAnswer";
-import GraphOneAnswer from "../components/GraphOneAnswer";
-import MoodGraph from "../components/MoodGraph";
-import MoodProgress from "../components/MoodProgress/MoodProgress";
-import MoodScore from "../components/MoodScore/MoodScore";
+import GraphNoAnswer from "../components/Mood/GraphNoAnswer/GraphNoAnswer";
+import GraphOneAnswer from "../components/Mood/GraphOneAnswer";
+import MoodGraph from "../components/Mood/MoodGraph";
+import MoodProgress from "../components/Mood/MoodProgress/MoodProgress";
+import MoodScore from "../components/Mood/MoodScore/MoodScore";
 
 Chart.register(CategoryScale);
 
@@ -28,8 +27,7 @@ export default function MoodGraphPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn && !chartData && <Loader />}
-      {isLoggedIn && chartData && (
+      {isLoggedIn &&  (
         <>
           <Navigation />
           <main className={`page ${darkTheme ? "page--dark" : ""}`}>
@@ -42,9 +40,9 @@ export default function MoodGraphPage() {
                 >
                   Monitor your wellbeing
                 </h1>
-                <div className={`page__information ${
-                      darkTheme ? "page__information--dark" : ""
-                    }`}>
+                <div className={`page__information page__information--blue ${
+                  darkTheme ? "page__information--blue--dark" : ""
+                }`}>
                   <h2
                     className={`page__subheading ${
                       darkTheme ? "page__subheading--dark" : ""

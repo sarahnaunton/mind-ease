@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import home from "../../assets/icons/home-50.png";
-import logout from "../../assets/icons/log-out-50.png";
-import moon from "../../assets/icons/moon-50.png";
-import sun from "../../assets/icons/sun-50.png";
+import home from "../../assets/icons/home.png";
+import logout from "../../assets/icons/log-out.png";
+import moon from "../../assets/icons/moon.png";
+import sun from "../../assets/icons/sun.png";
 import "./Navigation.scss";
 
 export default function Navigation() {

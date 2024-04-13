@@ -1,0 +1,21 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.resources {
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+  overflow: hidden;
+
+  &__subheading {
+    @include subheading($color-background-tertiary);
+
+    &--dark {
+      color: $color-dark-background-tertiary;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

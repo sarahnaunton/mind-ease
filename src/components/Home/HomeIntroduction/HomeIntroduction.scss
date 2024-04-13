@@ -1,0 +1,46 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.introduction {
+  &__container {
+    background-color: $color-background-secondary;
+    @include border($color-dark-border-tertiary);
+    text-align: center;
+    max-width: 35rem;
+    margin: auto;
+
+    &--dark {
+      background-color: $color-dark-background-secondary;
+      color: $color-border-tertiary;
+    }
+  }
+
+  &__subheading {
+    @include subheading($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__logo {
+    @include logo;
+    font-size: 1.6rem;
+
+    @include tablet-and-desktop {
+      font-size: 2rem;
+    }
+  }
+
+  &__icon {
+    @include icon;
+  }
+}

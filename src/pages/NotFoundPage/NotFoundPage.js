@@ -6,7 +6,7 @@ import find from "../../assets/icons/find.png";
 import "./NotFoundPage.scss";
 
 export default function NotFoundPage() {
-    const {isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <>
@@ -15,7 +15,8 @@ export default function NotFoundPage() {
         <main className="found">
           <section className="found__container">
             <p className="found__text">
-              Ooops! We couldn't find that page. <img src={find} alt="Thinking Emoji" className="found__icon"/>
+              Ooops! We couldn't find that page.{" "}
+              <img src={find} alt="Thinking Emoji" className="found__icon" />
             </p>
             <p className="found__text">
               Take a moment to breathe and remember, setbacks are just detours
@@ -24,7 +25,6 @@ export default function NotFoundPage() {
             <p className="found__text">
               Head back to the{" "}
               <Link className="found__link" to="/home">
-                {" "}
                 home page
               </Link>{" "}
               and continue your journey towards wellness. You've got this!

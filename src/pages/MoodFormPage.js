@@ -3,7 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import LogInMessage from "../components/LogInMessage/LogInMessage";
 import Navigation from "../components/Navigation/Navigation";
-import MoodForm from "../components/MoodForm/MoodForm";
+import MoodForm from "../components/Mood/MoodForm/MoodForm";
 import thinking from "../assets/icons/thinking.png";
 
 export default function MoodFormPage() {
@@ -30,8 +30,8 @@ export default function MoodFormPage() {
                 How are you feeling today?
               </h1>
               <div
-                className={`page__information ${
-                  darkTheme ? "page__information--dark" : ""
+                className={`page__information page__information--blue ${
+                  darkTheme ? "page__information--blue--dark" : ""
                 }`}
               >
                 <h2

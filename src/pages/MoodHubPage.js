@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import LogInMessage from "../components/LogInMessage/LogInMessage";
 import Navigation from "../components/Navigation/Navigation";
-import BurnOutSigns from "../components/BurnOutSigns/BurnOutSigns";
-import BurnOutCauses from "../components/BurnOutCauses/BurnOutCauses";
-import BurnOutManagement from "../components/BurnOutManagement/BurnOutManagement";
-import BurnOutResources from "../components/BurnOutResources/BurnOutResources";
+import BurnOutSigns from "../components/BurnOut/BurnOutSigns";
+import BurnOutCauses from "../components/BurnOut/BurnOutCauses/BurnOutCauses";
+import BurnOutManagement from "../components/BurnOut/BurnOutManagement";
+import BurnOutResources from "../components/BurnOut/BurnOutResources/BurnOutResources";
 import sad from "../assets/icons/sad.png";
 
 export default function MoodHubPage() {
@@ -37,12 +37,25 @@ export default function MoodHubPage() {
               >
                 <p>
                   Burnout is the result of prolonged pressure from work, leading
-                  to complete mental, physical, and emotional exhaustion. <img src={sad} alt="Sad Emoji" className="page__icon"/>
+                  to complete mental, physical, and emotional exhaustion.{" "}
+                  <img src={sad} alt="Sad Emoji" className="page__icon" />
                 </p>
               </div>
-              <BurnOutCauses />
-              <BurnOutSigns />
-              <BurnOutManagement />
+              <div className={`page__information page__information--green ${
+                  darkTheme ? "page__information--green--dark" : ""
+                }`}>
+                <BurnOutCauses />
+              </div>
+              <div className={`page__information page__information--blue ${
+                  darkTheme ? "page__information--blue--dark" : ""
+                }`}>
+                <BurnOutSigns />
+              </div>
+              <div className={`page__information page__information--orange ${
+                  darkTheme ? "page__information--orange--dark" : ""
+                }`}>
+                <BurnOutManagement />
+              </div>
               <BurnOutResources />
             </div>
           </main>

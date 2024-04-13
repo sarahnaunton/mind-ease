@@ -59,14 +59,33 @@
 
   &__information {
     margin-bottom: 2rem;
-    border: 3px solid $color-border-tertiary;
-    border-radius: 20px;
-    padding: 1rem 1.5rem;
     background-color: $color-background-secondary;
 
-    &--dark {
-      border-color: $color-dark-border-tertiary;
-      background-color: $color-dark-background-secondary;
+    &--blue {
+      @include border($color-border-tertiary);
+
+      &--dark {
+        border-color: $color-dark-border-tertiary;
+        background-color: $color-dark-background-secondary;
+      }
+    }
+
+    &--green {
+      @include border($color-border-secondary);
+
+      &--dark {
+        border-color: $color-dark-border-secondary;
+        background-color: $color-dark-background-secondary;
+      }
+    }
+
+    &--orange {
+      @include border($color-border-quaternary);
+
+      &--dark {
+        border-color: $color-dark-border-quaternary;
+        background-color: $color-dark-background-secondary;
+      }
     }
   }
 

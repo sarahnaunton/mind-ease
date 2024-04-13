@@ -1,0 +1,92 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.burnout {
+  &__subheading {
+    &--green {
+      @include subheading($color-text-quinary);
+
+      &--dark {
+        color: $color-dark-text-quaternary;
+      }
+    }
+
+    &--orange {
+      @include subheading($color-text-quaternary);
+
+      &--dark {
+        color: $color-dark-text-tertiary;
+      }
+    }
+
+    &--blue {
+      @include subheading($color-text-tertiary);
+    }
+  }
+
+  &__item {
+    @include body-text($color-text-primary);
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+    cursor: pointer;
+
+    &--green {
+      @include body-text($color-text-quinary);
+
+      &:hover {
+        color: $color-dark-text-quaternary;
+      }
+
+      &--dark {
+        color: $color-dark-text-quaternary;
+
+        &:hover {
+          color: $color-text-quinary;
+        }
+      }
+    }
+
+    &--orange {
+      @include body-text($color-text-quaternary);
+
+      &:hover {
+        color: $color-dark-text-tertiary;
+      }
+
+      &--dark {
+        color: $color-dark-text-tertiary;
+
+        &:hover {
+          color: $color-text-quaternary;
+        }
+      }
+    }
+
+    &--blue {
+      @include body-text($color-text-tertiary);
+
+      &:hover {
+        color: $color-dark-text-quinary;
+      }
+    }
+  }
+
+  &__text {
+    @include body-text($color-text-primary);
+    font-weight: 600;
+
+    &--dark {
+      color: $color-dark-text-primary;
+    }
+  }
+
+  &__wrapper {
+    @include flex(row, center, center);
+  }
+}
