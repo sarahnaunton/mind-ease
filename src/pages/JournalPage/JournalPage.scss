@@ -64,6 +64,10 @@
 
     &--dark {
       background-color: $color-dark-background-quaternary;
+
+      &:hover {
+        background-color: $color-background-quaternary;
+      }
     }
   }
 

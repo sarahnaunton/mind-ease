@@ -12,7 +12,7 @@ export default function MoodProgress({ chartData }) {
     <>
       {chartData[chartData.length - 2].score >
         chartData[chartData.length - 1].score && (
-        <section className="progress">
+        <section className={`progress ${darkTheme ? "progress--dark" : ""}`}>
           <h2
             className={`progress__heading ${
               darkTheme ? "progress__heading--dark" : ""
@@ -38,7 +38,7 @@ export default function MoodProgress({ chartData }) {
       )}
       {chartData[chartData.length - 2].score ===
         chartData[chartData.length - 1].score && (
-        <section className="progress">
+        <section className={`progress ${darkTheme ? "progress--dark" : ""}`}>
           <h2
             className={`progress__heading ${
               darkTheme ? "progress__heading--dark" : ""
@@ -75,7 +75,7 @@ export default function MoodProgress({ chartData }) {
       )}
       {chartData[chartData.length - 2].score <
         chartData[chartData.length - 1].score && (
-        <section className="progress">
+        <section className={`progress ${darkTheme ? "progress--dark" : ""}`}>
           <h2
             className={`progress__heading ${
               darkTheme ? "progress__heading--dark" : ""

@@ -6,9 +6,11 @@
   border-radius: 20px;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
+  background-color: $color-background-secondary;
 
   &--dark {
     border-color: $color-dark-border-secondary;
+    background-color: $color-dark-background-secondary;
   }
 
   &__subheading {

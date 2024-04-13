@@ -72,11 +72,7 @@ export default function MoodBoosterPage() {
               >
                 What makes you happy?
               </h1>
-              <div
-                className={`booster__introduction ${
-                  darkTheme ? "booster__introduction--dark" : ""
-                }`}
-              >
+              <div>
                 <p
                   className={`booster__text ${
                     darkTheme ? "booster__text--dark" : ""
@@ -108,6 +104,9 @@ export default function MoodBoosterPage() {
                   the choice is yours.
                 </p>
               </div>
+              {boosterEntries && boosterEntries.length > 0 && (
+                <DailyBooster boosterEntries={boosterEntries} />
+              )}
               <div
                 onClick={handleAddModal}
                 className={`booster__add ${
@@ -133,9 +132,6 @@ export default function MoodBoosterPage() {
                 getBoosterEntries={getBoosterEntries}
                 boosterEntries={boosterEntries}
               />
-              {boosterEntries && boosterEntries.length > 0 && (
-                <DailyBooster boosterEntries={boosterEntries} />
-              )}
               {boosterEntries && userData && chartData && (
                 <RecommendAI
                   boosterEntries={boosterEntries}

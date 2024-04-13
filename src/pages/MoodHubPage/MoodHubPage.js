@@ -7,6 +7,7 @@ import BurnOutSigns from "../../components/BurnOutSigns/BurnOutSigns";
 import BurnOutCauses from "../../components/BurnOutCauses/BurnOutCauses";
 import BurnOutManagement from "../../components/BurnOutManagement/BurnOutManagement";
 import BurnOutResources from "../../components/BurnOutResources/BurnOutResources";
+import sad from "../../assets/icons/sad.png";
 import "./MoodHubPage.scss";
 
 export default function MoodHubPage() {
@@ -37,7 +38,7 @@ export default function MoodHubPage() {
               >
                 <p>
                   Burnout is the result of prolonged pressure from work, leading
-                  to complete mental, physical, and emotional exhaustion.
+                  to complete mental, physical, and emotional exhaustion. <img src={sad} alt="Sad Emoji" className="hub__icon"/>
                 </p>
               </div>
               <BurnOutCauses />

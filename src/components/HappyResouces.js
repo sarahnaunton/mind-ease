@@ -35,6 +35,7 @@ export default function HappyResources() {
       </h2>
       <Slider {...settings}>
         <Link
+                target="_blank"
           to="https://www.goodgoodgood.co/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -55,8 +56,8 @@ export default function HappyResources() {
             Optimist Daily
           </BurnOutResource>
         </Link>
-
         <Link
+                target="_blank"
           to="https://www.goodnewsnetwork.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -66,8 +67,8 @@ export default function HappyResources() {
             Good News Network
           </BurnOutResource>
         </Link>
-
         <Link
+                target="_blank"
           to="https://www.positive.news/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -78,6 +79,7 @@ export default function HappyResources() {
           </BurnOutResource>
         </Link>
         <Link
+                target="_blank"
           to="https://reasonstobecheerful.world/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -88,6 +90,7 @@ export default function HappyResources() {
           </BurnOutResource>
         </Link>
         <Link
+                target="_blank"
           to="https://thehappynewspaper.com/?v=79cba1185463"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""

@@ -112,8 +112,10 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
       >
         Let's explore activities tailored just for you.
       </p>
-      <div className="recommend__button" onClick={handleRecommendation}>
-        <Button>Try Me</Button>
+      <div className="recommend__generator" onClick={handleRecommendation}>
+        <p         className={`recommend__subheading ${
+          darkTheme ? "recommend__subheading--dark" : ""
+        }`}>Try Me</p>
       </div>
       <div
         className={`recommend__text ${

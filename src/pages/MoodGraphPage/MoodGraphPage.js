@@ -43,7 +43,9 @@ export default function MoodGraphPage() {
                 >
                   Monitor your wellbeing
                 </h1>
-                <div className="graph-page__information">
+                <div className={`graph-page__information ${
+                      darkTheme ? "graph-page__information--dark" : ""
+                    }`}>
                   <h2
                     className={`graph-page__subheading ${
                       darkTheme ? "graph-page__subheading--dark" : ""

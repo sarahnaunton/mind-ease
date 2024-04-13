@@ -36,7 +36,9 @@ export default function BurnOutCauses() {
           can make you feel tired and overwhelmed.
         </li>
         {!isBurnOutModalOpen && (
-          <p className="causes__link" onClick={handleBurnOutModal}>
+          <p className={`causes__link ${
+            darkTheme ? "causes__link--dark" : ""
+          }`} onClick={handleBurnOutModal}>
             Click here to see more
           </p>
         )}

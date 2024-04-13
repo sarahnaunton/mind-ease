@@ -2,11 +2,20 @@
 @use "../../styles/partials/variables" as *;
 
 .progress {
-    margin-left: 1rem;
-    margin-bottom: 3rem;
-    border: 3px solid $color-border-quaternary;
-    border-radius: 20px;
-    padding: 1rem 1.5rem;
+  background-color:$color-background-secondary ;
+  margin: 2rem auto;
+  border: 3px solid $color-border-quaternary;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+
+  &--dark {
+    border-color: $color-dark-border-quaternary;
+    background-color: $color-dark-background-secondary;
+  }
+
+  @include tablet-and-desktop {
+    width: 35rem;
+  }
 
   &__heading {
     @include body-text($color-text-quaternary);
@@ -14,7 +23,7 @@
     text-align: center;
 
     &--dark {
-        color: $color-dark-text-tertiary;
+      color: $color-dark-text-tertiary;
     }
   }
 
@@ -22,8 +31,12 @@
     @include body-text($color-text-primary);
     margin-bottom: 0;
 
+    @include tablet-and-desktop {
+      text-align: center;
+    }
+
     &--dark {
-        color: $color-dark-text-primary;
+      color: $color-dark-text-primary;
     }
   }
 

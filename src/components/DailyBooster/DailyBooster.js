@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import star from "../../assets/icons/star.png";
 import "./DailyBooster.scss";
 
 export default function DailyBooster({ boosterEntries }) {
@@ -121,7 +122,7 @@ export default function DailyBooster({ boosterEntries }) {
             } `}
           >
             Try incorporating your selected activity into your daily schedule
-            for a refreshing boost.
+            for a refreshing boost. <img src={star} alt="Star-Struck Emoji" className="inspiration__icon" />
           </p>
         </div>
       )}

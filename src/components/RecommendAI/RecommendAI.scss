@@ -3,10 +3,10 @@
 
 .recommend {
   &__heading {
-    @include subheading($color-text-quaternary);
+    @include subheading($color-text-quinary);
 
     &--dark {
-      color: $color-dark-text-tertiary;
+      color: $color-dark-text-quaternary;
     }
   }
 
@@ -21,15 +21,38 @@
   &__encourage {
     @extend .recommend__text;
     font-weight: 600;
-    text-align: center;
 
     &--dark {
       color: $color-dark-text-primary;
     }
   }
 
-  &__button {
-    @include flex(row, center, center);
+  &__generator {
+    @include flex(row, start, start);
+  }
+
+  &__subheading {
+    @include subheading($color-text-secondary);
+    border-radius: 20px;
+    background-color: $color-background-quaternary;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+
+    &:hover {
+      background-color: $color-dark-background-quaternary;
+    }
+
+    &--dark {
+      background-color: $color-dark-background-quaternary;
+      color: $color-dark-text-primary;
+
+      &:hover {
+        background-color: $color-background-quaternary;
+      }
+    }
   }
 
   &__error {

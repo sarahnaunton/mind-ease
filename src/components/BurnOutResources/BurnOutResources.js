@@ -37,6 +37,7 @@ export default function BurnOutResources() {
       </h2>
       <Slider {...settings}>
         <Link
+        target="_blank"
           to="https://mentalhealth-uk.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -47,6 +48,7 @@ export default function BurnOutResources() {
           </BurnOutResource>
         </Link>
         <Link
+        target="_blank"
           to="https://www.nhs.uk/every-mind-matters/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -56,8 +58,8 @@ export default function BurnOutResources() {
             NHS Every Mind Matters
           </BurnOutResource>
         </Link>
-
         <Link
+        target="_blank"
           to="https://www.mind.org.uk/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -67,8 +69,8 @@ export default function BurnOutResources() {
             Mind
           </BurnOutResource>
         </Link>
-
         <Link
+        target="_blank"
           to="https://www.rethink.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -79,6 +81,7 @@ export default function BurnOutResources() {
           </BurnOutResource>
         </Link>
         <Link
+        target="_blank"
           to="https://www.mentalhealth.org.uk/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
@@ -89,6 +92,7 @@ export default function BurnOutResources() {
           </BurnOutResource>
         </Link>
         <Link
+        target="_blank"
           to="https://www.thecalmzone.net/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""

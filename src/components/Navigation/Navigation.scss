@@ -3,7 +3,7 @@
 
 .nav {
   @include flex(row, center, center);
-  background-color: $color-background-primary;
+  background-color: $color-background-secondary;
   width: 100vw;
   position: fixed;
   bottom: 0;

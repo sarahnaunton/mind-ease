@@ -19,13 +19,15 @@
   padding: 1rem;
   margin: 2rem auto;
   text-align: center;
+  background-color: $color-background-secondary;
 
   &--dark {
     border-color: $color-dark-border-tertiary;
+    background-color: $color-dark-background-secondary;
   }
 
   @include tablet-and-desktop {
-    width: 35rem;
+    width: 45rem;
   }
 
   &__heading {
@@ -51,16 +53,21 @@
     text-align: center;
     border-radius: 20px;
     padding: 1rem 2rem;
-    margin: 2rem;
+    margin: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-dark-background-quinary;
+    }
 
     &--animation {
       animation: twist 3s;
     }
+  }
 
-    &--dark {
-      background-color: $color-dark-background-quinary;
-      color: $color-dark-text-primary;
-    }
+  &__icon {
+    width: 1.5rem;
+    vertical-align: top;
   }
 
   &__error {

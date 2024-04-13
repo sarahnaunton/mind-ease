@@ -28,21 +28,6 @@
     }
   }
 
-  &__introduction {
-    border: 3px solid $color-border-secondary;
-    border-radius: 20px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-
-    @include tablet-and-desktop {
-      margin-bottom: 3.5rem;
-    }
-
-    &--dark {
-      border-color: $color-dark-border-secondary;
-    }
-  }
-
   &__text {
     @include body-text($color-text-primary);
 
@@ -71,6 +56,10 @@
 
     &--dark {
       background-color: $color-dark-background-quaternary;
+
+      &:hover {
+        background-color: $color-background-quaternary;
+      }
     }
   }
 

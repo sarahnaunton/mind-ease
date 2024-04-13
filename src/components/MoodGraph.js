@@ -33,7 +33,7 @@ export default function MoodGraph({ chartData }) {
                   },
                 },
                 grid: {
-                  display: false,
+                  display: true,
                 },
                 ticks: {
                   display: false,
@@ -49,7 +49,7 @@ export default function MoodGraph({ chartData }) {
                   },
                 },
                 grid: {
-                  display: false,
+                  display: true,
                 },
                 min: 16,
                 max: 64,
@@ -62,39 +62,61 @@ export default function MoodGraph({ chartData }) {
             },
           }}
           plugins={[
+            // {
+            //   //Add background color to chart
+            //   beforeDraw(chart) {
+            //     const {
+            //       ctx,
+            //       chartArea: { left, width },
+            //       scales: { y },
+            //     } = chart;
+            //     ctx.fillStyle = "rgba(231, 43, 43, 0.2)";
+            //     ctx.fillRect(
+            //       left,
+            //       y.getPixelForValue(64),
+            //       width,
+            //       y.getPixelForValue(45) - y.getPixelForValue(64)
+            //     );
+            //     ctx.fillStyle = "rgba(246, 114, 66, 0.2)";
+            //     ctx.fillRect(
+            //       left,
+            //       y.getPixelForValue(45),
+            //       width,
+            //       y.getPixelForValue(30) - y.getPixelForValue(45)
+            //     );
+            //     ctx.fillStyle = "rgba(85, 176, 109, 0.2)";
+            //     ctx.fillRect(
+            //       left,
+            //       y.getPixelForValue(30),
+            //       width,
+            //       y.getPixelForValue(16) - y.getPixelForValue(30)
+            //     );
+            //   },
+            // },
             {
-              //Add background color to chart
-              beforeDraw(chart) {
-                const {
-                  ctx,
-                  chartArea: { left, width },
-                  scales: { y },
-                } = chart;
-                ctx.fillStyle = "rgba(231, 43, 43, 0.2)";
-                ctx.fillRect(
-                  left,
-                  y.getPixelForValue(64),
-                  width,
-                  y.getPixelForValue(45) - y.getPixelForValue(64)
+              //Add color to line depending on value
+              beforeRender: (chart) => {
+                const dataset = chart.data.datasets[0];
+                const yScale = chart.scales["y"];
+                const yMin = 16;
+                const yMax = 64;
+                const gradientFill = chart.ctx.createLinearGradient(
+                  0,
+                  yScale.getPixelForValue(yMin),
+                  0,
+                  yScale.getPixelForValue(yMax)
                 );
-                ctx.fillStyle = "rgba(246, 114, 66, 0.2)";
-                ctx.fillRect(
-                  left,
-                  y.getPixelForValue(45),
-                  width,
-                  y.getPixelForValue(30) - y.getPixelForValue(45)
-                );
-                ctx.fillStyle = "rgba(85, 176, 109, 0.2)";
-                ctx.fillRect(
-                  left,
-                  y.getPixelForValue(30),
-                  width,
-                  y.getPixelForValue(16) - y.getPixelForValue(30)
-                );
+                const greenPosition = (16 - yMin) / (yMax - yMin);
+                gradientFill.addColorStop(greenPosition, "rgb(0 , 255, 0)");
+                const orangePosition = (30 - yMin) / (yMax - yMin);
+                gradientFill.addColorStop(orangePosition, "rgb(255, 221, 0)");
+                const redPosition = (45 - yMin) / (yMax - yMin);
+                gradientFill.addColorStop(redPosition, "rgb(252, 48 , 12)");
+                dataset.borderColor = gradientFill;
               },
             },
             {
-              // On hover add a vertical line
+              // Add hover add a vertical line
               afterDraw: (chart) => {
                 if (chart.tooltip?._active?.length) {
                   let x = chart.tooltip._active[0].element.x;
