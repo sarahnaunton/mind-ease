@@ -3,7 +3,7 @@
 
 @keyframes rotate {
   0% {
-    transform: perspective(850px) rotateY(0deg)
+    transform: perspective(850px) rotateY(0deg);
   }
   100% {
     transform: perspective(850px) translateZ(150px) rotateY(180deg);
@@ -45,8 +45,7 @@
   }
 
   &__icon {
-    width: 1.5rem;
-    vertical-align: top;
+    @include icon;
   }
 
   &__subheading {

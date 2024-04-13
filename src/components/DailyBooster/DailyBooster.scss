@@ -66,12 +66,11 @@
   }
 
   &__icon {
-    width: 1.5rem;
-    vertical-align: top;
+    @include icon;
   }
 
   &__error {
-    @include error-text;
+    @include body-small-text($color-text-error);
     text-align: center;
     margin: 0 0 0.5rem 0;
   }

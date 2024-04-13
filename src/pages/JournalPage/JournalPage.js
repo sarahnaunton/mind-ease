@@ -60,27 +60,27 @@ export default function JournalPage() {
       {isLoggedIn && journalEntries &&(
         <>
           <Navigation />
-          <main className={`journal ${darkTheme ? "journal--dark" : ""}`}>
-            <div className="journal__container">
+          <main className={`page ${darkTheme ? "page--dark" : ""}`}>
+            <div className="page__container">
               <h1
-                className={`journal__heading ${
-                  darkTheme ? "journal__heading--dark" : ""
+                className={`page__heading ${
+                  darkTheme ? "page__heading--dark" : ""
                 }`}
               >
                 What's on your mind?
               </h1>
-              <div className="journal__introduction">
+              <div>
                 <p
-                  className={`journal__text ${
-                    darkTheme ? "journal__text--dark" : ""
+                  className={`page__text ${
+                    darkTheme ? "page__text--dark" : ""
                   }`}
                 >
                   Welcome to your journaling space, where your thoughts find
-                  expression and your emotions are heard. <img src={pen} alt="Pen Icon" className="journal__icon"/>
+                  expression and your emotions are heard. <img src={pen} alt="Pen Icon" className="page__icon"/>
                 </p>
                 <p
-                  className={`journal__text ${
-                    darkTheme ? "journal__text--dark" : ""
+                  className={`page__text ${
+                    darkTheme ? "page__text--dark" : ""
                   }`}
                 >
                   Journaling offers a unique opportunity to understand yourself
@@ -92,19 +92,19 @@ export default function JournalPage() {
               </div>
               <BurnOutSigns />
               <div
-                className={`journal__add ${
-                  darkTheme ? "journal__add--dark" : ""
+                className={`page__add ${
+                  darkTheme ? "page__add--dark" : ""
                 }`}
                 onClick={handleAddModal}
               >
                 <h2
-                  className={`journal__subheading ${
-                    darkTheme ? "journal__subheading--dark" : ""
+                  className={`page__label ${
+                    darkTheme ? "page__label--dark" : ""
                   }`}
                 >
                   Add your daily journal entry
                 </h2>
-                <img src={add} alt="Add Icon" className="journal__icon" />
+                <img className="page__icon" src={add} alt="Add Icon" />
               </div>
               {isAddModalOpen && (
                 <JournalForm
@@ -116,7 +116,7 @@ export default function JournalPage() {
                 getJournalEntries={getJournalEntries}
                 journalEntries={journalEntries}
               />
-              {errorMessage && <p className="journal__error">{errorMessage}</p>}
+              {errorMessage && <p className="page__error">{errorMessage}</p>}
             </div>
           </main>
         </>

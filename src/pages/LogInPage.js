@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import wave from "../assets/icons/wave.png";
 import LogInForm from "../components/LogInForm";
-import "./SignUpPage/SignUpPage.scss";
 
 export default function LogInPage() {
   return (

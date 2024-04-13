@@ -1,20 +1,19 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
-import { ThemeContext } from "../../contexts/ThemeContext";
-import { UserContext } from "../../contexts/UserContext";
-import { ChartContext } from "../../contexts/ChartContext";
-import LogInMessage from "../../components/LogInMessage/LogInMessage";
-import Loader from "../../components/Loader/Loader";
-import Navigation from "../../components/Navigation/Navigation";
-import DailyBooster from "../../components/DailyBooster/DailyBooster";
-import BoosterForm from "../../components/BoosterForm/BoosterForm";
-import BoosterEntries from "../../components/BoosterEntries";
-import RecommendAI from "../../components/RecommendAI/RecommendAI";
-import HappyResources from "../../components/HappyResouces";
-import face from "../../assets/icons/face.png";
-import add from "../../assets/icons/add-50.png";
-import "./MoodBoosterPage.scss";
+import { AuthContext } from "../contexts/AuthContext";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { UserContext } from "../contexts/UserContext";
+import { ChartContext } from "../contexts/ChartContext";
+import LogInMessage from "../components/LogInMessage/LogInMessage";
+import Loader from "../components/Loader/Loader";
+import Navigation from "../components/Navigation/Navigation";
+import DailyBooster from "../components/DailyBooster/DailyBooster";
+import BoosterForm from "../components/BoosterForm/BoosterForm";
+import BoosterEntries from "../components/BoosterEntries";
+import RecommendAI from "../components/RecommendAI/RecommendAI";
+import HappyResources from "../components/HappyResouces";
+import face from "../assets/icons/face.png";
+import add from "../assets/icons/add-50.png";
 
 export default function MoodBoosterPage() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -63,28 +62,28 @@ export default function MoodBoosterPage() {
       {isLoggedIn && boosterEntries && (
         <>
           <Navigation />
-          <main className={`booster ${darkTheme ? "booster--dark" : ""}`}>
-            <div className="booster__container">
+          <main className={`page ${darkTheme ? "page--dark" : ""}`}>
+            <div className="page__container">
               <h1
-                className={`booster__heading ${
-                  darkTheme ? "booster__heading--dark" : ""
+                className={`page__heading ${
+                  darkTheme ? "page__heading--dark" : ""
                 }`}
               >
                 What makes you happy?
               </h1>
               <div>
                 <p
-                  className={`booster__text ${
-                    darkTheme ? "booster__text--dark" : ""
+                  className={`page__text ${
+                    darkTheme ? "page__text--dark" : ""
                   }`}
                 >
                   This page is where you can celebrate the simple joys that
                   brighten your day.{" "}
-                  <img src={face} alt="Smile Icon" className="booster__icon" />
+                  <img src={face} alt="Smile Icon" className="page__icon" />
                 </p>
                 <p
-                  className={`booster__text ${
-                    darkTheme ? "booster__text--dark" : ""
+                  className={`page__text ${
+                    darkTheme ? "page__text--dark" : ""
                   }`}
                 >
                   In times of burnout, it's especially important to have a
@@ -94,8 +93,8 @@ export default function MoodBoosterPage() {
                   state of balance and wellbeing.
                 </p>
                 <p
-                  className={`booster__text ${
-                    darkTheme ? "booster__text--dark" : ""
+                  className={`page__text ${
+                    darkTheme ? "page__text--dark" : ""
                   }`}
                 >
                   These boosters can encompass a variety of activities, ranging
@@ -109,18 +108,18 @@ export default function MoodBoosterPage() {
               )}
               <div
                 onClick={handleAddModal}
-                className={`booster__add ${
-                  darkTheme ? "booster__add--dark" : ""
+                className={`page__add ${
+                  darkTheme ? "page__add--dark" : ""
                 }`}
               >
                 <h2
-                  className={`booster__subheading ${
-                    darkTheme ? "booster__subheading--dark" : ""
+                  className={`page__label ${
+                    darkTheme ? "page__label--dark" : ""
                   }`}
                 >
                   Add a mood booster
                 </h2>
-                <img src={add} alt="Add Icon" className="booster__icon" />
+                <img src={add} alt="Add Icon" className="page__icon" />
               </div>
               {isAddModalOpen && (
                 <BoosterForm
@@ -140,7 +139,7 @@ export default function MoodBoosterPage() {
                 />
               )}
               <HappyResources />
-              {errorMessage && <p className="booster__error">{errorMessage}</p>}
+              {errorMessage && <p className="page__error">{errorMessage}</p>}
             </div>
           </main>
         </>

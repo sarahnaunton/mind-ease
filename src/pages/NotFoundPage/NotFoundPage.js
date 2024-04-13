@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import LogInMessage from "../../components/LogInMessage/LogInMessage";
+import find from "../../assets/icons/find.png";
 import "./NotFoundPage.scss";
 
 export default function NotFoundPage() {
@@ -14,7 +15,7 @@ export default function NotFoundPage() {
         <main className="found">
           <section className="found__container">
             <p className="found__text">
-              Ooops! We couldn't find that page.
+              Ooops! We couldn't find that page. <img src={find} alt="Thinking Emoji" className="found__icon"/>
             </p>
             <p className="found__text">
               Take a moment to breathe and remember, setbacks are just detours

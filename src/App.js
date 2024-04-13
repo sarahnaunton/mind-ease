@@ -8,10 +8,10 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import HomePage from "./pages/HomePage/HomePage";
 import JournalPage from "./pages/JournalPage/JournalPage";
-import MoodFormPage from "./pages/MoodFormPage/MoodFormPage";
-import MoodGraphPage from "./pages/MoodGraphPage/MoodGraphPage";
-import MoodBoosterPage from "./pages/MoodBoosterPage/MoodBoosterPage";
-import MoodHubPage from "./pages/MoodHubPage/MoodHubPage";
+import MoodFormPage from "./pages/MoodFormPage";
+import MoodGraphPage from "./pages/MoodGraphPage";
+import MoodBoosterPage from "./pages/MoodBoosterPage";
+import MoodHubPage from "./pages/MoodHubPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import "./App.scss";
 

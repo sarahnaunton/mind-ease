@@ -45,7 +45,7 @@
   }
 
   &__icon {
-    width: 2rem;
+    @include icon;
   }
 
   &__text {

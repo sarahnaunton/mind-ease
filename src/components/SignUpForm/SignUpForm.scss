@@ -63,7 +63,7 @@
   }
 
   &__error {
-    @include error-text;
+    @include body-small-text($color-text-error);
     width: 15rem;
     padding-top: 0.25rem;
     text-align: center;
