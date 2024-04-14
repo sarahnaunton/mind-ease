@@ -24,21 +24,30 @@ export default function BurnOutCauses() {
         Many things can lead to burnout:
       </h2>
       <ul>
-        <li className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}>
+        <li
+          className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}
+        >
           Feeling like you have little say in decisions at work or not having
           the tools you need to do your job effectively.
         </li>
-        <li className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}>
+        <li
+          className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}
+        >
           Not being sure what's expected of you at work, leading to confusion.
         </li>
-        <li className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}>
+        <li
+          className={`burnout__item ${darkTheme ? "burnout__item--dark" : ""}`}
+        >
           Doing work that's either too repetitive or too chaotic, both of which
           can make you feel tired and overwhelmed.
         </li>
         {!isBurnOutModalOpen && (
-          <p className={`burnout__link burnout__link--green ${
-            darkTheme ? "burnout__link--green--dark" : ""
-          }`} onClick={handleBurnOutModal}>
+          <p
+            className={`burnout__link burnout__link--green ${
+              darkTheme ? "burnout__link--green--dark" : ""
+            }`}
+            onClick={handleBurnOutModal}
+          >
             Click here to see more
           </p>
         )}

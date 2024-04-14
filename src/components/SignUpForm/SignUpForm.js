@@ -40,7 +40,7 @@ export default function SignUpForm() {
   const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
-    setSuccessMessage(false)
+    setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
 
@@ -185,9 +185,7 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.password && (
-        <p className="auth-form__error">
-          {formError.password}
-        </p>
+        <p className="auth-form__error">{formError.password}</p>
       )}
       <fieldset className="auth-form__fieldset">
         <label className="auth-form__label" htmlFor="confirmPassword">
@@ -262,10 +260,7 @@ export default function SignUpForm() {
             />
           </fieldset>
           <fieldset className="auth-form__fieldset">
-            <label
-              className="auth-form__label"
-              htmlFor="experience"
-            >
+            <label className="auth-form__label" htmlFor="experience">
               Year started current job?
             </label>
             <input

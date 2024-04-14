@@ -31,74 +31,63 @@ export default function BoosterResources() {
           darkTheme ? "resources__subheading--dark" : ""
         }`}
       >
-        Discover a variety of uplifting resources to bring happiness and joy into your day
+        Discover a variety of uplifting resources to bring happiness and joy
+        into your day
       </h2>
       <Slider {...settings}>
         <Link
-                target="_blank"
+          target="_blank"
           to="https://www.goodgoodgood.co/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={goodgoodgood}>
-            Good Good Good
-          </Resource>
+          <Resource image={goodgoodgood}>Good Good Good</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.optimistdaily.com/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={optimist}>
-            Optimist Daily
-          </Resource>
+          <Resource image={optimist}>Optimist Daily</Resource>
         </Link>
         <Link
-                target="_blank"
+          target="_blank"
           to="https://www.goodnewsnetwork.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={goodNews}>
-            Good News Network
-          </Resource>
+          <Resource image={goodNews}>Good News Network</Resource>
         </Link>
         <Link
-                target="_blank"
+          target="_blank"
           to="https://www.positive.news/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={positiveNews}>
-            Positive News
-          </Resource>
+          <Resource image={positiveNews}>Positive News</Resource>
         </Link>
         <Link
-                target="_blank"
+          target="_blank"
           to="https://reasonstobecheerful.world/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={reasonsCheerful}>
-            Reasons to be Cheerful
-          </Resource>
+          <Resource image={reasonsCheerful}>Reasons to be Cheerful</Resource>
         </Link>
         <Link
-                target="_blank"
+          target="_blank"
           to="https://thehappynewspaper.com/?v=79cba1185463"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={happyNews}>
-            The Happy News
-          </Resource>
+          <Resource image={happyNews}>The Happy News</Resource>
         </Link>
       </Slider>
     </section>

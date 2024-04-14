@@ -47,7 +47,7 @@
 
   &__item {
     list-style: none;
-    @include flex (column, center, center);
+    @include flex(column, center, center);
 
     @include tablet-and-desktop {
       margin-top: 1rem;

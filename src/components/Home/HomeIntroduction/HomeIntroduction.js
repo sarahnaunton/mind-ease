@@ -7,7 +7,11 @@ export default function HomeIntroduction() {
   const { darkTheme } = useContext(ThemeContext);
   return (
     <section className="introduction">
-      <div className={`introduction__container ${darkTheme ? "introduction__container--dark" : ""}`}>
+      <div
+        className={`introduction__container ${
+          darkTheme ? "introduction__container--dark" : ""
+        }`}
+      >
         <h3
           className={`introduction__subheading ${
             darkTheme ? "introduction__subheading--dark" : ""
@@ -37,7 +41,11 @@ export default function HomeIntroduction() {
           }`}
         >
           Let's thrive together!{" "}
-          <img src={thumbsUp} alt="Thumbs Up Emoji" className="introduction__icon" />
+          <img
+            src={thumbsUp}
+            alt="Thumbs Up Emoji"
+            className="introduction__icon"
+          />
         </h3>
       </div>
     </section>

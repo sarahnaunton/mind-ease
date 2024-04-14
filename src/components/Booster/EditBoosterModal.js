@@ -48,7 +48,7 @@ export default function EditBoosterModal({
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
     setFormSubmitted(false);
-    setSuccessMessage(false)
+    setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
 
@@ -85,57 +85,49 @@ export default function EditBoosterModal({
   };
 
   return (
-      <div className="overlay">
-        <form
-          onSubmit={(event) => {
-            handleForm(event, id);
-          }}
-          className={`form ${darkTheme ? "form--dark" : ""}`}
-        >
-          <img
-            src={close}
-            alt="Close Icon"
-            onClick={closeEditModal}
-            className="form__icon"
-          />
-          <fieldset className="form__fieldset">
-            <label
-              htmlFor="booster"
-              className={`form__label ${
-                darkTheme ? "form__label--dark" : ""
-              }`}
-            >
-              What boosts your mood?
-            </label>
-            <textarea
-              id="booster"
-              name="activity"
-              value={formData.activity}
-              onChange={handleChange}
-              className={`form__input ${
-                darkTheme ? "form__input--dark" : ""
-              }`}
-            ></textarea>
-          </fieldset>
-          {formError.activity && (
-            <p className="form__error">{formError.activity}</p>
-          )}
-          <div className="form__button">
-            <Button>Submit</Button>
-          </div>
-          {errorMessage && (
-            <p className="form__error">{errorMessage}</p>
-          )}
-          {successMessage && (
-            <p
-              className={`form__success ${
-                darkTheme ? "form__sucess--dark" : ""
-              }`}
-            >
-              Successful!
-            </p>
-          )}
-        </form>
-      </div>
+    <div className="overlay">
+      <form
+        onSubmit={(event) => {
+          handleForm(event, id);
+        }}
+        className={`form ${darkTheme ? "form--dark" : ""}`}
+      >
+        <img
+          src={close}
+          alt="Close Icon"
+          onClick={closeEditModal}
+          className="form__icon"
+        />
+        <fieldset className="form__fieldset">
+          <label
+            htmlFor="booster"
+            className={`form__label ${darkTheme ? "form__label--dark" : ""}`}
+          >
+            What boosts your mood?
+          </label>
+          <textarea
+            id="booster"
+            name="activity"
+            value={formData.activity}
+            onChange={handleChange}
+            className={`form__input ${darkTheme ? "form__input--dark" : ""}`}
+          ></textarea>
+        </fieldset>
+        {formError.activity && (
+          <p className="form__error">{formError.activity}</p>
+        )}
+        <div className="form__button">
+          <Button>Submit</Button>
+        </div>
+        {errorMessage && <p className="form__error">{errorMessage}</p>}
+        {successMessage && (
+          <p
+            className={`form__success ${darkTheme ? "form__sucess--dark" : ""}`}
+          >
+            Successful!
+          </p>
+        )}
+      </form>
+    </div>
   );
 }

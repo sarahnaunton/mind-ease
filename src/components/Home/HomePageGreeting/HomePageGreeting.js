@@ -19,9 +19,7 @@ export default function HomePageGreeting({ userData }) {
 
   return (
     <>
-      <h1
-        className={`greeting ${darkTheme ? "greeting--dark" : ""}`}
-      >
+      <h1 className={`greeting ${darkTheme ? "greeting--dark" : ""}`}>
         {greeting},{" "}
         {userData && (
           <span className="greeting__name">{userData.first_name}</span>

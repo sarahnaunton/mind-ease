@@ -2,13 +2,13 @@
 @use "../../../styles/partials/variables" as *;
 
 .greeting {
-    @include heading($color-text-primary);
+  @include heading($color-text-primary);
 
-    &--dark {
-      color: $color-dark-text-primary;
-    }
+  &--dark {
+    color: $color-dark-text-primary;
+  }
 
   &__name {
-    @include heading( $color-text-tertiary);
+    @include heading($color-text-tertiary);
   }
 }

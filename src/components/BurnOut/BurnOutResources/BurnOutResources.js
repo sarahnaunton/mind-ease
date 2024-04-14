@@ -37,70 +37,58 @@ export default function BurnOutResources() {
       </h2>
       <Slider {...settings}>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://mentalhealth-uk.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={mhMatters}>
-            Mental Health UK
-          </Resource>
+          <Resource image={mhMatters}>Mental Health UK</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.nhs.uk/every-mind-matters/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={nhs}>
-            NHS Every Mind Matters
-          </Resource>
+          <Resource image={nhs}>NHS Every Mind Matters</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.mind.org.uk/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={mind}>
-            Mind
-          </Resource>
+          <Resource image={mind}>Mind</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.rethink.org/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={rethink}>
-            Rething Mental Illness
-          </Resource>
+          <Resource image={rethink}>Rething Mental Illness</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.mentalhealth.org.uk/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={mhFoundation}>
-            Mental Health Foundation
-          </Resource>
+          <Resource image={mhFoundation}>Mental Health Foundation</Resource>
         </Link>
         <Link
-        target="_blank"
+          target="_blank"
           to="https://www.thecalmzone.net/"
           className={`resources__link ${
             darkTheme ? "resources__link--dark" : ""
           }`}
         >
-          <Resource image={calm}>
-            Campaign Against Living Miserably
-          </Resource>
+          <Resource image={calm}>Campaign Against Living Miserably</Resource>
         </Link>
       </Slider>
     </section>

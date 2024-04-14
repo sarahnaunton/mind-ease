@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import face from "../../assets/icons/face.png"
+import face from "../../assets/icons/face.png";
 
 export default function GraphNoAnswer() {
   const { darkTheme } = useContext(ThemeContext);
@@ -18,7 +18,8 @@ export default function GraphNoAnswer() {
         Take this opportunity to reflect on your wellbeing. If you're unsure
         where to begin, consider completing the burnout questionnaire. It's a
         valuable tool for assessing your stress levels and identifying areas for
-        improvement. <img src={face} alt="Smile Face Emoji" className="result__icon"/>
+        improvement.
+        <img src={face} alt="Smile Face Emoji" className="result__icon" />
       </p>
     </section>
   );

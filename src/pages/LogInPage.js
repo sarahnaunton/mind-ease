@@ -13,7 +13,7 @@ export default function LogInPage() {
           <img className="account__icon" src={wave} alt="Wave Emoji" />
         </div>
         <p className="account__text">Please log in below</p>
-        <LogInForm/>
+        <LogInForm />
         <p className="account__text">
           Don't have an account?{" "}
           <Link className="account__link" to="/sign-up">

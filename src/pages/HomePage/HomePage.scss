@@ -29,7 +29,6 @@
     padding: 2rem;
   }
 
-
   &__heading {
     @include heading($color-text-primary);
     margin-top: 2.5rem;
@@ -64,7 +63,7 @@
     @include desktop {
       width: 17.5rem;
     }
-    
+
     &--blue {
       background-color: $color-background-quinary;
 

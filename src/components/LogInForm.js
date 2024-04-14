@@ -25,7 +25,7 @@ export default function LogInForm() {
   const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
-    setSuccessMessage(false)
+    setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
 
@@ -85,9 +85,7 @@ export default function LogInForm() {
           value={formData.email}
         />
       </fieldset>
-      {formError.email && (
-          <p className="auth-form__error">{formError.email}</p>
-      )}
+      {formError.email && <p className="auth-form__error">{formError.email}</p>}
       <fieldset className="auth-form__fieldset">
         <label className="auth-form__label" htmlFor="password">
           Password
@@ -105,7 +103,7 @@ export default function LogInForm() {
         />
       </fieldset>
       {formError.password && (
-          <p className="auth-form__error">{formError.password}</p>
+        <p className="auth-form__error">{formError.password}</p>
       )}
       <div className="auth-form__button">
         <Button>Log In</Button>

@@ -69,23 +69,23 @@
 }
 
 @mixin body-small-text($color) {
-    color: $color;
-    font-weight: 400;
-    font-size: 0.75rem;
-    letter-spacing: -0.05rem;
-  
-    @include tablet-and-desktop {
-      font-size: 1rem;
-    }
-  }
+  color: $color;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: -0.05rem;
 
-  @mixin border($color) {
-    border: 3px solid $color;
-    border-radius: 20px;
-    padding: 1rem 1.5rem;
+  @include tablet-and-desktop {
+    font-size: 1rem;
   }
+}
 
-  @mixin icon {
-    width: 1.5rem;
-    vertical-align: top;
-  }
+@mixin border($color) {
+  border: 3px solid $color;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+}
+
+@mixin icon {
+  width: 1.5rem;
+  vertical-align: top;
+}

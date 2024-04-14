@@ -21,7 +21,7 @@ export default function EditJournalModal({
 
   const getJournalEntry = async () => {
     const authToken = localStorage.getItem("authToken");
-    setErrorMessage(false)
+    setErrorMessage(false);
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/journals/${id}`,

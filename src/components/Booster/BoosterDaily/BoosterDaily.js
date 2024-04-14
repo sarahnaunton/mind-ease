@@ -4,7 +4,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import star from "../../../assets/icons/star.png";
 import "./BoosterDaily.scss";
 
-export default function BoosterDaily ({ boosterEntries }) {
+export default function BoosterDaily({ boosterEntries }) {
   const { darkTheme } = useContext(ThemeContext);
   const [recommendation, setRecommendation] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -122,7 +122,12 @@ export default function BoosterDaily ({ boosterEntries }) {
             } `}
           >
             Try incorporating your selected activity into your daily schedule
-            for a refreshing boost. <img src={star} alt="Star-Struck Emoji" className="inspiration__icon" />
+            for a refreshing boost.{" "}
+            <img
+              src={star}
+              alt="Star-Struck Emoji"
+              className="inspiration__icon"
+            />
           </p>
         </div>
       )}

@@ -57,7 +57,7 @@ export default function MoodBoosterPage() {
   return (
     <>
       {!isLoggedIn && <LogInMessage />}
-      {isLoggedIn &&  (
+      {isLoggedIn && (
         <>
           <Navigation />
           <main className={`page ${darkTheme ? "page--dark" : ""}`}>

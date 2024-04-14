@@ -141,9 +141,7 @@ export default function MoodForm() {
             </p>
             {errorMessage && <p className="mood-form__error">{errorMessage}</p>}
             {successMessage && (
-              <p
-                className="mood-form__text mood-form__text--success"
-              >
+              <p className="mood-form__text mood-form__text--success">
                 Successful!
               </p>
             )}

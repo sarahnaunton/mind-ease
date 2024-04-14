@@ -43,13 +43,13 @@ export default function JournalEntry({
       <article
         className={`journal-entry ${darkTheme ? "journal-entry--dark" : ""}`}
       >
-          <p
-            className={`journal-entry__date ${
-              darkTheme ? "journal-entry__date--dark" : ""
-            }`}
-          >
-            {formattedDate}
-          </p>
+        <p
+          className={`journal-entry__date ${
+            darkTheme ? "journal-entry__date--dark" : ""
+          }`}
+        >
+          {formattedDate}
+        </p>
         <p
           className={`journal-entry__text ${
             darkTheme ? "journal-entry__text--dark" : ""

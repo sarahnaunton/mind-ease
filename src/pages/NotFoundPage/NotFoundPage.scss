@@ -2,32 +2,32 @@
 @use "../../styles/partials/variables" as *;
 
 .found {
-    @include flex(column, center, center);
-    background-color: $color-background-primary;
-  
-    &__container {
-      @include flex(column, center, center);
-      width: 100vw;
-      height: 100vh;
-      padding: 2rem;
-      max-width: $max-width;
-    }
-  
-    &__text {
-      @include subheading($color-text-primary);
-      text-align: center;
-    }
-  
-    &__link {
-      font-weight: 700;
-      color: $color-button-primary;
-  
-      &:hover {
-        color: $color-button-secondary;
-      }
-    }
+  @include flex(column, center, center);
+  background-color: $color-background-primary;
 
-    &__icon {
-      @include icon;
+  &__container {
+    @include flex(column, center, center);
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    max-width: $max-width;
+  }
+
+  &__text {
+    @include subheading($color-text-primary);
+    text-align: center;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-button-primary;
+
+    &:hover {
+      color: $color-button-secondary;
     }
+  }
+
+  &__icon {
+    @include icon;
+  }
 }

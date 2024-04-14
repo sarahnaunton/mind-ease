@@ -25,7 +25,7 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
     event.preventDefault();
     setFormSubmitted(false);
     setErrorMessage(false);
-    setSuccessMessage(false)
+    setSuccessMessage(false);
     setFormError({});
 
     let formValid = true;
