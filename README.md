@@ -1,436 +1,489 @@
-# Project Title
-
-MindEase
-
-## Overview
+# Welcome to MindEase
 
 MindEase is a guide to mental wellness, helping you recognise the signs of burnout early so you can take proactive steps to maintain balance and well-being.
 
-### Problem
+## Introduction
 
 In today's fast-paced world, burnout has become a prevalent issue affecting individuals across various industries and demographics. The demanding nature of modern work environments, coupled with societal pressures and personal responsibilities, often leads to chronic stress, exhaustion, and ultimately, burnout. However, despite its widespread impact, burnout is often overlooked or misunderstood, resulting in detrimental effects on individuals' mental, emotional, and physical health.
 
-Ultimately, by promoting early intervention and holistic well-being, a mental health app on burnout plays a crucial role in safeguarding individuals' overall health and quality of life.
+Ultimately, by promoting early intervention and holistic well-being, MindEase plays a crucial role in safeguarding individuals' overall health and quality of life.
 
-### User Profile
+## Getting Started
 
-The user profile for the mental health app focused on burnout can encompass a diverse range of individuals who may be susceptible to or experiencing symptoms of burnout.
+How to download the application: 
 
-- Individuals working in demanding industries such as finance, healthcare or education
+1. Clone gitHub repository of [mind-ease](https://github.com/sarahnaunton/mind-ease) and [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
+3. Install NPM packages with npm install
+4. Create a database in MySQL
+5. Create .env file on the client and server side using the .env.example file provided as a guide 
+	Client side e.g. REACT_APP_API_OPEN_AI_KEY = yourOpenAIKey
+	Server side e.g. PORT = yourport, DB_NAME = nameofdatabse
+6. Launch the application with npm start
 
-- High achievers, executives, entrepreneurs or freelancers facing intense work pressures and long hours
+## User Experience
 
-- Remote workers navigating the challenges of remote work, isolation and blurred work-life boundaries
+Fully responsive across mobile, tablet, and desktop breakpoints, ensuring optimal display and functionality at every screen size.
 
-### Features
+Screenshots and video demonstration to come shortly.
 
-- Sign up for an account
+## Features
 
-- Log into my account if an existing user
+1. Welcome Page
 
-- Complete a questionnaire on wellbeing and burn out
+A welcome screen that introduces users to the app and briefly explains MindEase. It provides the option of 'Sign up' or 'Log in'
 
-- Display a graph of my scores over time to have a visual representation of my pattern of mental health
+2. Authentication with Sign up and Log in 
 
-- Write journal entries in the app
+User authentication system ensures secure access to the app. New users can create an account by filling out their first name, last name, email, and password. They can also provide additional information about their occupation if they wish. After creating an account, users are redirected to the login page, where they can sign in using the email and password of their newly created account.
 
-- See, edit and delete previous journal entries
+3. Navigation Menu
+
+The navigation menu provides access to the home page, where all key features and functionalities can be found, along with the option of logging out. Additionally, users can select between a light or dark theme, which persists across all pages, enabling them to tailor their visual experience to their preferences. 
+
+4. Home Page
+
+The home page is the central dashboard where users can access key features and functionalities. It also includes a personalised welcome message which changes based on the time of the day.
+
+5. Mood Check in Feature 
+
+Allows the user to perform mood check-ins by competing a questionnaire, helping them reflect on the wellbeing and mental health. 
+
+6. Mood Tracker Page
+
+Allows the user to monitor their wellbeing and mental health by providing a visual demonstration, in the form of a chart, of their questionnaire scores. The line colors indicate the level of risk associated with each score.
+
+7. Mood Journal Page
+
+Users can create journal entries to express their feelings and thoughts, as well as their gratitude. They also have the ability to view, edit, and delete previous entries.
+
+8. Mood Boosters Page
+
+Users can add activities that bring them joy and happiness. They also have the ability to view, edit, and delete previous activities. Additionally, they can generate one activity per day to inspire them. Furthermore, they can utilize the integrated AI feature, which generates personalised recommendations and strategies based on user information, including their occupation and recorded activities.
+
+9. Mood Hub Page
+
+Provides users with information on burnout, including its causes, signs, and coping strategies, as well as offering useful resources for support.
+ 
+10. Not Found Page 
+
+Redirects users back to the homepage when they land on a page that does not exist. 
 
 ## Implementation
 
-### Tech Stack
-
-- React
-
-- MySQL
-
-- Node/Express
-
-- Client libraries:
-
-  - react
-
-  - react-router
-
-  - axios
-
-  - sass
-
-  - chart.js
-
-     - react-chartjs-2
-
+### Tech Stack 
+React.js 
+Client Libraries: 
+ - react
+ - react-router
+ - axios
+ - sass
+ - chart.js
+ - react-chartjs-2
  - react-slick
+ - markdown-to-jsx
 
-- markdown-to-jsx
+Node.js 
+Server Libraries: 
+ - express
+ - knex
+ - dotenv
+ - mysql2
+ - cors
+ - bycrypt
+ - jsonwebtoken
+ 
+### API 3rd Party 
 
-- react-loading-skeleton
+Integration of AI to provide personalised recommendations and strategies to the user is facilitated through the Open AI API. Access the documentation by clicking [here](https://platform.openai.com/docs/overview).  Please note that a valid API key is required for accessing the API. 
 
-- Server libraries:
+### End Points
 
-  - knex
+Listed are the end points for the API. 
 
-  - express
+Once the user has successfully created an account and logged in, the authentication token will be required for all future API requests within the application. 
 
-  - dotenv
+ 1. Users
 
-  - mysql2
+**POST** `/api/users/register`
 
-  - cors
+*Request Body:* 
 
-    - bycrypt
+    {
+    "firstname": "Jon",
+    "lastname": "Smith",
+    "email": "email@email.com",
+    "password": "qwerty123"
+    }
 
-    - jsonwebtoken
 
-### APIs
+*Response:* 201
 
-No third party API shall be used
+    {
+    "id": 1,
+    "first_name": "Jon",
+    "last_name": "Smith",
+    "email": "email@email.com",
+    "password": "$2b$06$Z/Y85Zun7dIqmfqFZttBn.jvlfuMnhmOgGZFxohMxf7tdT9/AXPja",
+    "date_of_birth": null,
+    "occupation": null,
+    "role": null,
+    "year_started": null,
+    "work_setting": null,
+    "week_working_hours": null,
+    "created_at": "2024-04-14T16:44:56.000Z",
+    "updated_at": "2024-04-14T16:44:56.000Z"
+    }
 
-### Sitemap
+**POST** `/api/users/login`
 
-- Welcome page
+*Request Body:*
 
-- Sign up page
+    {
+    "email": "email@email.com",
+    "password": "qwerty123"
+    }
 
-- Log in page
 
-- Home page
+*Response:* 201
 
-- Mental health check in page
+      {
+     "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4"
+        }
 
-- Mental health graph page
+**GET** `/api/users`
 
-- Journal page
+*Request Header:*
 
-- Not found page
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-### Mockups
 
-![Mockup 1](./src/assets/proposal/mockups-1.jpg)
+*Response:* 200 
 
-![Mockup 2](./src/assets/proposal/mockups-2.jpg)
+    {
+    "id": 1,
+    "first_name": "Jon",
+    "last_name": "Smith",
+    "email": "email@email.com",
+    "date_of_birth": null,
+    "occupation": null,
+    "role": null,
+    "year_started": null,
+    "work_setting": null,
+    "week_working_hours": null,
+    "created_at": "2024-04-14T16:44:56.000Z",
+    "updated_at": "2024-04-14T16:44:56.000Z"
+    }
 
-### Data
+2. Journals
 
-![SQL Diagram](./src/assets/proposal/sql-diagram.png)
+**POST** `/api/journals`
 
-### Endpoints
+*Request Header:*
 
-**POST /users/register**
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-Create an account for the app
 
-Route --> userRoute, 400 if missing request body, 201 if sucessful, 500 if server error
+*Request Body:*
 
-Parameters:
+    {
+    "entry": "This is my journal entry",
+    "gratitude": "This is my gratitude"
+    }
 
-- first_name: first name
 
-- last_name: last name
+*Response*: 201
 
-- email: email
+    {
+    "id": 1,
+    "entry": "This is my journal entry",
+    "gratitude": "This is my gratitude",
+    "created_at": "2024-04-14T17:08:46.000Z",
+    "updated_at": "2024-04-14T17:08:46.000Z",
+    "users_id": 1
+    }
 
-- password: user's provided password
 
-Response:
+**GET** `/api/journals`
 
-```
+*Request Header:*
 
-{
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-- id: id
 
-- first_name: first name
+*Response:* 200
 
-- last_name: last name
+    [ {
+    "id": 1,
+    "entry": "This is my journal entry",
+    "gratitude": "This is my gratitude",
+    "created_at": "2024-04-14T17:08:46.000Z"
+    },
+    {
+    "id": 2,
+    "entry": "This is my other journal entry",
+    "gratitude": "This is my other gratitude",
+    "created_at": "2024-04-14T17:11:36.000Z"
+    } ]
 
-- email: email
 
-- password: user's bcrypt password
+**GET** `/api/journals/:id`
 
-}
+  *Request Header:*
+    
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-```
+*Response:* 200 
 
-**POST/ users/login**
-Log into the app
+    {
+    "id": 1,
+    "entry": "This is my journal entry",
+    "gratitude": "This is my gratitude",
+    "created_at": "2024-04-14T17:08:46.000Z",
+    "updated_at": "2024-04-14T17:08:46.000Z",
+    "users_id": 1
+    }
 
-Route --> userRoute, 404 if user is not found, 200 if sucessful, 500 if server error
+**DELETE** `/api/journals/:id`
 
-- email: email
+*Request Header:*
 
-- password: user's provided password
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-Response:
 
-```
+*Response:*  204
 
-{
+**PATCH** `/api/journals/:id`
 
-"token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
 
-}
+*Request Header:*
 
-```
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-**GET/ users**
-Get user information in the app
 
-Route --> userRoute, 404 if user is not found, 200 if sucessful, 500 if server error
+*Request Body:*
 
-Response:
+    {
+    "entry": "This is my new journal entry",
+    "gratitude": "This is my new gratitude"
+    }
 
-```
 
-{
+*Response:* 200 
 
-- id: id
+    {
+    "id": 1,
+    "entry": "This is my new journal entry",
+    "gratitude": "This is my new gratitude",
+    "created_at": "2024-04-14T17:11:36.000Z",
+    "updated_at": "2024-04-14T17:18:28.000Z",
+    "users_id": 1
+    }
 
-- first_name: first name
+3. Scores
 
-- last_name: last name
 
-- email: email
+**POST** `/api/scores`
 
-}
+*Request Header:*
 
-```
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-**POST /score**
 
-Complete burn out questionnaire
+*Request Body:*
 
-Route --> scoreRoute, 400 if missing request body, 201 if sucessful, 500 if server error
+    {
+    "score": 38,
+    "category": "Medium"
+    }
 
-Response:
+*Response*: 201
 
-```
+    {
+    "id": 1,
+    "score": 38,
+    "category": "Medium",
+    "created_at": "2024-04-14T17:20:39.000Z",
+    "updated_at": "2024-04-14T17:20:39.000Z",
+    "users_id": 1
+    }
 
-[
+**GET** `/api/scores`
 
-{
+*Request Header:*
 
-"id": 1,
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-"timestamp: "29/03/202024 14:12",
 
-"score": "30",
+*Response:* 200
 
-"category": "high",
+    [ {
+    "id": 1,
+    "score": 38,
+    "category": "Medium",
+    "created_at": "2024-04-14T17:20:39.000Z"
+    },
+    {
+    "id": 2,
+    "score": 34,
+    "category": "Medium",
+    "created_at": "2024-04-14T17:21:27.000Z"
+    } ]
 
-"user_id": 1,
+4. Activities
 
-}...
 
-]
+**POST** `/api/activities`
 
-```
+*Request Header:*
 
-**GET /score**
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-See previous scores from burn out questionnaire
+*Request Body:*
 
-Route --> scoreRoute, 200 if sucessful, 500 if sever error
+    {
+    "activity": "Test"
+    }
 
-Response:
 
-```
+*Response*: 201
 
-[
+    {
+    "id": 1,
+    "activity": "Test",
+    "created_at": "2024-04-14T17:23:52.000Z",
+    "updated_at": "2024-04-14T17:23:52.000Z",
+    "users_id": 1
+    }
 
-{
+**GET** `/api/activities`
 
-"id": 1,
+*Request Header:*
 
-"timestamp: "29/03/202024 14:12"
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-"score": "30"
+*Response:* 200
 
-"category": "high"
+    [ {
+    "id": 1,
+    "activity": "Test",
+    "created_at": "2024-04-14T17:23:52.000Z"
+    },
+    {
+    "id": 2,
+    "activity": "Another Test",
+    "created_at": "2024-04-14T17:24:28.000Z"
+    } ]
 
-"user_id": 1,
+**GET** `/api/activities/:id`
 
-}...
+*Request Header:*
 
-]
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-```
+*Response:* 200 
 
-**POST / journal**
+    {
+    "id": 1,
+    "activity": "Test",
+    "created_at": "2024-04-14T17:23:52.000Z",
+    "updated_at": "2024-04-14T17:23:52.000Z",
+    "users_id": 1
+    }
 
-Enter a journal entry
+**DELETE** `/api/activities/:id`
 
-Route --> journal, 400 if missing request body, 201 if sucessful, 500 if server error
+*Request Header:*
 
-Response:
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-```
+*Response:*  204
 
-[
+**PUT** `/api/activities/:id`
 
-{
+*Request Header:*
 
-"id": 1,
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-"timestamp: "timestamp"
+*Request Body:*
 
-"entry": "entry"
+    {
+    "activity": "A different test"
+    }
 
-"gratitude": "gratitude"
+*Response:* 200 
 
-"user_id": 1,
+    {
+    "id": 1,
+    "activity": "A different test",
+    "created_at": "2024-04-14T17:23:52.000Z",
+    "updated_at": "2024-04-14T17:26:35.000Z",
+    "users_id": 1
+    }
 
-}...
+5. Recommendations
 
-]
+**POST** `/api/recommendations`
 
-```
+*Request Header:*
 
-**GET / journal**
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-See previous journal entries
+*Request Body:*
 
-Route --> journal, 200 if sucessful, 500 if sever error
+    {
+    "recommendation": "A test"
+    }
 
-Response:
+*Response*: 201
 
-```
+    {
+    "id": 1,
+    "recommendation": "A test",
+    "created_at": "2024-04-14T17:28:58.000Z",
+    "updated_at": "2024-04-14T17:28:58.000Z",
+    "users_id": 1
+    }
 
-[
 
-{
+**GET** `/api/recommendations`
 
-"id": id,
+*Request Header:*
 
-"timestamp: "timestamp"
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-"entry": "entry"
 
-"gratitude": "gratitude"
+*Response:* 200
 
-"user_id": 1,
+    [ {
+    "id": 1,
+    "recommendation": "A test",
+    "updated_at": "2024-04-14T17:28:58.000Z"
+    } ]
 
-}...
 
-]
+**PUT** `/api/recommendations/:id`
 
-```
+*Request Header:*
 
-**PATCH / journal/:id/entry**
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
-Edit previous journal entry
+*Request Body:*
 
-Route --> journal, 404 if journal entry not found, 400 if missing request body, 200 if sucessful, 500 if server error
+    {
+    "recommendation": "A new test"
+    }
 
-Response:
+*Response:* 200 
 
-```
+    {
+    "id": 1,
+    "recommendation": "A new test",
+    "created_at": "2024-04-14T17:30:52.000Z",
+    "updated_at": "2024-04-14T17:30:52.000Z",
+    "users_id": 1
+    }
 
-[
+## Features in Development
 
-{
-
-"id": id,
-
-"timestamp: "timestamp"
-
-"entry": "entry"
-
-"gratitude": "gratitude"
-
-"user_id": 1,
-
-}...
-
-]
-
-```
-
-**DELETE / journal/:id**
-
-Delete previous journal entry
-
-Route --> journal, 404 if journal entry not found, 204 if sucessful, 500 if server error
-
-Response:
-
-```
-
-[
-
-{
-
-"id": uuid,
-
-"timestamp: "timestamp"
-
-"entry": "entry"
-
-"gratitude": "gratitude"
-
-"user_id": 1,
-
-}...
-
-]
-
-```
-
-### Auth
-
-One has to have an account and be signed into the app to be able to use it. Only the user can access their information.
-
-## Roadmap
-
-- Create client folder and file structure: React project with routes and boilerplate pages, style and partials, assets
-- Feature server folder and file structure: Set up index.js page, route folder and files, controller folder and files
-
-- Feature client side: Welcome page including global component of the button
-
-- Feature client side: Create an account page with form validation
-
-- Feature server side: Register user POST
-
-- Feature client side: Log in page with form validation
-
-- Feature server side: Log in user authentication
-
-- Feature client side: Home Page including global component of the navigation bar
-
-- Feature client side: Journal page including list of previous journal entries and form to post journal entry
-
-- Feature server side: Journal page including GET, POST, PATCH, DELETE
-
-- Feature client side: Integrate sever side with client side of journal page (should be fully styled and functioning)
-
-- Feature client side: Mood form page with form validation
-
-- Feature server side: Mood form page POST
-
-- Feature client side: Integrate sever side with client side of mood form page (should be fully styled and functioning)
-
-- Feature client side: Mood chart page
-
-- Feature server side: Mood chart page GET
-
-- Feature client side: Integrate server side with client side of mood chart page (should be fully styled and functioning)
-
-- Feature client side: Not found page
-
-- Deployment
-
-## Nice-to-haves
-
-- Animation
-
-- Add toggle for dark theme
-
-- Loading page skeleton
-
-- General resources page using 3rd party API (e.g. NHS)
-
-- Personalised coping strategies
-
-- Personalised crisis support page
-
-- User can edit their information and delete their account
+ - Mood Help Function: Allow users to easily access immediate crisis support such as their emergency contact, GP or NHS, and their suicide prevention plan to help navigate difficult situations
+ - Profile Section: Allow users to view their information, edit their details and delete their account
