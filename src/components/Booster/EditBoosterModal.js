@@ -46,9 +46,9 @@ export default function EditBoosterModal({
 
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
-
     event.preventDefault();
     setFormSubmitted(false);
+    setSuccessMessage(false)
     setErrorMessage(false);
     setFormError({});
 
@@ -76,7 +76,6 @@ export default function EditBoosterModal({
         }
       );
       getBoosterEntries();
-      setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
       closeEditModal();
@@ -86,25 +85,24 @@ export default function EditBoosterModal({
   };
 
   return (
-    <>
       <div className="overlay">
         <form
           onSubmit={(event) => {
             handleForm(event, id);
           }}
-          className={`booster-form ${darkTheme ? "booster-form--dark" : ""}`}
+          className={`form ${darkTheme ? "form--dark" : ""}`}
         >
           <img
             src={close}
             alt="Close Icon"
             onClick={closeEditModal}
-            className="booster-form__icon"
+            className="form__icon"
           />
-          <fieldset className="booster-form__fieldset">
+          <fieldset className="form__fieldset">
             <label
               htmlFor="booster"
-              className={`booster-form__label ${
-                darkTheme ? "booster-form__label--dark" : ""
+              className={`form__label ${
+                darkTheme ? "form__label--dark" : ""
               }`}
             >
               What boosts your mood?
@@ -114,24 +112,24 @@ export default function EditBoosterModal({
               name="activity"
               value={formData.activity}
               onChange={handleChange}
-              className={`booster-form__input ${
-                darkTheme ? "booster-form__input--dark" : ""
+              className={`form__input ${
+                darkTheme ? "form__input--dark" : ""
               }`}
             ></textarea>
           </fieldset>
           {formError.activity && (
-            <p className="booster-form__error">{formError.activity}</p>
+            <p className="form__error">{formError.activity}</p>
           )}
-          <div className="booster-form__button">
+          <div className="form__button">
             <Button>Submit</Button>
           </div>
           {errorMessage && (
-            <p className="booster-form__error">{errorMessage}</p>
+            <p className="form__error">{errorMessage}</p>
           )}
           {successMessage && (
             <p
-              className={`booster-form__success ${
-                darkTheme ? "booster-form__sucess--dark" : ""
+              className={`form__success ${
+                darkTheme ? "form__sucess--dark" : ""
               }`}
             >
               Successful!
@@ -139,6 +137,5 @@ export default function EditBoosterModal({
           )}
         </form>
       </div>
-    </>
   );
 }

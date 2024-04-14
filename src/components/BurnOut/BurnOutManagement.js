@@ -103,7 +103,6 @@ export default function BurnOutManagement() {
           is overwhelming you.
         </li>
       </ul>
-      <div className="burnout__wrapper">
         <p
           className={`burnout__text ${
             darkTheme ? "burnout__text--dark" : ""
@@ -119,7 +118,6 @@ export default function BurnOutManagement() {
             Mood Boosters
           </Link>
         </p>
-      </div>
     </section>
   );
 }

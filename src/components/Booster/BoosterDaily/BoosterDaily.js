@@ -108,13 +108,13 @@ export default function BoosterDaily ({ boosterEntries }) {
             In the meantime, take a moment to breathe.
           </p>
           <div className="inspiration__container" onClick={handleClick}>
-            <p
+            <h3
               className={`inspiration__activity ${
                 isAnimation ? "inspiration__activity--animation" : ""
               } `}
             >
               {text}
-            </p>
+            </h3>
           </div>
           <p
             className={`inspiration__text ${

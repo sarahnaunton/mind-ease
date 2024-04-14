@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import axios from "axios";
 import Button from "../../Button/Button";
 import close from "../../../assets/icons/close.png";
 import "./JournalForm.scss";
@@ -22,10 +22,10 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
 
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
-
     event.preventDefault();
     setFormSubmitted(false);
     setErrorMessage(false);
+    setSuccessMessage(false)
     setFormError({});
 
     let formValid = true;
@@ -57,7 +57,6 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
         }
       );
       getJournalEntries();
-      setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
       setFormData({

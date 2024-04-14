@@ -17,8 +17,6 @@ export default function MoodGraph({ chartData }) {
   ];
 
   return (
-    <section>
-      <div>
         <Line
           data={chartData}
           options={{
@@ -105,7 +103,5 @@ export default function MoodGraph({ chartData }) {
             },
           ]}
         />
-      </div>
-    </section>
   );
 }

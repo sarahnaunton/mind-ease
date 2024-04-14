@@ -31,13 +31,13 @@ export default function BoosterEntry({ id, activity, getBoosterEntries }) {
       <article
         className={`booster-entry ${darkTheme ? "booster-entry--dark" : ""}`}
       >
-        <p
+        <h3
           className={`booster-entry__subheading ${
             darkTheme ? "booster-entry__subheading--dark" : ""
           }`}
         >
           {activity}
-        </p>
+        </h3>
         <div className="booster-entry__icons">
           <img
             src={edit}

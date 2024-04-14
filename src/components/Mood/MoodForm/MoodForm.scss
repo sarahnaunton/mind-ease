@@ -1,9 +1,11 @@
-@use "../../../styles/partials/mixins" as *;
+ @use "../../../styles/partials/mixins" as *;
 @use "../../../styles/partials/variables" as *;
 
 .mood-form {
   background-color: $color-background-secondary;
-@include border($color-border-quaternary);
+  border: 3px solid $color-border-quaternary;
+  border-radius: 20px;
+  padding-left: 0.5rem;
 
   @include tablet-and-desktop {
     width: 60%;
@@ -24,6 +26,7 @@
   &__label {
     @include subheading($color-text-primary);
     margin-bottom: 1rem;
+    padding: 1rem 0 0 0;
 
     &--dark {
       color: $color-dark-text-primary;
@@ -36,6 +39,11 @@
     border: 1px solid $color-border-primary;
     padding: 0.25rem;
     margin-bottom: 1rem;
+    width: 14rem;
+
+    @include tablet-and-desktop {
+      width: 24rem;
+    }
 
     &:active,
     &:focus {
@@ -71,6 +79,10 @@
     padding: 0.5rem 0;
     text-align: center;
 
+    &--success {
+      color: $color-text-quinary;
+    }
+
     &--dark {
       color: $color-dark-text-primary;
     }
@@ -80,14 +92,5 @@
     @include body-small-text($color-text-error);
     text-align: center;
     margin: 0 0 0.5rem 0;
-  }
-
-  &__success {
-    @include body-text($color-text-quinary);
-    text-align: center;
-
-    &--dark {
-      color: $color-dark-text-quaternary;
-    }
   }
 }

@@ -8,7 +8,7 @@ export default function HomeIntroduction() {
   return (
     <section className="introduction">
       <div className={`introduction__container ${darkTheme ? "introduction__container--dark" : ""}`}>
-        <p
+        <h3
           className={`introduction__subheading ${
             darkTheme ? "introduction__subheading--dark" : ""
           }`}
@@ -22,23 +22,23 @@ export default function HomeIntroduction() {
             MindEase
           </span>
           ,
-        </p>
-        <p
+        </h3>
+        <h3
           className={`introduction__subheading ${
             darkTheme ? "introduction__subheading--dark" : ""
           }`}
         >
           Monitor your burnout score, journal your thoughts, and discover
           personalised activities for your wellbeing.
-        </p>
-        <p
+        </h3>
+        <h3
           className={`introduction__subheading ${
             darkTheme ? "introduction__subheading--dark" : ""
           }`}
         >
           Let's thrive together!{" "}
           <img src={thumbsUp} alt="Thumbs Up Emoji" className="introduction__icon" />
-        </p>
+        </h3>
       </div>
     </section>
   );

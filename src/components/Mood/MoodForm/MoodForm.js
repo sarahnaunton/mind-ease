@@ -22,7 +22,6 @@ export default function MoodForm() {
     if (!selectFieldValue) {
       return;
     }
-
     setCurrentQuestionIndex((prevIndex) => {
       // If the next question was previously answered, put the answer in the select field
       setSelectFieldValue(responses[`question-${prevIndex + 2}`] || "");
@@ -46,9 +45,9 @@ export default function MoodForm() {
 
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
-
     event.preventDefault();
     setFormSubmitted(false);
+    setSuccessMessage(false);
     setErrorMessage(false);
 
     const score = Object.values(responses).reduce(
@@ -143,9 +142,7 @@ export default function MoodForm() {
             {errorMessage && <p className="mood-form__error">{errorMessage}</p>}
             {successMessage && (
               <p
-                className={`mood-form__success ${
-                  darkTheme ? "mood-form__sucess--dark" : ""
-                }`}
+                className="mood-form__text mood-form__text--success"
               >
                 Successful!
               </p>

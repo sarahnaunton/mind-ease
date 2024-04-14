@@ -8,8 +8,7 @@
   &__heading {
     @include subheading($color-text-quinary);
     text-align: center;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
+    margin: 0 0 0.5rem 0;
 
     &--dark {
       color: $color-dark-text-quaternary;
@@ -28,8 +27,7 @@
   &__subheading {
     @include body-text($color-text-primary);
     font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
     text-align: center;
 
     &--dark {
@@ -39,8 +37,7 @@
 
   &__text {
     @include body-text($color-text-primary);
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
     text-align: center;
 
     &--dark {

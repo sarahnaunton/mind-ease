@@ -32,15 +32,11 @@ export default function MoodHubPage() {
               >
                 What is burnout?
               </h1>
-              <div
-                className={`page__text ${darkTheme ? "page__text--dark" : ""}`}
-              >
-                <p>
+                <p className={`page__text ${darkTheme ? "page__text--dark" : ""}`}>
                   Burnout is the result of prolonged pressure from work, leading
                   to complete mental, physical, and emotional exhaustion.{" "}
                   <img src={sad} alt="Sad Emoji" className="page__icon" />
                 </p>
-              </div>
               <div className={`page__information page__information--green ${
                   darkTheme ? "page__information--green--dark" : ""
                 }`}>

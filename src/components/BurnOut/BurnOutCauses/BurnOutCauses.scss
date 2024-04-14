@@ -85,8 +85,4 @@
       color: $color-dark-text-primary;
     }
   }
-
-  &__wrapper {
-    @include flex(row, center, center);
-  }
 }

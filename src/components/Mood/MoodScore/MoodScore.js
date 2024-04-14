@@ -17,13 +17,13 @@ export default function MoodScore({ chartData }) {
             Your latest score
           </h3>
           <div className="score__container">
-            <p
+            <h4
               className={`score__subheading ${
                 darkTheme ? "score__subheading--dark" : ""
               }`}
             >
               Score:
-            </p>
+            </h4>
             <p
               className={`score__text ${darkTheme ? "score__text--dark" : ""}`}
             >
@@ -31,13 +31,13 @@ export default function MoodScore({ chartData }) {
             </p>
           </div>
           <div className="score__container">
-            <p
+            <h4
               className={`score__subheading ${
                 darkTheme ? "score__subheading--dark" : ""
               }`}
             >
-              Category:{" "}
-            </p>
+              Category:
+            </h4>
             <p
               className={`score__text ${darkTheme ? "score__text--dark" : ""}`}
             >

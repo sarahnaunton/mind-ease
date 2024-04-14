@@ -6,14 +6,13 @@
   @include flex(row, center, center);
 
   &__container {
+    @include flex(column, start, center);
     max-width: $max-width;
     background-color: $color-background-secondary;
     border: 3px solid $color-border-tertiary;
-    width: 95%;
     border-radius: 20px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    @include flex(column, start, center);
+    margin: 2rem 0;
+    width: 95%;
 
     @include tablet-and-desktop {
       width: 80%;

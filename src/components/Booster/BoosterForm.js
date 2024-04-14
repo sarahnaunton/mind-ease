@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import axios from "axios";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close.png";
 
@@ -20,7 +20,6 @@ export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
 
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
-
     event.preventDefault();
     setFormSubmitted(false);
     setErrorMessage(false);
@@ -51,7 +50,6 @@ export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
         }
       );
       getBoosterEntries();
-      setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
       setFormData({

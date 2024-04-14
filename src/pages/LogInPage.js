@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import wave from "../assets/icons/wave.png";
 import LogInForm from "../components/LogInForm";
+import wave from "../assets/icons/wave.png";
 
 export default function LogInPage() {
   return (
@@ -10,7 +10,7 @@ export default function LogInPage() {
         <h2 className="account__heading">Log In</h2>
         <div className="account__greeting">
           <h3 className="account__subheading">Welcome Back!</h3>
-          <img className="account__icon" src={wave} alt="Wave Icon" />
+          <img className="account__icon" src={wave} alt="Wave Emoji" />
         </div>
         <p className="account__text">Please log in below</p>
         <LogInForm/>

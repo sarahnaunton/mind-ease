@@ -1,8 +1,8 @@
+import axios from "axios";
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Button from "../components/Button/Button";
 
 export default function LogInForm() {
@@ -25,6 +25,7 @@ export default function LogInForm() {
   const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
+    setSuccessMessage(false)
     setErrorMessage(false);
     setFormError({});
 
@@ -52,7 +53,6 @@ export default function LogInForm() {
         formData
       );
       localStorage.setItem("authToken", data.authToken);
-      setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
       setIsLoggedIn(true);
@@ -63,7 +63,6 @@ export default function LogInForm() {
       getUserData();
       navigate("/home");
     } catch (error) {
-      console.log(error);
       setErrorMessage(error.response.data.error);
     }
   };
@@ -114,7 +113,7 @@ export default function LogInForm() {
       {errorMessage && <p className="auth-form__error">{errorMessage}</p>}
       {successMessage && (
         <p className="auth-form__text auth-form__text--success">
-          Successful! Directing you to the log in page.
+          Successful! Directing you to the home page.
         </p>
       )}
     </form>

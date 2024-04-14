@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Button from "../../components/Button/Button";
 import "./SignUpForm.scss";
 
@@ -40,6 +40,7 @@ export default function SignUpForm() {
   const handleForm = async (event) => {
     event.preventDefault();
     setFormSubmitted(false);
+    setSuccessMessage(false)
     setErrorMessage(false);
     setFormError({});
 
@@ -95,7 +96,6 @@ export default function SignUpForm() {
         `${process.env.REACT_APP_API_BASE_URL}/users/register`,
         formData
       );
-      setErrorMessage(false);
       setSuccessMessage(true);
       setFormSubmitted(true);
       setFormData({
@@ -185,7 +185,7 @@ export default function SignUpForm() {
         />
       </fieldset>
       {formError.password && (
-        <p className="auth-form__error auth-form__error--spacing">
+        <p className="auth-form__error">
           {formError.password}
         </p>
       )}
@@ -263,7 +263,7 @@ export default function SignUpForm() {
           </fieldset>
           <fieldset className="auth-form__fieldset">
             <label
-              className="auth-form__label auth-form__label--spacing"
+              className="auth-form__label"
               htmlFor="experience"
             >
               Year started current job?

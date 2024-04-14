@@ -29,7 +29,7 @@ export default function MoodFormPage() {
               >
                 How are you feeling today?
               </h1>
-              <div
+              <section
                 className={`page__information page__information--blue ${
                   darkTheme ? "page__information--blue--dark" : ""
                 }`}
@@ -51,7 +51,7 @@ export default function MoodFormPage() {
                   Continue your empowering journey by completing the
                   questionnaire below.{" "}
                 </p>
-              </div>
+              </section>
               <p
                 className={`page__text ${darkTheme ? "page__text--dark" : ""}`}
               >

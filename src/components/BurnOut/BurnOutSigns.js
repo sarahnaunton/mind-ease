@@ -14,13 +14,11 @@ export default function BurnOutSigns() {
   };
 
   return (
-    <>
       <article className={`burnout ${darkTheme ? "burnout--dark" : ""}`}>
         <h2 className="burnout__subheading burnout__subheading--blue">
           What are some signs that you might be experiencing burnout?
         </h2>
         <p className={`burnout__text ${darkTheme ? "burnout__text--dark" : ""}`}>
-          {" "}
           Recognising the signs of burnout is the first step to reclaiming your
           wellbeing.
         </p>
@@ -92,6 +90,5 @@ export default function BurnOutSigns() {
           )}
         </ul>
       </article>
-    </>
   );
 }

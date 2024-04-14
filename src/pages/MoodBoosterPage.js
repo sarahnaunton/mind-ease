@@ -25,6 +25,7 @@ export default function MoodBoosterPage() {
 
   const getBoosterEntries = async () => {
     const authToken = localStorage.getItem("authToken");
+    setErrorMessage(false);
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/activities`,
@@ -35,7 +36,6 @@ export default function MoodBoosterPage() {
         }
       );
       setBoosterEntries(data);
-      setErrorMessage(false);
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
@@ -77,13 +77,13 @@ export default function MoodBoosterPage() {
                 onClick={handleAddModal}
                 className={`page__add ${darkTheme ? "page__add--dark" : ""}`}
               >
-                <h2
+                <h3
                   className={`page__label ${
                     darkTheme ? "page__label--dark" : ""
                   }`}
                 >
                   Add a mood booster
-                </h2>
+                </h3>
                 <img src={add} alt="Add Icon" className="page__icon" />
               </div>
               {isAddModalOpen && (

@@ -43,9 +43,9 @@ export default function DeleteBoosterModal({
           className="form__icon"
           onClick={closeDeleteModal}
         />
-        <h1 className={`form__label ${darkTheme ? "form__label--dark" : ""}`}>
+        <h2 className={`form__label ${darkTheme ? "form__label--dark" : ""}`}>
           Deleting mood booster
-        </h1>
+        </h2>
         <p className={`form__text ${darkTheme ? "form__text--dark" : ""}`}>
           Please confirm you would like to delete this mood booster. You won't
           be able to undo this action.

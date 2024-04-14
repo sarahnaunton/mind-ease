@@ -13,7 +13,7 @@ export default function JournalIntroduction() {
       >
         Welcome to your journaling space, where your thoughts find expression
         and your emotions are heard.{" "}
-        <img src={pen} alt="Pen Icon" className="introduction__icon" />
+        <img src={pen} alt="Pen in Hand Emoji" className="introduction__icon" />
       </p>
       <p
         className={`introduction__text ${

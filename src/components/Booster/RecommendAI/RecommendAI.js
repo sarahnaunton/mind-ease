@@ -14,7 +14,6 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
   const boosters = boosterEntries.map((booster) => {
     return booster.activity;
   });
-
   const currentDate = new Date();
   const yearStarted = new Date(userData.year_started, 0);
   const yearsExperience = currentDate.getFullYear() - yearStarted.getFullYear();
@@ -66,6 +65,7 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
 
   const handleRecommendation = async () => {
     setIsLoading(true);
+    setErrorMessage(false);
     try {
       const { data } = await axios.post(
         "https://api.openai.com/v1/chat/completions",
@@ -79,7 +79,6 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
       );
       const generatedMessage = data.choices[0].message.content;
       setRecomendation(generatedMessage);
-      setErrorMessage(false);
       setIsLoading(false);
     } catch (error) {
       setErrorMessage(true);
@@ -111,13 +110,13 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
         Let's explore activities tailored just for you.
       </p>
       <div className="recommend__generator" onClick={handleRecommendation}>
-        <p
+        <h3
           className={`recommend__subheading ${
             darkTheme ? "recommend__subheading--dark" : ""
           }`}
         >
           Try Me
-        </p>
+        </h3>
       </div>
       <div
         className={`recommend__text ${

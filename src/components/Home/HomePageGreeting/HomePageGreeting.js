@@ -18,15 +18,15 @@ export default function HomePageGreeting({ userData }) {
   }
 
   return (
-    <section className="greeting">
+    <>
       <h1
-        className={`greeting__text ${darkTheme ? "greeting__text--dark" : ""}`}
+        className={`greeting ${darkTheme ? "greeting--dark" : ""}`}
       >
         {greeting},{" "}
         {userData && (
           <span className="greeting__name">{userData.first_name}</span>
         )}
       </h1>
-    </section>
+    </>
   );
 }

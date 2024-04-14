@@ -21,6 +21,7 @@ export default function EditJournalModal({
 
   const getJournalEntry = async () => {
     const authToken = localStorage.getItem("authToken");
+    setErrorMessage(false)
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/journals/${id}`,
@@ -31,7 +32,6 @@ export default function EditJournalModal({
         }
       );
       setFormData({ entry: data.entry, gratitude: data.gratitude });
-      setErrorMessage(false);
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
@@ -47,7 +47,6 @@ export default function EditJournalModal({
 
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
-
     event.preventDefault();
     setFormSubmitted(false);
     setErrorMessage(false);

@@ -57,13 +57,13 @@ export default function JournalEntry({
         >
           {entry}
         </p>
-        <p
+        <h3
           className={`journal-entry__subheading ${
             darkTheme ? "journal-entry__subheading--dark" : ""
           }`}
         >
           Gratitude
-        </p>
+        </h3>
         <p
           className={`journal-entry__text ${
             darkTheme ? "journal-entry__text--dark" : ""

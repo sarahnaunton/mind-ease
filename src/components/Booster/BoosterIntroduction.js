@@ -13,7 +13,7 @@ export default function BoosterIntroduction () {
     >
       This page is where you can celebrate the simple joys that
       brighten your day.{" "}
-      <img src={face} alt="Smile Icon" className="introduction__icon" />
+      <img src={face} alt="Smile Face Emoji" className="introduction__icon" />
     </p>
     <p
       className={`introduction__text ${
