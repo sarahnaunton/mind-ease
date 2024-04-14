@@ -10,7 +10,7 @@ import calm from "../../../assets/images/calm.jpg";
 import rethink from "../../../assets/images/re-think.svg";
 import mhMatters from "../../../assets/images/mh-matters.svg";
 import mhFoundation from "../../../assets/images/mh-foundation.png";
-import nhs from "../../../assets/images/nhs.png";
+import nhs from "../../../assets/images/NHS.png";
 import "./BurnOutResources.scss";
 
 export default function BurnOutResources() {
