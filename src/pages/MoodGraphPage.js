@@ -68,8 +68,8 @@ export default function MoodGraphPage() {
                     darkTheme ? "page__text--dark" : ""
                   }`}
                 >
-                  Low scores suggest a lower risk of burnout, while high scores
-                  indicate a higher risk.{" "}
+                  A score of &lt; 30 indicates low burnout, 30-44 indicates
+                  medium burnout, and &gt; 45 indicates high burnout
                 </p>
               </div>
               {chartData && chartData.length === 0 && <GraphNoAnswer />}
