@@ -70,13 +70,13 @@ export default function SignUpForm() {
       error.confirmPassword = "Please enter your confirmed password";
     }
 
-    if (
-      formData.password.length < 8 ||
-      !formData.password.includes("!" || "£" || "%" || "&" || "*" || "#" || "?")
+  const passwordValidation =   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+
+    if (!passwordValidation.test(formData.password)
     ) {
       formValid = false;
       error.password =
-        "Please enter a password that is at least 8 characters and contains at least one of the following characters ! £ % & * # ?";
+        "Please enter a password that contains at least one uppercase and lowercase letter, one digit, one special character and is between 8-16 characters long";
     }
 
     if (formData.password !== formData.confirmPassword) {
