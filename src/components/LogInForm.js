@@ -16,7 +16,6 @@ export default function LogInForm() {
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -24,7 +23,6 @@ export default function LogInForm() {
 
   const handleForm = async (event) => {
     event.preventDefault();
-    setFormSubmitted(false);
     setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
@@ -54,7 +52,6 @@ export default function LogInForm() {
       );
       localStorage.setItem("authToken", data.authToken);
       setSuccessMessage(true);
-      setFormSubmitted(true);
       setIsLoggedIn(true);
       setFormData({
         email: "",

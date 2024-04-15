@@ -24,7 +24,7 @@ export default function MoodGraphPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     getChartData();
-  }, []);
+  }, [getChartData]);
 
   return (
     <>

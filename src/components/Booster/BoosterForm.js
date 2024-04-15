@@ -12,7 +12,6 @@ export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -21,7 +20,6 @@ export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
-    setFormSubmitted(false);
     setErrorMessage(false);
     setSuccessMessage(false);
     setFormError({});
@@ -51,7 +49,6 @@ export default function BoosterForm({ closeAddModal, getBoosterEntries }) {
       );
       getBoosterEntries();
       setSuccessMessage(true);
-      setFormSubmitted(true);
       setFormData({
         activity: "",
       });

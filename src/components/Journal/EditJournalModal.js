@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close.png";
@@ -17,9 +17,8 @@ export default function EditJournalModal({
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const getJournalEntry = async () => {
+  const getJournalEntry = useCallback(async () => {
     const authToken = localStorage.getItem("authToken");
     setErrorMessage(false);
     try {
@@ -35,11 +34,11 @@ export default function EditJournalModal({
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
-  };
+  },[id]);
 
   useEffect(() => {
     getJournalEntry();
-  }, [id]);
+  }, [id, getJournalEntry]);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -48,7 +47,6 @@ export default function EditJournalModal({
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
-    setFormSubmitted(false);
     setErrorMessage(false);
     setSuccessMessage(false);
     setFormError({});
@@ -79,7 +77,6 @@ export default function EditJournalModal({
       );
       getJournalEntries();
       setSuccessMessage(true);
-      setFormSubmitted(true);
       closeEditModal();
     } catch (error) {
       setErrorMessage(error.response.data.error);

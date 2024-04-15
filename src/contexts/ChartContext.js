@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 const ChartContext = createContext();
@@ -7,7 +7,7 @@ function ChartProvider(props) {
   const [chartData, setChartData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const getChartData = async () => {
+  const getChartData = useCallback(async () => {
     const authToken = localStorage.getItem("authToken");
 
     if (authToken) {
@@ -26,11 +26,11 @@ function ChartProvider(props) {
         setErrorMessage(error.response.data.error);
       }
     }
-  };
+  },[]);
 
   useEffect(() => {
     getChartData();
-  }, []);
+  }, [getChartData]);
 
   return (
     <ChartContext.Provider value={{ chartData, getChartData, errorMessage }}>

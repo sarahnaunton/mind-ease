@@ -16,7 +16,6 @@ export default function MoodForm() {
   const [selectFieldValue, setSelectFieldValue] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleNext = () => {
     if (!selectFieldValue) {
@@ -46,7 +45,6 @@ export default function MoodForm() {
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
-    setFormSubmitted(false);
     setSuccessMessage(false);
     setErrorMessage(false);
 
@@ -80,7 +78,6 @@ export default function MoodForm() {
         }
       );
       setSuccessMessage(true);
-      setFormSubmitted(true);
       getChartData();
       navigate("/mood-graph");
     } catch (error) {

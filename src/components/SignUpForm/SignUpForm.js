@@ -22,7 +22,6 @@ export default function SignUpForm() {
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
 
   const handleChange = (event) => {
@@ -39,7 +38,6 @@ export default function SignUpForm() {
 
   const handleForm = async (event) => {
     event.preventDefault();
-    setFormSubmitted(false);
     setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
@@ -97,7 +95,6 @@ export default function SignUpForm() {
         formData
       );
       setSuccessMessage(true);
-      setFormSubmitted(true);
       setFormData({
         firstname: "",
         lastname: "",

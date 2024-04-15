@@ -32,7 +32,7 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
     return [data.score, data.created_at];
   });
 
-  const [prompt, setPrompt] = useState({
+  const prompt = {
     model: "gpt-3.5-turbo",
     messages: [
       {
@@ -61,7 +61,7 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
     ],
     temperature: 0.7,
     max_tokens: 500,
-  });
+  };
 
   const handleRecommendation = async () => {
     setIsLoading(true);

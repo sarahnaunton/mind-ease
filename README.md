@@ -14,7 +14,7 @@ How to download the application:
 
 1. Clone gitHub repository of [mind-ease](https://github.com/sarahnaunton/mind-ease) and [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
 3. Install NPM packages with npm install
-4. Create a database in MySQL
+4. Create a database in MySQL, run npx knex migrate:latest then npx knex seed:run
 5. Create .env file on the client and server side using the .env.example file provided as a guide 
 	Client side e.g. REACT_APP_API_OPEN_AI_KEY = yourOpenAIKey
 	Server side e.g. PORT = yourport, DB_NAME = nameofdatabse

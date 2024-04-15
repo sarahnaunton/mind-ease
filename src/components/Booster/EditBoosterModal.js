@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Button from "../Button/Button";
 import close from "../../assets/icons/close.png";
@@ -16,9 +16,8 @@ export default function EditBoosterModal({
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const getBoosterEntry = async () => {
+  const getBoosterEntry = useCallback(async () => {
     const authToken = localStorage.getItem("authToken");
     try {
       const { data } = await axios.get(
@@ -34,11 +33,11 @@ export default function EditBoosterModal({
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
-  };
+  },[id]);
 
   useEffect(() => {
     getBoosterEntry();
-  }, [id]);
+  }, [id, getBoosterEntry]);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -47,7 +46,6 @@ export default function EditBoosterModal({
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
-    setFormSubmitted(false);
     setSuccessMessage(false);
     setErrorMessage(false);
     setFormError({});
@@ -77,7 +75,6 @@ export default function EditBoosterModal({
       );
       getBoosterEntries();
       setSuccessMessage(true);
-      setFormSubmitted(true);
       closeEditModal();
     } catch (error) {
       setErrorMessage(error.response.data.error);

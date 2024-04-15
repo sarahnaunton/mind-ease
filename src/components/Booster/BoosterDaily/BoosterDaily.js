@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import star from "../../../assets/icons/star.png";
 import "./BoosterDaily.scss";
@@ -14,8 +14,9 @@ export default function BoosterDaily({ boosterEntries }) {
   const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
   const randomActivity = boosterEntries[randomIndex].activity;
 
-  const getRecommendation = async () => {
-    const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem("authToken");
+
+  const getRecommendation = useCallback(async () => {
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/recommendations`,
@@ -72,12 +73,11 @@ export default function BoosterDaily({ boosterEntries }) {
     } catch (error) {
       setErrorMessage(error.response.data.error);
     }
-  };
+  }, [randomActivity, authToken]);
 
   useEffect(() => {
     getRecommendation();
-    window.scrollTo(0, 0);
-  }, []);
+  }, [getRecommendation]);
 
   const handleClick = () => {
     setTimeout(() => {

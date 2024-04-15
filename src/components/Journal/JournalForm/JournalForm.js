@@ -14,7 +14,6 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
   const [formError, setFormError] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -23,7 +22,6 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
   const handleForm = async (event) => {
     const authToken = localStorage.getItem("authToken");
     event.preventDefault();
-    setFormSubmitted(false);
     setErrorMessage(false);
     setSuccessMessage(false);
     setFormError({});
@@ -58,7 +56,6 @@ export default function JournalForm({ getJournalEntries, closeAddModal }) {
       );
       getJournalEntries();
       setSuccessMessage(true);
-      setFormSubmitted(true);
       setFormData({
         entry: "",
         gratitude: "",
