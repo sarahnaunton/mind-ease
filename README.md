@@ -2,6 +2,8 @@
 
 MindEase is a guide to mental wellness, helping you recognise the signs of burnout early so you can take proactive steps to maintain balance and well-being.
 
+Visit MindEase here: https://mindease-wellbeing.netlify.app/
+
 ## Introduction
 
 In today's fast-paced world, burnout has become a prevalent issue affecting individuals across various industries and demographics. The demanding nature of modern work environments, coupled with societal pressures and personal responsibilities, often leads to chronic stress, exhaustion, and ultimately, burnout. However, despite its widespread impact, burnout is often overlooked or misunderstood, resulting in detrimental effects on individuals' mental, emotional, and physical health.
@@ -12,19 +14,26 @@ Ultimately, by promoting early intervention and holistic well-being, MindEase pl
 
 How to download the application: 
 
-1. Clone gitHub repository of [mind-ease](https://github.com/sarahnaunton/mind-ease) and [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
-3. Install NPM packages with npm install
-4. Create a database in MySQL, run npx knex migrate:latest then npx knex seed:run
-5. Create .env file on the client and server side using the .env.example file provided as a guide 
-	Client side e.g. REACT_APP_API_OPEN_AI_KEY = yourOpenAIKey
+1. Clone GitHub repository of client [mind-ease](https://github.com/sarahnaunton/mind-ease) and server [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
+3. In both client and server, install NPM packages with npm install
+4. Create a database in MySQL, and in sever run npx knex migrate:latest and npx knex seed:run
+5. In both client and server, create .env file using the .env.example file provided as a guide,    
+	Client side e.g. REACT_APP_API_OPEN_AI_KEY = yourOpenAIKey      
 	Server side e.g. PORT = yourport, DB_NAME = nameofdatabse
-6. Launch the application with npm start
+6. Launch the application with npm start in the client and node index.js in the server
 
 ## User Experience
 
-Fully responsive across mobile, tablet, and desktop breakpoints, ensuring optimal display and functionality at every screen size.
+MindEase is also accessible online. Please feel free to explore its functionalities by following this [link](https://mindease-wellbeing.netlify.app/). If you prefer to browse without making an account, you can utilise the guest access with username: `guest@email.com` and password: `Abcdefg1!`
 
-Screenshots and video demonstration to come shortly.
+MindEase is fully responsive across mobile, tablet, and desktop platforms, ensuring optimal display and functionality at every screen size. Below, you'll find screenshots showcasing some of the key features using the mobile interface, in both the light and dark theme.
+
+<img src="./src/assets/screenshots/landing-page-mobile.png" alt="screenshot landing" width=300/>
+<img src="./src/assets/screenshots/signup-page-mobile.png" alt="screenshot sign up" width=300/>
+<img src="./src/assets/screenshots/home-page-mobile.png" alt="screenshot homepage" width=300/>
+<img src="./src/assets/screenshots/journal-page-mobile-dark.png" alt="screenshot homepage dark" width=300/>
+<img src="./src/assets/screenshots/mood-booster-page-mobile.png" alt="screenshot mood booster" width=300/>
+<img src="./src/assets/screenshots/mood-hub-page-mobile-dark.png" alt="screenshot mood hub" width=300/>
 
 ## Features
 
@@ -92,15 +101,13 @@ Server Libraries:
  - bycrypt
  - jsonwebtoken
  
-### API 3rd Party 
+### 3rd Party API
 
 Integration of AI to provide personalised recommendations and strategies to the user is facilitated through the Open AI API. Access the documentation by clicking [here](https://platform.openai.com/docs/overview).  Please note that a valid API key is required for accessing the API. 
 
-### End Points
+### Custom API
 
-Listed are the end points for the API. 
-
-Once the user has successfully created an account and logged in, the authentication token will be required for all future API requests within the application. 
+Below are the endpoints for the custom API: 
 
  1. Users
 
@@ -147,14 +154,18 @@ Once the user has successfully created an account and logged in, the authenticat
 *Response:* 201
 
       {
-     "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4"
+     "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4"
         }
+
+
+Once the user has successfully created an account and logged in, the authentication token will be required for all future API requests within the application. 
+
 
 **GET** `/api/users`
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Response:* 200 
@@ -180,7 +191,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGcizI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Request Body:*
@@ -207,7 +218,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Response:* 200
@@ -230,7 +241,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
   *Request Header:*
     
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Response:* 200 
 
@@ -247,7 +258,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW1hbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Response:*  204
@@ -257,7 +268,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Request Body:*
@@ -286,7 +297,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaWiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Request Body:*
@@ -311,7 +322,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Response:* 200
@@ -336,7 +347,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Request Body:*
 
@@ -359,7 +370,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Response:* 200
 
@@ -378,7 +389,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Response:* 200 
 
@@ -394,7 +405,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaWJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Response:*  204
 
@@ -402,7 +413,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Request Body:*
 
@@ -426,7 +437,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5iJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Request Body:*
 
@@ -449,7 +460,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 
 *Response:* 200
@@ -465,7 +476,7 @@ Once the user has successfully created an account and logged in, the authenticat
 
 *Request Header:*
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFRWIiwiZW1haWwiOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZpcnN0bmFtZSI6IldhdGNoaW5nIFOiJlbWFpbEBlbWFpay5jb20iLCJpYXQiOjE3MTMxMTM0MTAsImV4cCI6MTcxMzE5OTgxMH0.ksUc7tapGmcZgYGd41-gfG_Xdo-riVH9We8In9sHkL4
 
 *Request Body:*
 
@@ -485,5 +496,5 @@ Once the user has successfully created an account and logged in, the authenticat
 
 ## Features in Development
 
- - Mood Help Function: Allow users to easily access immediate crisis support such as their emergency contact, GP or NHS, and their suicide prevention plan to help navigate difficult situations
- - Profile Section: Allow users to view their information, edit their details and delete their account
+ - Mood Help Function: Allow users to easily access immediate crisis support such as their emergency contact, GP, A&E, and their suicide prevention plan to help navigate difficult situations.
+ - Profile Section: Allow users to view their information, edit their details and delete their account.
