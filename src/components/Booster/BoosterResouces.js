@@ -17,9 +17,9 @@ export default function BoosterResources() {
     dots: false,
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 6,
     autoplay: true,
-    speed: 3000,
+    speed: 15000,
     autoplaySpeed: 1000,
     cssEase: "linear",
   };
