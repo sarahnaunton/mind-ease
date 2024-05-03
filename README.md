@@ -16,8 +16,9 @@ How to download the application:
 3. Install NPM packages with npm install
 4. Create a database in MySQL, run npx knex migrate:latest then npx knex seed:run
 5. Create .env file on the client and server side using the .env.example file provided as a guide 
-	Client side e.g. REACT_APP_API_OPEN_AI_KEY = yourOpenAIKey
-	Server side e.g. PORT = yourport, DB_NAME = nameofdatabse
+	Client side e.g. **REACT_APP_API_OPEN_AI_KEY** = yourOpenAIKey
+  Please note when specifying the **REACT_APP_API_BASE_URL**, make sure to include **/api** at the end of the URL e.g. **REACT_APP_API_BASE_URL** = http://localhost:5050/api
+	Server side e.g. **PORT** = yourport, **DB_NAME** = nameofdatabse
 6. Launch the application with npm start
 
 ## User Experience
