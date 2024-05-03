@@ -16,10 +16,10 @@
 
   @include tablet-and-desktop {
     @include flex(column, center, center);
-  }
-
-  &:hover {
-    animation: rotate 3s;
+    
+    &:hover {
+      animation: rotate 3s;
+    }
   }
 
   &__heading {
