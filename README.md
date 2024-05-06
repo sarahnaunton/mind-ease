@@ -12,14 +12,14 @@ Ultimately, by promoting early intervention and holistic well-being, MindEase pl
 
 How to download the application: 
 
-1. Clone gitHub repository of [mind-ease](https://github.com/sarahnaunton/mind-ease) and [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
-3. Install NPM packages with npm install
-4. Create a database in MySQL, run npx knex migrate:latest then npx knex seed:run
-5. Create .env file on the client and server side using the .env.example file provided as a guide 
+1. Clone gitHub repository of client [mind-ease](https://github.com/sarahnaunton/mind-ease) and server [mind-ease-api](https://github.com/sarahnaunton/mind-ease-api) 
+3. On both client and server, install NPM packages with npm install
+4. Create a database in MySQL, on server run npx knex migrate:latest then npx knex seed:run
+5. Create .env file on the client and server side using the .env.example file provided as a guide,
 	Client side e.g. **REACT_APP_API_OPEN_AI_KEY** = yourOpenAIKey
   Please note when specifying the **REACT_APP_API_BASE_URL**, make sure to include **/api** at the end of the URL e.g. **REACT_APP_API_BASE_URL** = http://localhost:5050/api
 	Server side e.g. **PORT** = yourport, **DB_NAME** = nameofdatabse
-6. Launch the application with npm start
+6. Launch the application with npm start in the client and node index.js in the server
 
 ## User Experience
 

@@ -4,7 +4,8 @@
 .loader {
   background-color: $color-background-primary;
   @include flex(column, center, center);
-  margin-top: 5rem;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
 
   &--dark {
     background-color: $color-dark-background-primary;

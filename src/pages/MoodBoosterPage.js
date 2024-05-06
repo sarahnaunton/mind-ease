@@ -7,9 +7,10 @@ import { ChartContext } from "../contexts/ChartContext";
 import LogInMessage from "../components/LogInMessage/LogInMessage";
 import Navigation from "../components/Navigation/Navigation";
 import BoosterIntroduction from "../components/Booster/BoosterIntroduction";
-import BoosterDaily from "../components/Booster/BoosterDaily/BoosterDaily";
 import BoosterForm from "../components/Booster/BoosterForm";
 import BoosterEntries from "../components/Booster/BoosterEntries";
+import BoosterDaily from "../components/Booster/BoosterDaily/BoosterDaily";
+import BurnOutManagement from "../components/BurnOut/BurnOutManagement";
 import RecommendAI from "../components/Booster/RecommendAI/RecommendAI";
 import BoosterResources from "../components/Booster/BoosterResouces";
 import add from "../assets/icons/add.png";
@@ -70,9 +71,6 @@ export default function MoodBoosterPage() {
                 What makes you happy?
               </h1>
               <BoosterIntroduction />
-              {boosterEntries && boosterEntries.length > 0 && (
-                <BoosterDaily boosterEntries={boosterEntries} />
-              )}
               <div
                 onClick={handleAddModal}
                 className={`page__add ${darkTheme ? "page__add--dark" : ""}`}
@@ -96,6 +94,9 @@ export default function MoodBoosterPage() {
                 getBoosterEntries={getBoosterEntries}
                 boosterEntries={boosterEntries}
               />
+              {boosterEntries && boosterEntries.length > 0 && (
+                <BoosterDaily boosterEntries={boosterEntries} />
+              )}
               {boosterEntries && userData && chartData && (
                 <RecommendAI
                   boosterEntries={boosterEntries}
@@ -103,6 +104,13 @@ export default function MoodBoosterPage() {
                   chartData={chartData}
                 />
               )}
+              <div
+                className={`page__information page__information--orange ${
+                  darkTheme ? "page__information--orange--dark" : ""
+                }`}
+              >
+                <BurnOutManagement />
+              </div>
               <BoosterResources />
               {errorMessage && <p className="page__error">{errorMessage}</p>}
             </div>

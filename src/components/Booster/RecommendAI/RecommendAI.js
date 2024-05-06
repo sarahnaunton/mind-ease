@@ -54,6 +54,8 @@ export default function RecommendAI({ boosterEntries, userData, chartData }) {
         Can there be 6 bullet points. 
         Can the response end 'Remember, prioritising your mental wellbeing is essential for overall health and happiness. Keep taking small steps towards self-care and seeking support when needed. 
         You are on the right path towards a healthier mindset. You've got this ${userInfo.firstname}!' 
+        If there is no user information such as their name and occupation, please just give a generic introduction without referrencing their name or occupation and role.
+        If there is no user information, at the end say 'If you share details about your occupation and role, we can tailor these strategies even further to suit your specific needs!'
         Ensure english spelling with 's' rather than 'z'. 
         Format the response as markdown. 
       `,

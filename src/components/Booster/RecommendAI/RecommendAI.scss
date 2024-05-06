@@ -2,6 +2,8 @@
 @use "../../../styles/partials/variables" as *;
 
 .recommend {
+  margin-bottom: 2rem; 
+  
   &__heading {
     @include subheading($color-text-quinary);
 

@@ -61,6 +61,15 @@
     &--animation {
       animation: twist 3s;
     }
+
+    &--dark {
+      color: $color-dark-text-primary;
+      background-color: $color-dark-background-quinary;
+
+      &:hover {
+        background-color: $color-background-quinary;
+      }
+    }
   }
 
   &__icon {
