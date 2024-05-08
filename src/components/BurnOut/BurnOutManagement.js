@@ -19,7 +19,7 @@ export default function BurnOutManagement() {
         protect your mental and emotional wellbeing.
       </p>
       <p className={`burnout__text ${darkTheme ? "burnout__text--dark" : ""}`}>
-        Here are some strategies to help you navigate through it:
+        Here are some general strategies to help you navigate through it:
       </p>
       <ul>
         <li

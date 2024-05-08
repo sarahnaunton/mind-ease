@@ -67,16 +67,20 @@
     &--blue {
       background-color: $color-background-quinary;
 
-      &:hover {
-        outline: 5px solid $color-dark-border-tertiary;
-        animation: rotate 3s;
+      @include tablet-and-desktop {
+        &:hover {
+          outline: 5px solid $color-dark-border-tertiary;
+          animation: rotate 3s;
+        }
       }
 
       &--dark {
         background-color: $color-dark-background-quinary;
 
-        &:hover {
-          outline: 5px solid $color-border-tertiary;
+        @include tablet-and-desktop {
+          &:hover {
+            outline: 5px solid $color-border-tertiary;
+          }
         }
       }
     }
@@ -84,16 +88,20 @@
     &--orange {
       background-color: $color-background-tertiary;
 
-      &:hover {
-        outline: 5px solid $color-dark-border-quaternary;
-        animation: rotate 3s;
+      @include tablet-and-desktop {
+        &:hover {
+          outline: 5px solid $color-dark-border-quaternary;
+          animation: rotate 3s;
+        }
       }
 
       &--dark {
         background-color: $color-dark-background-tertiary;
 
-        &:hover {
-          outline: 5px solid $color-border-quaternary;
+        @include tablet-and-desktop {
+          &:hover {
+            outline: 5px solid $color-border-quaternary;
+          }
         }
       }
     }
@@ -101,16 +109,20 @@
     &--green {
       background-color: $color-background-quaternary;
 
-      &:hover {
-        outline: 5px solid $color-dark-border-secondary;
-        animation: rotate 3s;
+      @include tablet-and-desktop {
+        &:hover {
+          outline: 5px solid $color-dark-border-secondary;
+          animation: rotate 3s;
+        }
       }
 
       &--dark {
         background-color: $color-dark-background-quaternary;
 
-        &:hover {
-          outline: 5px solid $color-border-secondary;
+        @include tablet-and-desktop {
+          &:hover {
+            outline: 5px solid $color-border-secondary;
+          }
         }
       }
     }
@@ -118,16 +130,20 @@
     &--grey {
       background-color: $color-dark-background-senary;
 
-      &:hover {
-        outline: 5px solid $color-border-primary;
-        animation: rotate 3s;
+      @include tablet-and-desktop {
+        &:hover {
+          outline: 5px solid $color-border-primary;
+          animation: rotate 3s;
+        }
       }
 
       &--dark {
         background-color: $color-dark-background-secondary;
 
-        &:hover {
-          outline: 5px solid $color-dark-border-primary;
+        @include tablet-and-desktop {
+          &:hover {
+            outline: 5px solid $color-dark-border-primary;
+          }
         }
       }
     }
@@ -135,16 +151,20 @@
     &--navy {
       background-color: $color-dark-background-quinary;
 
-      &:hover {
-        outline: 5px solid $color-border-tertiary;
-        animation: rotate 3s;
+      @include tablet-and-desktop {
+        &:hover {
+          outline: 5px solid $color-border-tertiary;
+          animation: rotate 3s;
+        }
       }
 
       &--dark {
         background-color: $color-dark-background-septenary;
 
-        &:hover {
-          outline: 5px solid $color-dark-background-quinary;
+        @include tablet-and-desktop {
+          &:hover {
+            outline: 5px solid $color-dark-background-quinary;
+          }
         }
       }
     }

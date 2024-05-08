@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import star from "../../../assets/icons/star.png";
 import "./BoosterDaily.scss";
@@ -10,10 +10,50 @@ export default function BoosterDaily({ boosterEntries }) {
   const [text, setText] = useState("Click to Reveal");
   const [isAnimation, setIsAnimation] = useState(false);
 
+  const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
+  const randomActivity = boosterEntries[randomIndex].activity;
+
+  const getText = async () => {
+    const authToken = localStorage.getItem("authToken");
+    let text = "";
+
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/recommendations`,
+        {
+          headers: {
+            authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      if (!data.length) {
+        text = "Click To Reveal";
+      }
+
+      if (data.length) {
+        const updatedAt = new Date(data[0].updated_at).toLocaleDateString(
+          "en-GB"
+        );
+        const currentDate = new Date().toLocaleDateString("en-GB");
+
+        if (updatedAt !== currentDate) {
+          text = "Click To Reveal";
+        }
+
+        if (updatedAt === currentDate) {
+          text = data[0].recommendation;
+        }
+      }
+      setErrorMessage(false);
+      setText(text);
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
+  };
+
   const getRecommendation = async () => {
     const authToken = localStorage.getItem("authToken");
-    const randomIndex = Math.floor(Math.random() * boosterEntries.length + 0);
-    const randomActivity = boosterEntries[randomIndex].activity;
     let text = "";
 
     try {
@@ -77,6 +117,10 @@ export default function BoosterDaily({ boosterEntries }) {
     }
   };
 
+  useEffect(() => {
+    getText();
+  }, []);
+
   const handleClick = () => {
     getRecommendation();
   };
@@ -105,7 +149,7 @@ export default function BoosterDaily({ boosterEntries }) {
           <h3
             className={`inspiration__activity ${
               isAnimation ? "inspiration__activity--animation" : ""
-            } `}
+            } ${darkTheme ? "inspiration__activity--dark" : ""} `}
           >
             {text}
           </h3>
